@@ -10,6 +10,11 @@ public class TabManager : MonoBehaviour
     private Color selectedColor = new Color32(54, 148, 215, 255); // 선택된 버튼의 색
     private Color unselectedColor = new Color32(185, 189, 189, 255); // 선택되지 않은 버튼의 색
 
+    private void Start()
+    {
+        texts[3].GetComponentInParent<Button>().Select();
+    }
+
     public void ShowPanel(int panelIndex) // 이 함수는 각 탭의 OnClick 이벤트에 연결합니다.
     {
         for (int i = 0; i < panels.Length; i++)
