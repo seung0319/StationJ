@@ -19,7 +19,7 @@ public class TabManager : MonoBehaviour
 
     private void Start()
     {
-        
+        categoryButtons[3].Select();
     }
 
     public void ShowPanel(int panelIndex) // 이 함수는 각 탭의 OnClick 이벤트에 연결합니다.
