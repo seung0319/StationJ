@@ -6,51 +6,134 @@ using UnityEngine.Video;
 
 public class PlayTimeLine : MonoBehaviour
 {
-    public RawImage videoImage; // 영상 출력을 위한 Raw Image
-    public Text timelineText; // 타임라인을 표시할 Text
+    /// 터치 코드 ///
+    /*public VideoPlayer videoPlayer;
+    public Slider timelineSlider;
+    public Button replayButton;
+    private bool isPaused = true;
+    private bool isTouching = false;
 
-    public VideoClip videoClip; // 재생할 비디오 클립
-
-    private VideoPlayer videoPlayer; // 비디오 플레이어
-    private float videoDuration; // 비디오의 전체 길이
-
-    private void Start()
+    void Start()
     {
-        videoPlayer = gameObject.AddComponent<VideoPlayer>(); // 비디오 플레이어 컴포넌트 추가
-        videoPlayer.playOnAwake = false; // 시작 시 자동 재생하지 않도록 설정
+        videoPlayer.loopPointReached += OnVideoEnd;
+        replayButton.onClick.AddListener(ReplayVideo);
 
-        videoPlayer.source = VideoSource.VideoClip; // 비디오 소스를 비디오 클립으로 설정
-        videoPlayer.clip = videoClip; // 재생할 비디오 클립 설정
-
-        videoPlayer.Prepare(); // 비디오를 준비하여 재생 준비
-
-        videoPlayer.loopPointReached += OnVideoEnd; // 비디오 재생이 끝났을 때 호출할 메서드 설정
-
-        videoPlayer.prepareCompleted += OnVideoPrepared; // 비디오 준비가 완료되었을 때 호출할 메서드 설정
+        timelineSlider.minValue = 0f;
+        timelineSlider.maxValue = (float)videoPlayer.clip.length;
     }
 
-    private void Update()
+    void OnVideoEnd(VideoPlayer vp)
     {
-        // 타임라인 업데이트
-        if (videoPlayer.isPlaying)
+        videoPlayer.Stop();
+        isPaused = false;
+    }
+
+    void ReplayVideo()
+    {
+        videoPlayer.Stop();
+        videoPlayer.Play();
+        isPaused = false;
+    }
+
+    void Update()
+    {
+        if (Input.touchCount > 0)
         {
-            float currentTime = (float)videoPlayer.time;
-            timelineText.text = currentTime.ToString("F1") + " / " + videoDuration.ToString("F1");
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
+            {
+                isTouching = true;
+            }
+        }
+        else
+        {
+            isTouching = false;
+        }
+
+        if (isTouching)
+        {
+            if (videoPlayer.isPlaying && !isPaused)
+            {
+                videoPlayer.Pause();
+                isPaused = true;
+            }
+            else if (isPaused)
+            {
+                videoPlayer.Play();
+                isPaused = false;
+            }
+        }
+
+        //슬라이더 값에 따라 타임라인 조절
+        if (!isPaused)
+        {
+            timelineSlider.value = (float)videoPlayer.time;
         }
     }
 
-    private void OnVideoPrepared(VideoPlayer player)
+    public void OnSliderValueChanged()
     {
-        // 비디오 준비가 완료되면 영상을 출력하고 재생합니다.
-        videoPlayer.Play();
+        if (!isPaused)
+        {
+            videoPlayer.time = timelineSlider.value;
+        }
+    }*/ //터치 코드
 
-        // 영상의 전체 길이를 가져옵니다.
-        videoDuration = (float)videoPlayer.length;
+    public VideoPlayer videoPlayer;
+    public Slider timelineSlider;
+    public Button replayButton;
+    private bool isPaused = true;
+
+    void Start()
+    {
+        videoPlayer.loopPointReached += OnVideoEnd;
+        replayButton.onClick.AddListener(ReplayVideo);
+
+        timelineSlider.minValue = 0f;
+        timelineSlider.maxValue = (float)videoPlayer.clip.length;
     }
 
-    private void OnVideoEnd(VideoPlayer player)
+    void OnVideoEnd(VideoPlayer vp)
     {
-        // 비디오 재생이 끝났을 때 호출되는 메서드입니다.
-        // 필요한 처리를 추가하세요.
+        videoPlayer.Stop();
+        isPaused = false;
+    }
+
+    void ReplayVideo()
+    {
+        videoPlayer.Stop();
+        videoPlayer.Play();
+        isPaused = false;
+    }
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (videoPlayer.isPlaying && !isPaused)
+            {
+                videoPlayer.Pause();
+                isPaused = true;
+            }
+            else if (isPaused)
+            {
+                videoPlayer.Play();
+                isPaused = false;
+            }
+        }
+
+        // 슬라이더 값에 따라 타임라인 조절
+        if (!isPaused)
+        {
+            timelineSlider.value = (float)videoPlayer.time;
+        }
+    }
+
+    public void OnSliderValueChanged()
+    {
+        if (!isPaused)
+        {
+            videoPlayer.time = timelineSlider.value;
+        }
     }
 }
