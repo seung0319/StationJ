@@ -7,7 +7,7 @@ public class ImageDragZoom : MonoBehaviour, IDragHandler, IPointerDownHandler, I
     private Vector2 originalSize;
     private Vector2 lastTouchPosition;
     private bool isDragging = false;
-    private bool isPinching = false; // 핀치 중인지 확인하는 플래그 추가
+    private bool isPinching = false;
 
     private float minScale = 0.5f;
     private float maxScale = 2.0f;
@@ -21,14 +21,14 @@ public class ImageDragZoom : MonoBehaviour, IDragHandler, IPointerDownHandler, I
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (isPinching) return; // 핀치 중이라면 드래그를 시작하지 않음
+        if (isPinching) return;
         isDragging = true;
         lastTouchPosition = eventData.position;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (isDragging && !isPinching) // 핀치 중이 아니라면 드래그 수행
+        if (isDragging && !isPinching)
         {
             Vector2 delta = eventData.position - lastTouchPosition;
             rectTransform.anchoredPosition += delta;
@@ -45,7 +45,15 @@ public class ImageDragZoom : MonoBehaviour, IDragHandler, IPointerDownHandler, I
     {
         if (Input.touchCount == 2)
         {
-            isPinching = true; // 두 손가락 터치가 감지되면 핀치 상태로 설정
+            Vector2 oldSize = rectTransform.sizeDelta;
+            Vector3 oldPos = rectTransform.localPosition;
+
+            if (!isPinching)
+            {
+                isPinching = true;
+                originalSize = rectTransform.sizeDelta;
+            }
+
             Touch touchZero = Input.GetTouch(0);
             Touch touchOne = Input.GetTouch(1);
 
@@ -61,10 +69,17 @@ public class ImageDragZoom : MonoBehaviour, IDragHandler, IPointerDownHandler, I
             newScale = Mathf.Clamp(newScale, originalSize.x * minScale, originalSize.x * maxScale);
 
             rectTransform.sizeDelta = new Vector2(newScale, newScale);
+
+            Vector2 newPos = (touchZero.position + touchOne.position) / 2;
+            Vector2 oldPosOnScreen = RectTransformUtility.WorldToScreenPoint(Camera.main, oldPos);
+            Vector2 oldScaleFactor = (oldPosOnScreen - newPos) / oldSize;
+            Vector2 shift = oldScaleFactor * (newScale - oldSize.x);
+
+            rectTransform.localPosition += (Vector3)shift;
         }
         else
         {
-            isPinching = false; // 두 손가락 터치가 끝나면 핀치 상태 해제
+            isPinching = false;
         }
     }
 }
