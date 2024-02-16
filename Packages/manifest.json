@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "com.google.ar.core.arfoundation.extensions": "file:C:/Users/User/Downloads/arcore-unity-extensions-1.41.0.tgz",
     "com.unity.collab-proxy": "2.2.0",
+    "com.unity.feature.ar": "1.0.1",
     "com.unity.feature.development": "1.0.1",
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.7.6",
