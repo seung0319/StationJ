@@ -1340,8 +1340,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: ade2120fa4330ec448eea446ef35de9b, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: ade2120fa4330ec448eea446ef35de9b, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: 4ba67f44488615d4aa50afeaba4126bb, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 4ba67f44488615d4aa50afeaba4126bb, type: 3}
     m_SelectedSprite: {fileID: 21300000, guid: ade2120fa4330ec448eea446ef35de9b, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: 4ba67f44488615d4aa50afeaba4126bb, type: 3}
   m_AnimationTriggers:
@@ -2094,8 +2094,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 180fbc24a929d2a4eb74236f57395381, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 180fbc24a929d2a4eb74236f57395381, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: 84d26a0da8e0d61479db62d780b59804, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 84d26a0da8e0d61479db62d780b59804, type: 3}
     m_SelectedSprite: {fileID: 21300000, guid: 180fbc24a929d2a4eb74236f57395381, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: 84d26a0da8e0d61479db62d780b59804, type: 3}
   m_AnimationTriggers:
@@ -2249,11 +2249,6 @@ MonoBehaviour:
   - {fileID: 566854346}
   - {fileID: 260611860}
   - {fileID: 1655598725}
-  texts:
-  - {fileID: 760364424}
-  - {fileID: 1089534532}
-  - {fileID: 733668127}
-  - {fileID: 761175970}
 --- !u!1 &636017961
 GameObject:
   m_ObjectHideFlags: 0
@@ -2558,7 +2553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7254902, g: 0.7411765, b: 0.7411765, a: 1}
+  m_Color: {r: 0.7254902, g: 0.7372549, b: 0.74509805, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2795,7 +2790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7254902, g: 0.7411765, b: 0.7411765, a: 1}
+  m_Color: {r: 0.7254902, g: 0.7372549, b: 0.74509805, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2875,7 +2870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19215688, g: 0.5921569, b: 0.8705883, a: 1}
+  m_Color: {r: 0.7254902, g: 0.7372549, b: 0.74509805, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3624,7 +3619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7254902, g: 0.7411765, b: 0.7411765, a: 1}
+  m_Color: {r: 0.7254902, g: 0.7372549, b: 0.74509805, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3998,8 +3993,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 6e51fb7bbcaa7d14baf794aaff9173e0, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 6e51fb7bbcaa7d14baf794aaff9173e0, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: bdd68194aab4f274d99a76757482ddd9, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: bdd68194aab4f274d99a76757482ddd9, type: 3}
     m_SelectedSprite: {fileID: 21300000, guid: 6e51fb7bbcaa7d14baf794aaff9173e0, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: bdd68194aab4f274d99a76757482ddd9, type: 3}
   m_AnimationTriggers:
@@ -5203,8 +5198,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 08a624b4b48dbd246bf82b6d6448f8f9, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 08a624b4b48dbd246bf82b6d6448f8f9, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: 09fc632759c53ec4a9187bf467069821, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 09fc632759c53ec4a9187bf467069821, type: 3}
     m_SelectedSprite: {fileID: 21300000, guid: 08a624b4b48dbd246bf82b6d6448f8f9, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: 09fc632759c53ec4a9187bf467069821, type: 3}
   m_AnimationTriggers:

@@ -16,13 +16,13 @@ public class TabManager : MonoBehaviour
     // 현재 선택된 카테고리 버튼에 대한 참조
     private Button selectedCategoryButton;
 
-    public Text[] texts;
-    private Color selectedColor = new Color32(54, 148, 215, 255); // 선택된 버튼의 색
-    private Color unselectedColor = new Color32(185, 189, 189, 255); // 선택되지 않은 버튼의 색
+    private Color selectedColor = new Color32(0, 148, 255, 255); // 선택된 버튼의 색
+    private Color unselectedColor = new Color32(185, 188, 190, 255); // 선택되지 않은 버튼의 색
 
-    private void Start()
+    private void Awake()
     {
         categoryButtons[3].Select();
+        categoryButtons[3].GetComponentInChildren<Text>().color = selectedColor;
     }
 
     public void ShowPanel(int panelIndex) // 이 함수는 각 탭의 OnClick 이벤트에 연결합니다.
@@ -61,9 +61,14 @@ public class TabManager : MonoBehaviour
             // 버튼의 Sprite를 Normal Sprite로 변경합니다.
             selectedCategoryButton.image.sprite = selectedCategoryButton.spriteState.disabledSprite;
         }
+        else
+        {
+            categoryButtons[3].Select();
+            categoryButtons[3].GetComponentInChildren<Text>().color = selectedColor;
+        }
 
         // 클릭한 버튼의 Sprite를 Pressed Sprite로 변경
-        clickedButton.image.sprite = clickedButton.spriteState.pressedSprite;
+        clickedButton.image.sprite = clickedButton.spriteState.selectedSprite;
         selectedCategoryButton = clickedButton;
     }
 }
