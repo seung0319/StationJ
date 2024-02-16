@@ -6,12 +6,7 @@ using UnityEngine.UI;
 
 public class TabManager : MonoBehaviour
 {
-    public GameObject locationPanel;
-    public GameObject makerPanel;
-    public GameObject routeFindPanerl;
-    private int order = 0;
-
-    private bool locationOK;
+    
 
     public GameObject[] panels; // 이 배열에 각각의 패널을 할당합니다.
 
@@ -27,13 +22,7 @@ public class TabManager : MonoBehaviour
 
     private void Start()
     {
-        locationOK = Permission.HasUserAuthorizedPermission(Permission.FineLocation);
-
-        if (!locationOK)
-        {
-            locationPanel.SetActive(true);
-            makerPanel.SetActive(false);
-        }
+        categoryButtons[3].Select();
     }
 
     public void ShowPanel(int panelIndex) // 이 함수는 각 탭의 OnClick 이벤트에 연결합니다.
@@ -43,24 +32,24 @@ public class TabManager : MonoBehaviour
             if (i == panelIndex)
             {
                 panels[i].SetActive(true);
-                texts[i].color = selectedColor;
+                categoryButtons[i].GetComponentInChildren<Text>().color = selectedColor;
             }
             else
             {
                 panels[i].SetActive(false);
-                texts[i].color = unselectedColor;
+                categoryButtons[i].GetComponentInChildren<Text>().color = unselectedColor;
             }
         }
-        texts[3].color = unselectedColor;
+        categoryButtons[3].GetComponentInChildren<Text>().color = unselectedColor;
     }
     public void ShowAllPanels() // 이 함수는 모든 패널을 활성화하는 버튼의 OnClick 이벤트에 연결합니다.
     {
         for (int i = 0; i < panels.Length; i++)
         {
             panels[i].SetActive(true);
-            texts[i].color = unselectedColor;
+            categoryButtons[i].GetComponentInChildren<Text>().color = unselectedColor;
         }
-        texts[3].color = selectedColor;
+        categoryButtons[3].GetComponentInChildren<Text>().color = selectedColor;
     }
 
     public void OnCategoryButtonClicked()
@@ -76,46 +65,5 @@ public class TabManager : MonoBehaviour
         // 클릭한 버튼의 Sprite를 Pressed Sprite로 변경
         clickedButton.image.sprite = clickedButton.spriteState.pressedSprite;
         selectedCategoryButton = clickedButton;
-    }
-
-    public void LocationInfoAllow(bool Allow)
-    {
-        if(order == 0)  //첫번째 팝업창의 경우
-        {
-            if (Allow)  //위치권한요청 허용
-            {
-                UnityEngine.Android.Permission.RequestUserPermission(UnityEngine.Android.Permission.FineLocation);
-                locationOK = true;
-                order++;
-            }
-            else        //위치권한요청 허용 안함
-            {
-                order++;
-            }
-        }
-        else if(order == 1)  //두번째 팝업창의 경우
-        {
-            if (Allow)  //위치권한요청 허용
-            {
-                UnityEngine.Android.Permission.RequestUserPermission(UnityEngine.Android.Permission.FineLocation);
-                locationOK = true;
-                routeFindPanerl.SetActive(true);
-            }
-            else        //위치권한요청 허용 안함
-            {
-                
-            }
-        }
-    }
-    public void RouteFind()
-    {
-        if (!locationOK)
-        {
-            locationPanel.SetActive(true);
-        }
-        else
-        {
-            routeFindPanerl.SetActive(true);
-        }
     }
 }
