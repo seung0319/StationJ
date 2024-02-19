@@ -190,16 +190,10 @@ public class CameraBT : MonoBehaviour
                 Directory.CreateDirectory(folderPath);
             }
 
-            // 이미지 파일 저장
-            File.WriteAllBytes(filePath, bytes);
-            Debug.Log("Screenshot saved at: " + filePath);
-
-            // 갤러리 스캔
-            AndroidJavaClass MediaScannerConnection = new AndroidJavaClass("android.media.MediaScannerConnection");
-            AndroidJavaClass UnityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-            AndroidJavaObject currentActivity = UnityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
-            string[] filePaths = { filePath };
-            MediaScannerConnection.CallStatic("scanFile", currentActivity, filePaths, null, null);
+            // Save the screenshot to Gallery/Photos
+            string name = string.Format("{0}_Capture{1}_{2}.png", Application.productName, "{0}", System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
+            Debug.Log("Permission result: " + NativeGallery.SaveImageToGallery(capturedTexture, Application.productName + " Captures", name));
+            
         }
     }
 
