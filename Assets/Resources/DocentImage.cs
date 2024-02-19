@@ -6,47 +6,6 @@ using UnityEngine.XR.ARFoundation;
 
 public class DocentImage : MonoBehaviour
 {
-    //수정 전 코드
-    /*public GameObject videoPanel;
-
-    void Start()
-    {
-        videoPanel.SetActive(false);
-        ARTrackedImageManager trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
-        trackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
-    }
-
-    void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs args)
-    {
-        foreach (ARTrackedImage trackedImage in args.added)
-        {
-            string imageName = trackedImage.referenceImage.name;
-            Debug.Log(imageName);
-
-            videoPanel.SetActive(true);
-        }
-
-        foreach (ARTrackedImage trackedImage in args.updated)
-        {
-            string imageName = trackedImage.referenceImage.name;
-            Debug.Log(imageName);
-
-            // 이미지의 위치와 회전을 업데이트합니다.
-            GameObject imagePanel = trackedImage.transform.GetChild(0).gameObject;
-            imagePanel.transform.position = trackedImage.transform.position;
-            imagePanel.transform.rotation = trackedImage.transform.rotation;
-        }
-
-        foreach (ARTrackedImage trackedImage in args.removed)
-        {
-            string imageName = trackedImage.referenceImage.name;
-            Debug.Log(imageName);
-
-            // 추적이 종료된 이미지에 대한 처리를 수행합니다.
-            Destroy(trackedImage.transform.GetChild(0).gameObject);
-        }
-    }*/ //수정 전 코드- 바로 아래 코드로 수정완료(혹시 몰라서 놔두기)
-
     /*public GameObject videoPanel;
     public GameObject my3DObject;
     private ARTrackedImageManager trackedImageManager;

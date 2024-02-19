@@ -119,6 +119,14 @@ public class CameraBT : MonoBehaviour
     }*/
 
     public Button screenshotButton;
+    public Image screenshotImage;
+    public Button saveButton;
+    public Button exisButton;
+    public GameObject panel;
+    public GameObject Capturepanel;
+    private Texture2D capturedTexture;
+    public int captureWidth = 1080; // 캡처할 이미지 가로 크기
+    public int captureHeight = 1080; // 캡처할 이미지 세로 크기
 
     private void Start()
     {
@@ -126,6 +134,7 @@ public class CameraBT : MonoBehaviour
         if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite))
         {
             Permission.RequestUserPermission(Permission.ExternalStorageWrite);
+
         }
 
         if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead))
@@ -134,6 +143,9 @@ public class CameraBT : MonoBehaviour
         }
 
         screenshotButton.onClick.AddListener(TakeScreenshot);
+        saveButton.onClick.AddListener(SaveScreenshot);
+        exisButton.onClick.AddListener(HidePanel);
+        panel.SetActive(false);
     }
 
     public void TakeScreenshot()
@@ -146,35 +158,53 @@ public class CameraBT : MonoBehaviour
         // 프레임 대기
         yield return new WaitForEndOfFrame();
 
-        // 현재 화면을 캡처하여 이미지 파일로 저장
-        string fileName = "screenshot.png";
-        string folderPath = Path.Combine(Application.persistentDataPath, "DCIM/Sta");
-        string filePath = Path.Combine(folderPath, fileName);
+        RectTransform CapturepanelRectTransform = Capturepanel.GetComponent<RectTransform>();
+        Vector3 CapturepanelPosition = CapturepanelRectTransform.position;
+        Vector2 panelSize = CapturepanelRectTransform.sizeDelta;
 
-        // 폴더가 없으면 생성
-        if (!Directory.Exists(folderPath))
+        Rect captureRect = new Rect(CapturepanelPosition.x, CapturepanelPosition.y, panelSize.x, panelSize.y);
+
+        capturedTexture = new Texture2D(captureWidth, captureHeight, TextureFormat.RGB24, false);
+        capturedTexture.ReadPixels(captureRect, 0, 0);
+        capturedTexture.Apply();
+
+        // 이미지 표시
+        screenshotImage.sprite = Sprite.Create(capturedTexture, new Rect(0, 0, capturedTexture.width, capturedTexture.height), Vector2.zero);
+        panel.SetActive(true);
+        Capturepanel.SetActive(false);
+    }
+
+    public void SaveScreenshot()
+    {
+        if (capturedTexture != null)
         {
-            Directory.CreateDirectory(folderPath);
-        }
+            // 현재 텍스처를 이미지 파일로 저장
+            byte[] bytes = capturedTexture.EncodeToPNG();
+            string fileName = "screenshot.png";
+            string folderPath = Path.Combine(Application.persistentDataPath, "DCIM/Sta");
+            string filePath = Path.Combine(folderPath, fileName);
 
-        // 스크린샷 캡처
-        ScreenCapture.CaptureScreenshot(filePath);
+            // 폴더가 없으면 생성
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
 
-        // 수정된 부분: 스크린샷이 완료될 때까지 대기
-        yield return new WaitUntil(() => File.Exists(filePath));
+            // 이미지 파일 저장
+            File.WriteAllBytes(filePath, bytes);
+            Debug.Log("Screenshot saved at: " + filePath);
 
-        Debug.Log("Screenshot captured at: " + filePath);
-
-        // 수정된 부분: 안드로이드에서는 미디어 스캔을 통해 갤러리에 사진을 반영
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            AndroidJavaClass mediaScanner = new AndroidJavaClass("android.media.MediaScannerConnection");
-            AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-            AndroidJavaObject currentActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
-
-            // 수정된 부분: filePath를 전달
-            mediaScanner.CallStatic("scanFile", new object[] { currentActivity, new string[] { filePath }, null, null });
+            // 갤러리 스캔
+            AndroidJavaClass MediaScannerConnection = new AndroidJavaClass("android.media.MediaScannerConnection");
+            AndroidJavaClass UnityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            AndroidJavaObject currentActivity = UnityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+            string[] filePaths = { filePath };
+            MediaScannerConnection.CallStatic("scanFile", currentActivity, filePaths, null, null);
         }
     }
-    //제발제발제발제발제발제발제발제발제발제발제발제발제발제발제발제발제발제발제발제발제발제발제발
+
+    public void HidePanel()
+    {
+        panel.SetActive(false);
+    }
 }

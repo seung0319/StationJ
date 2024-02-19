@@ -7,7 +7,7 @@ using UnityEngine.Video;
 public class PlayTimeLine : MonoBehaviour
 {
     /// 터치 코드 ///
-    /*public VideoPlayer videoPlayer;
+    public VideoPlayer videoPlayer;
     public Slider timelineSlider;
     public Button replayButton;
     private bool isPaused = true;
@@ -77,63 +77,63 @@ public class PlayTimeLine : MonoBehaviour
         {
             videoPlayer.time = timelineSlider.value;
         }
-    }*/ //터치 코드
-
-    public VideoPlayer videoPlayer;
-    public Slider timelineSlider;
-    public Button replayButton;
-    private bool isPaused = true;
-
-    void Start()
-    {
-        videoPlayer.loopPointReached += OnVideoEnd;
-        replayButton.onClick.AddListener(ReplayVideo);
-
-        timelineSlider.minValue = 0f;
-        timelineSlider.maxValue = (float)videoPlayer.clip.length;
     }
 
-    void OnVideoEnd(VideoPlayer vp)
-    {
-        videoPlayer.Stop();
-        isPaused = false;
-    }
+    //public VideoPlayer videoPlayer;
+    //public Slider timelineSlider;
+    //public Button replayButton;
+    //private bool isPaused = true;
 
-    void ReplayVideo()
-    {
-        videoPlayer.Stop();
-        videoPlayer.Play();
-        isPaused = false;
-    }
+    //void Start()
+    //{
+    //    videoPlayer.loopPointReached += OnVideoEnd;
+    //    replayButton.onClick.AddListener(ReplayVideo);
 
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (videoPlayer.isPlaying && !isPaused)
-            {
-                videoPlayer.Pause();
-                isPaused = true;
-            }
-            else if (isPaused)
-            {
-                videoPlayer.Play();
-                isPaused = false;
-            }
-        }
+    //    timelineSlider.minValue = 0f;
+    //    timelineSlider.maxValue = (float)videoPlayer.clip.length;
+    //}
 
-        // 슬라이더 값에 따라 타임라인 조절
-        if (!isPaused)
-        {
-            timelineSlider.value = (float)videoPlayer.time;
-        }
-    }
+    //void OnVideoEnd(VideoPlayer vp)
+    //{
+    //    videoPlayer.Stop();
+    //    isPaused = false;
+    //}
 
-    public void OnSliderValueChanged()
-    {
-        if (!isPaused)
-        {
-            videoPlayer.time = timelineSlider.value;
-        }
-    }
+    //void ReplayVideo()
+    //{
+    //    videoPlayer.Stop();
+    //    videoPlayer.Play();
+    //    isPaused = false;
+    //}
+
+    //void Update()
+    //{
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        if (videoPlayer.isPlaying && !isPaused)
+    //        {
+    //            videoPlayer.Pause();
+    //            isPaused = true;
+    //        }
+    //        else if (isPaused)
+    //        {
+    //            videoPlayer.Play();
+    //            isPaused = false;
+    //        }
+    //    }
+
+    //    // 슬라이더 값에 따라 타임라인 조절
+    //    if (!isPaused)
+    //    {
+    //        timelineSlider.value = (float)videoPlayer.time;
+    //    }
+    //}
+
+    //public void OnSliderValueChanged()
+    //{
+    //    if (!isPaused)
+    //    {
+    //        videoPlayer.time = timelineSlider.value;
+    //    }
+    //}
 }
