@@ -19,10 +19,6 @@ public class LocationPermission : MonoBehaviour
     private bool locationOK;
     private bool CamaraOK;
 
-    const string cameraPermission = "android.permission.CAMERA";
-    const string writePermission = "android.permission.WRITE_EXTERNAL_STORAGE";
-    const string readPermission = "android.permission.READ_EXTERNAL_STORAGE";
-
     public Text debugger;
     public Text debugger2;
 
@@ -94,11 +90,11 @@ public class LocationPermission : MonoBehaviour
         }
     }
 
-    public void CamaraUseAllowCheck()
+    public void CamaraUseAllowCheck(string NextScene)
     {
         if (CamaraOK)
         {
-            SceneManager.LoadScene("AR-Nev-Start");
+            SceneManager.LoadScene(NextScene);
         }
         else
         {
@@ -113,7 +109,7 @@ public class LocationPermission : MonoBehaviour
             Permission.RequestUserPermission(Permission.ExternalStorageWrite);
             Permission.RequestUserPermission(Permission.ExternalStorageRead);
             Permission.RequestUserPermission(Permission.Camera);
-            SceneManager.LoadScene("AR-Nev-Start");
+            SceneManager.LoadScene("¤»¤»");
         }
         else
         {
