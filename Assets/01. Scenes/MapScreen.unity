@@ -2721,7 +2721,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1115852142}
   - {fileID: 1785999068}
   m_Father: {fileID: 476770839}
   m_RootOrder: -1
@@ -3087,7 +3086,7 @@ RectTransform:
   - {fileID: 44456708}
   - {fileID: 440505635}
   - {fileID: 1762441089}
-  m_Father: {fileID: 919405509}
+  m_Father: {fileID: 2106120793}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5397,7 +5396,7 @@ GameObject:
   - component: {fileID: 1785999070}
   - component: {fileID: 1785999069}
   m_Layer: 5
-  m_Name: ToBeHidden
+  m_Name: "\uBC84\uD2BC\uB4E4"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6883,7 +6882,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1115852142}
   m_Father: {fileID: 1052470455}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6945,7 +6945,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: ed50c7845435c7347b646d6bfe79b3b2, type: 3}
+  m_Texture: {fileID: 2800000, guid: 8d6b0feae6e2cbb4c9652b634abc30bf, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
