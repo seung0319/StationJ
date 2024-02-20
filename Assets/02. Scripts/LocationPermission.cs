@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Android;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LocationPermission : MonoBehaviour
@@ -10,10 +12,16 @@ public class LocationPermission : MonoBehaviour
     public GameObject markerPanel;
     public GameObject routeFindPanel;
     public GameObject infoPanel;
+    public GameObject CamaraPanel;
+
     private int order = 0;
 
     private bool locationOK;
+    private bool CamaraOK;
 
+    const string cameraPermission = "android.permission.CAMERA";
+    const string writePermission = "android.permission.WRITE_EXTERNAL_STORAGE";
+    const string readPermission = "android.permission.READ_EXTERNAL_STORAGE";
 
     public Text debugger;
     public Text debugger2;
@@ -22,6 +30,10 @@ public class LocationPermission : MonoBehaviour
     void Start()
     {
         locationOK = Permission.HasUserAuthorizedPermission(Permission.FineLocation);
+        CamaraOK = Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite) &&
+            Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead) &&
+            Permission.HasUserAuthorizedPermission(Permission.Camera);
+
         debugger.text = locationOK.ToString();
         if (!locationOK)
         {
@@ -79,6 +91,33 @@ public class LocationPermission : MonoBehaviour
         else
         {
             routeFindPanel.SetActive(true);
+        }
+    }
+
+    public void CamaraUseAllowCheck()
+    {
+        if (CamaraOK)
+        {
+            SceneManager.LoadScene("AR-Nev-Start");
+        }
+        else
+        {
+            CamaraPanel.SetActive(true);
+        }
+    }
+    public void CamaraUseAllow(bool Allow)
+    {
+        if (Allow)
+        {
+            CamaraOK = true;
+            Permission.RequestUserPermission(Permission.ExternalStorageWrite);
+            Permission.RequestUserPermission(Permission.ExternalStorageRead);
+            Permission.RequestUserPermission(Permission.Camera);
+            SceneManager.LoadScene("AR-Nev-Start");
+        }
+        else
+        {
+            SceneManager.LoadScene("HomeScreen");
         }
     }
 }
