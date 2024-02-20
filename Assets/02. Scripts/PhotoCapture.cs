@@ -52,9 +52,37 @@ public class PhotoCapture : MonoBehaviour
 
         if (CameraMode.isPhoto)
         {
+            //캡쳐된 화면을 Texture2D 로 생성한다
+            Texture2D tex = new Texture2D(Screen.width, Screen.height, TextureFormat.ARGB32, false);
+            Rect captureRect = new Rect(0, 0, Screen.width, Screen.height);
+            tex.ReadPixels(captureRect, 0, 0);
+            tex.Apply();
 
+            //캡쳐된 화면을 PNG 형식의 byte 배열로 변환한다.
+            byte[] bytes = tex.EncodeToPNG();
+            Destroy(tex);
+
+            //byte 배열을 PNG 파일로 저장한다.
+            string fileName = "ImageName.png";
+            string filePath = Path.Combine(Application.persistentDataPath, fileName);
+            File.WriteAllBytes(filePath, bytes);
+        }
+    }
+
+    public void OnVideoStartBtn()
+    {
+        if(CameraMode.isVideo)
+        {
 
 
         }
+
+
+
+
     }
+
+
+
+
 }
