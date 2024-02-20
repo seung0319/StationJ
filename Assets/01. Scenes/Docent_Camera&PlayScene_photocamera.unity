@@ -437,7 +437,7 @@ GameObject:
   - component: {fileID: 254915279}
   - component: {fileID: 254915278}
   m_Layer: 5
-  m_Name: " \uC800\uC7A5\uD558\uAE30 \uBC84\uD2BC_01"
+  m_Name: "\uB098\uAC00\uAE30  \uBC84\uD2BC"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -570,7 +570,7 @@ GameObject:
   - component: {fileID: 302001420}
   - component: {fileID: 302001419}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: "\uCEA1\uCCD0\uB420 \uC0AC\uC774\uC988Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2027,9 +2027,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenshotButton: {fileID: 180128147}
   screenshotImage: {fileID: 1233888102}
-  saveButton: {fileID: 607960965}
+  saveButton: {fileID: 0}
   exisButton: {fileID: 254915278}
-  panel: {fileID: 1473262884}
+  ShowPhotopanel: {fileID: 1473262884}
   Capturepanel: {fileID: 302001417}
   captureWidth: 1080
   captureHeight: 2001
