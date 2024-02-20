@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 13929401}
   - component: {fileID: 13929400}
   m_Layer: 5
-  m_Name: Loding
+  m_Name: Loading
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
