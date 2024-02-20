@@ -8,7 +8,7 @@ public class PlayTimeLine : MonoBehaviour
 {
     /// 터치 코드 ///
     public VideoPlayer videoPlayer;
-    public Slider timelineSlider;
+    //public Slider timelineSlider;
     public Button replayButton;
     private bool isPaused = true;
     private bool isTouching = false;
@@ -18,8 +18,8 @@ public class PlayTimeLine : MonoBehaviour
         videoPlayer.loopPointReached += OnVideoEnd;
         replayButton.onClick.AddListener(ReplayVideo);
 
-        timelineSlider.minValue = 0f;
-        timelineSlider.maxValue = (float)videoPlayer.clip.length;
+        //timelineSlider.minValue = 0f;
+       // timelineSlider.maxValue = (float)videoPlayer.clip.length;
     }
 
     void OnVideoEnd(VideoPlayer vp)
@@ -67,7 +67,7 @@ public class PlayTimeLine : MonoBehaviour
         //슬라이더 값에 따라 타임라인 조절
         if (!isPaused)
         {
-            timelineSlider.value = (float)videoPlayer.time;
+           // timelineSlider.value = (float)videoPlayer.time;
         }
     }
 
@@ -75,7 +75,7 @@ public class PlayTimeLine : MonoBehaviour
     {
         if (!isPaused)
         {
-            videoPlayer.time = timelineSlider.value;
+            //videoPlayer.time =// timelineSlider.value;
         }
     }
 
