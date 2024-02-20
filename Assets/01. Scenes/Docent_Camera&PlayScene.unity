@@ -1031,7 +1031,6 @@ GameObject:
   - component: {fileID: 1201535406}
   - component: {fileID: 1201535407}
   - component: {fileID: 1201535408}
-  - component: {fileID: 1201535409}
   m_Layer: 5
   m_Name: PlayManager
   m_TagString: Untagged
@@ -1072,7 +1071,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 124159632}
-  timelineSlider: {fileID: 1258796352}
   replayButton: {fileID: 911798012}
 --- !u!114 &1201535408
 MonoBehaviour:
@@ -1086,20 +1084,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57dc0c91a4414ca4d88aac32e52c1f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1201535409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1201535405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1599e9a45d8efcf4fb263753c277f46b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  origin: {fileID: 0}
-  session: {fileID: 0}
 --- !u!1 &1258796351
 GameObject:
   m_ObjectHideFlags: 0
@@ -1568,7 +1552,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5710420638298929986}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1791,7 +1775,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4772694866453300181}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
