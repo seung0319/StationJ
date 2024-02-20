@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Android;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LocationPermission : MonoBehaviour
@@ -10,10 +12,12 @@ public class LocationPermission : MonoBehaviour
     public GameObject markerPanel;
     public GameObject routeFindPanel;
     public GameObject infoPanel;
+    public GameObject CamaraPanel;
+
     private int order = 0;
 
     private bool locationOK;
-
+    private bool CamaraOK;
 
     public Text debugger;
     public Text debugger2;
@@ -22,6 +26,10 @@ public class LocationPermission : MonoBehaviour
     void Start()
     {
         locationOK = Permission.HasUserAuthorizedPermission(Permission.FineLocation);
+        CamaraOK = Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite) &&
+            Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead) &&
+            Permission.HasUserAuthorizedPermission(Permission.Camera);
+
         debugger.text = locationOK.ToString();
         if (!locationOK)
         {
@@ -79,6 +87,33 @@ public class LocationPermission : MonoBehaviour
         else
         {
             routeFindPanel.SetActive(true);
+        }
+    }
+
+    public void CamaraUseAllowCheck(string NextScene)
+    {
+        if (CamaraOK)
+        {
+            SceneManager.LoadScene(NextScene);
+        }
+        else
+        {
+            CamaraPanel.SetActive(true);
+        }
+    }
+    public void CamaraUseAllow(bool Allow)
+    {
+        if (Allow)
+        {
+            CamaraOK = true;
+            Permission.RequestUserPermission(Permission.ExternalStorageWrite);
+            Permission.RequestUserPermission(Permission.ExternalStorageRead);
+            Permission.RequestUserPermission(Permission.Camera);
+            SceneManager.LoadScene("¤»¤»");
+        }
+        else
+        {
+            SceneManager.LoadScene("HomeScreen");
         }
     }
 }
