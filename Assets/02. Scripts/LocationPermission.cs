@@ -8,16 +8,9 @@ using UnityEngine.UI;
 
 public class LocationPermission : MonoBehaviour
 {
-    public GameObject locationPanel;
     public GameObject markerPanel;
     public GameObject routeFindPanel;
     public GameObject infoPanel;
-    public GameObject CamaraPanel;
-
-    private int order = 0;
-
-    private bool locationOK;
-    private bool CamaraOK;
 
     public Text debugger;
     public Text debugger2;
@@ -25,64 +18,46 @@ public class LocationPermission : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        locationOK = Permission.HasUserAuthorizedPermission(Permission.FineLocation);
-        CamaraOK = Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite) &&
-            Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead) &&
-            Permission.HasUserAuthorizedPermission(Permission.Camera);
-
-        debugger.text = locationOK.ToString();
-        if (!locationOK)
+        if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
         {
-            locationPanel.SetActive(true);
             markerPanel.SetActive(false);
+            Permission.RequestUserPermission(Permission.FineLocation);
+            if (Permission.HasUserAuthorizedPermission(Permission.FineLocation))
+            {
+                //허용 O
+                //현재 내위치 시작
+            }
+            else
+            {
+                //허용 X
+                //제물포역 위치 시작
+            }
+            markerPanel.SetActive(true);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        debugger2.text = locationOK.ToString();
+        //debugger2.text = locationOK.ToString();
     }
 
-    public void LocationInfoAllow(bool Allow)
+    public void LocationInfoAllow()
     {
-        if (order == 0)  //첫번째 팝업창의 경우
+        if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
         {
-            if (Allow)  //위치권한요청 허용
+            Permission.RequestUserPermission(Permission.FineLocation);
+            if (Permission.HasUserAuthorizedPermission(Permission.FineLocation))
             {
-                debugger.text = "allowed";
-                UnityEngine.Android.Permission.RequestUserPermission(UnityEngine.Android.Permission.FineLocation);
-                locationOK = true;
-                order++;
-            }
-            else        //위치권한요청 허용 안함
-            {
-                debugger.text = "denied";
-                order++;
-            }
-            markerPanel.SetActive(true);
-        }
-        else if (order == 1)  //두번째 팝업창의 경우
-        {
-            if (Allow)  //위치권한요청 허용
-            {
-                debugger.text = "allowed";
-                UnityEngine.Android.Permission.RequestUserPermission(UnityEngine.Android.Permission.FineLocation);
-                locationOK = true;
+                //허용 O
                 routeFindPanel.SetActive(true);
             }
-            else        //위치권한요청 허용 안함
+            else
             {
+                //허용 X
+                markerPanel.SetActive(true);
                 infoPanel.SetActive(true);
             }
-        }
-    }
-    public void RouteFind()
-    {
-        Debug.Log(locationOK.ToString());
-        if (!locationOK)
-        {
-            locationPanel.SetActive(true);
         }
         else
         {
@@ -90,30 +65,68 @@ public class LocationPermission : MonoBehaviour
         }
     }
 
-    public void CamaraUseAllowCheck(string NextScene)
+    public void PotoZonLocationInfoAllow()
     {
-        if (CamaraOK)
+        if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
+        {
+            Permission.RequestUserPermission(Permission.FineLocation);
+            if (Permission.HasUserAuthorizedPermission(Permission.FineLocation))
+            {
+                SceneManager.LoadScene("MapScreen");
+            }
+        }
+        else
+        {
+            SceneManager.LoadScene("MapScreen");
+        }
+    }
+
+    string[] permissions = { Permission.ExternalStorageWrite, Permission.ExternalStorageRead, Permission.Camera };
+
+    public void CamaraUseAllow(string NextScene)
+    {
+        if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite) ||
+            !Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead) ||
+            !Permission.HasUserAuthorizedPermission(Permission.Camera))
+        {
+            Permission.RequestUserPermissions(permissions);
+
+            if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite) ||
+            !Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead) ||
+            !Permission.HasUserAuthorizedPermission(Permission.Camera))
+            {
+                //허용 X
+                return;
+            }
+            else
+            {
+                //허용 O
+                SceneManager.LoadScene(NextScene);
+            }
+        }
+        else
         {
             SceneManager.LoadScene(NextScene);
         }
-        else
-        {
-            CamaraPanel.SetActive(true);
-        }
     }
-    public void CamaraUseAllow(bool Allow)
-    {
-        if (Allow)
-        {
-            CamaraOK = true;
-            Permission.RequestUserPermission(Permission.ExternalStorageWrite);
-            Permission.RequestUserPermission(Permission.ExternalStorageRead);
-            Permission.RequestUserPermission(Permission.Camera);
-            SceneManager.LoadScene("ㅋㅋ");
-        }
-        else
-        {
-            SceneManager.LoadScene("HomeScreen");
-        }
-    }
+
+    //void CamaraUse2(string NextScene)
+    //{
+    //    if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+    //    {
+    //        Permission.RequestUserPermission(Permission.Camera);
+    //        if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+    //        {
+    //            return;
+    //        }
+    //        else
+    //        {
+    //            SceneManager.LoadScene(NextScene);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        SceneManager.LoadScene(NextScene);
+    //    }
+    //}
 }

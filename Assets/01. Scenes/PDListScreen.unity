@@ -246,11 +246,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6590f61bb455a2b49b94643e1e1ee648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locationPanel: {fileID: 0}
   markerPanel: {fileID: 0}
   routeFindPanel: {fileID: 0}
   infoPanel: {fileID: 0}
-  CamaraPanel: {fileID: 4141110589353492567}
   debugger: {fileID: 0}
   debugger2: {fileID: 0}
 --- !u!1 &57619768
@@ -880,16 +878,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1558906559}
-        m_TargetAssemblyTypeName: MoveScene, Assembly-CSharp
-        m_MethodName: ChangeScene
-        m_Mode: 5
+      - m_Target: {fileID: 21677030}
+        m_TargetAssemblyTypeName: LocationPermission, Assembly-CSharp
+        m_MethodName: PotoZonLocationInfoAllow
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MapScreen
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &454974919
@@ -984,7 +982,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
       propertyPath: m_AnchorMin.x
@@ -992,7 +990,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1032,11 +1030,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 531.5
       objectReference: {fileID: 0}
     - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -255
       objectReference: {fileID: 0}
     - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2879,16 +2877,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1558906559}
-        m_TargetAssemblyTypeName: MoveScene, Assembly-CSharp
-        m_MethodName: ChangeScene
-        m_Mode: 5
+      - m_Target: {fileID: 21677030}
+        m_TargetAssemblyTypeName: LocationPermission, Assembly-CSharp
+        m_MethodName: PotoZonLocationInfoAllow
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MapScreen
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1467413621
@@ -3438,7 +3436,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 21677030}
         m_TargetAssemblyTypeName: LocationPermission, Assembly-CSharp
-        m_MethodName: CamaraUseAllowCheck
+        m_MethodName: CamaraUseAllow
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4526,7 +4524,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 21677030}
         m_TargetAssemblyTypeName: LocationPermission, Assembly-CSharp
-        m_MethodName: CamaraUseAllowCheck
+        m_MethodName: CamaraUseAllow
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

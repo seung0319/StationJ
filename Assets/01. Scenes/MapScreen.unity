@@ -386,7 +386,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2084293131}
         m_TargetAssemblyTypeName: LocationPermission, Assembly-CSharp
-        m_MethodName: CamaraUseAllowCheck
+        m_MethodName: CamaraUseAllow
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5876,7 +5876,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2084293131}
         m_TargetAssemblyTypeName: LocationPermission, Assembly-CSharp
-        m_MethodName: RouteFind
+        m_MethodName: LocationInfoAllow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6846,11 +6846,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6590f61bb455a2b49b94643e1e1ee648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locationPanel: {fileID: 1856054893}
   markerPanel: {fileID: 919405508}
   routeFindPanel: {fileID: 1745484605}
   infoPanel: {fileID: 2000743659}
-  CamaraPanel: {fileID: 6885485771405591359}
   debugger: {fileID: 1920381984}
   debugger2: {fileID: 1379999959}
 --- !u!1 &2106120792
