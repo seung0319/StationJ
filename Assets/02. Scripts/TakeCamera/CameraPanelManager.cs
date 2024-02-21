@@ -6,6 +6,11 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEditor.Recorder;
+using UnityEditor.Recorder.Encoder;
+using UnityEditor.Recorder.Input;
+using UnityEngine.Recorder;
+
 
 //Photo, Video 기능 과 버튼 클릭을 통한 Panel 이동과 씬 이동에 관한 코드
 // 3개의 패널을 오고 가며 기능 구현
@@ -16,6 +21,8 @@ public class CameraPanelManager : MonoBehaviour
     public GameObject ResultPanel;
     public GameObject VideoPanel;
     public GameObject SaveCompletePnael;
+
+
 
     //ChoosePanel Buttons
     public GameObject PhotoButton;
@@ -31,8 +38,6 @@ public class CameraPanelManager : MonoBehaviour
     public GameObject VideopanelBackButton;
 
     //ReultPanel Buttons
-    public GameObject SaveButton;
-    public GameObject ShareButton;
     public GameObject resultpanelBackButton;
 
     public int CaptureWidth = 1080; //캡쳐할 이미지 가로 크기
@@ -51,6 +56,10 @@ public class CameraPanelManager : MonoBehaviour
         //초기 상태 설정. ChoosePanel과 그 안의 버튼들만 활성화
         SetChooseMode();
         SaveCompletePnael.SetActive(false);
+
+      
+
+
     }
 
     public void SetChooseMode()
@@ -114,7 +123,31 @@ public class CameraPanelManager : MonoBehaviour
 
     }
 
+    public void OpenGallery()
+    {
+        // 안드로이드에서만 갤러리를 열 수 있도록 하기 위해 
+        // #if UNITY_ANDROID 를 사용합니다.
 
+#if UNITY_ANDROID
+        //안드로이드에서 갤러리를 열기 위한 Intent 생성
+        AndroidJavaClass intentClass = new AndroidJavaClass("android.content.Intent");
+        AndroidJavaObject intentObject = new AndroidJavaObject("android.content.Intent");
+
+        // Intent의 action 설정
+        intentObject.Call<AndroidJavaObject>("setAction", intentClass.GetStatic<string>("ACTION_PICK"));
+
+        // 갤러리로 이동하기 위한 데이터 타입 설정
+        intentObject.Call<AndroidJavaObject>("setType", "image/*");
+
+        // Unity의 Activity 가져오기
+        AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+        AndroidJavaObject currentActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+
+        // 안드로이드의 갤러리 Activity 시작
+        currentActivity.Call("startActivityForResult", intentObject, 0);
+#endif
+
+    }
 
 
 
@@ -123,6 +156,7 @@ public class CameraPanelManager : MonoBehaviour
     {
         //동영상 촬영 모드로 전환
         SetVideoMode();
+
     }
 
     public void OnVideoCaptureButtonClicked()
@@ -131,12 +165,14 @@ public class CameraPanelManager : MonoBehaviour
         //동영상 촬영 시작 코드 ...
         // 촬영 시작 시 촬영 버튼 비활성화, 중지 버튼 활성화
 
+       
     }
 
     public void OnVideoStopButtonClicked()
     {
         //동영상 촬영 중지 코드
         //촬영 중지 시 촬영 버튼 활성화, 중지 버튼 비활성화
+        
 
         // 촬영이 끝난 후 결과 모드로 전환
         SetVideoMode();
