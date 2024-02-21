@@ -25,5 +25,15 @@ MonoBehaviour:
       m_GuidHigh: 16519716681029095082
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
-    m_Name: pn_Play Tap Panel
+    m_Name: Image
     m_Texture: {fileID: 2800000, guid: 3f9748519654a6c4aa8ed5d2cbd241e5, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 4728664452417745544
+      m_GuidHigh: 11661088172029847709
+    m_SerializedTextureGuid:
+      m_GuidLow: 13831755141654718183
+      m_GuidHigh: 3861521983905107355
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Image2
+    m_Texture: {fileID: 2800000, guid: 7e8326e74404bff49b8d06ffc8e19635, type: 3}
