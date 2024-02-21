@@ -1392,10 +1392,10 @@ RectTransform:
   - {fileID: 919405509}
   - {fileID: 2000743660}
   - {fileID: 1745484606}
-  - {fileID: 1920381983}
-  - {fileID: 1379999961}
   - {fileID: 1856054894}
   - {fileID: 4845933756992796421}
+  - {fileID: 1920381983}
+  - {fileID: 1379999961}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1519,7 +1519,6 @@ MonoBehaviour:
   parkingLotSprite: {fileID: 21300000, guid: 2599aa289962010418186178eca60d3d, type: 3}
   subwaySprite: {fileID: 21300000, guid: 05add4aab68630d46928a28d199e05c6, type: 3}
   toiletSprite: {fileID: 21300000, guid: adf8a2ed4b091924eafc89786db99941, type: 3}
-  foodSprite: {fileID: 0}
   hospitalSprite: {fileID: 21300000, guid: 0529498bbaa16ce4c95612364f850f30, type: 3}
   photozonSprite: {fileID: 21300000, guid: c842fa1488f19a4499cb2e7cfe1fc0b8, type: 3}
   docentSprite: {fileID: 21300000, guid: bf532d60b0b3f0845bfd98e526a56078, type: 3}
@@ -3305,7 +3304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1379999959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5378,7 +5377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1920381983
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5987,7 +5986,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 8d6b0feae6e2cbb4c9652b634abc30bf, type: 3}
+  m_Texture: {fileID: 2800000, guid: 8b3c3cfd268c0d64e8daabe8af401abf, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
