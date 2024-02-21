@@ -12,11 +12,11 @@ public class StaticMapManager : MonoBehaviour
     [SerializeField] string clientSecret = "WespgDc0DDelU0pN69HzZgyj5ByEBwhDGU0gxxTB";
     public RawImage mapRawImage;
 
-    public string latitude = "37.466480";
-    public string longitude = "126.657566";
+    public string latitude = "37.713675";
+    public string longitude = "126.743572";
     public int level = 17;
-    public int mapWidth = 360;
-    public int mapHeight = 800;
+    public int mapWidth = 720;
+    public int mapHeight = 1600;
 
     public Text debug;
 
