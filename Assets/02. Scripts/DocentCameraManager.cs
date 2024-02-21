@@ -6,19 +6,15 @@ using static UnityEngine.UI.Image;
 
 public class DocentCameraManager : MonoBehaviour
 {
-   public XROrigin origin;
+    /*public XROrigin origin;
     public ARSession session;
     //private SerializedObject serializedObject;
 
     private void Awake()
     {
-        //시작할때 오프상태
-        //gameObject.SetActive(false);
-        //session.gameObject.SetActive(false);
-
-        //DontDestroyOnLoad를 호출하여 오브젝트가 씬 전환 시에 파괴되지 않도록 설정합니다.
-        DontDestroyOnLoad(origin.gameObject);
-        DontDestroyOnLoad(session.gameObject);
+        //초기화
+        origin.gameObject.SetActive(false);
+        session.gameObject.SetActive(false);
 
         // serializedObject가 유효하지 않은 경우 다시 초기화합니다.
         //if (serializedObject == null || serializedObject.targetObject == null)
@@ -27,6 +23,17 @@ public class DocentCameraManager : MonoBehaviour
         //}
 
     }
+    private void Start()
+    {
+        //시작시 활성화
+        origin.gameObject.SetActive(true);
+        session.gameObject.SetActive(true);
+
+
+        //DontDestroyOnLoad를 호출하여 오브젝트가 씬 전환 시에 파괴되지 않도록 설정합니다.
+        DontDestroyOnLoad(origin.gameObject);
+        DontDestroyOnLoad(session.gameObject);
+    }
     private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
     {
         // XR Origin을 비활성화합니다.
@@ -34,7 +41,7 @@ public class DocentCameraManager : MonoBehaviour
         {
             origin.gameObject.SetActive(false);
         }
-    }
+    }*/
 
     /*private static DocentCameraManager instance;
     public XROrigin originPrefab;
@@ -78,4 +85,35 @@ public class DocentCameraManager : MonoBehaviour
     {
         return instance;
     }*/
+
+    private static DocentCameraManager instance; // 싱글톤 인스턴스
+
+    private void Awake()
+    {
+        // 인스턴스가 이미 존재하는 경우 현재 게임 오브젝트를 파괴합니다.
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        // 인스턴스가 없는 경우 현재 게임 오브젝트를 싱글톤으로 설정합니다.
+        instance = this;
+
+        // 초기화
+        XROrigin origin = GetComponent<XROrigin>();
+        ARSession session = GetComponent<ARSession>();
+        origin.gameObject.SetActive(false);
+        session.gameObject.SetActive(false);
+
+        // 시작 시 활성화
+        origin.gameObject.SetActive(true);
+        session.gameObject.SetActive(true);
+    }
+
+    private void Start()
+    {
+        // 씬 전환 시에 파괴되지 않도록 설정합니다.
+        DontDestroyOnLoad(gameObject);
+    }
 }
