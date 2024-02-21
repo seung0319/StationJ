@@ -1515,6 +1515,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonPrefab: {fileID: 143034773641311385, guid: c77ef932dacff1d49bfba76b19538e74, type: 3}
+  parkSprite: {fileID: 21300000, guid: 7a4c6637f98372e41b1259f228b42412, type: 3}
+  parkingLotSprite: {fileID: 21300000, guid: 2599aa289962010418186178eca60d3d, type: 3}
+  subwaySprite: {fileID: 21300000, guid: 05add4aab68630d46928a28d199e05c6, type: 3}
+  toiletSprite: {fileID: 21300000, guid: adf8a2ed4b091924eafc89786db99941, type: 3}
+  foodSprite: {fileID: 0}
+  hospitalSprite: {fileID: 21300000, guid: 0529498bbaa16ce4c95612364f850f30, type: 3}
+  photozonSprite: {fileID: 21300000, guid: c842fa1488f19a4499cb2e7cfe1fc0b8, type: 3}
+  docentSprite: {fileID: 21300000, guid: bf532d60b0b3f0845bfd98e526a56078, type: 3}
 --- !u!4 &587929579
 Transform:
   m_ObjectHideFlags: 0

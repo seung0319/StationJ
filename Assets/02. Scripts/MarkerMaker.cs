@@ -52,15 +52,27 @@ public class MarkerMaker : MonoBehaviour
         if (type == "포토존" || type == "도슨트") // Map 게임오브젝트가 존재하는 경우에만 버튼 생성
         {
             button.transform.SetParent(photoParent.transform, false);
-            button.GetComponent<Image>().sprite = 
+            if (type == "포토존")
+                button.GetComponent<Image>().sprite = photozonSprite;
+            else if (type == "도슨트")
+                button.GetComponent<Image>().sprite = docentSprite;
         }
         else if (type == "병원")
         {
             button.transform.SetParent(hospitalParent.transform, false);
+            button.GetComponent<Image>().sprite = hospitalSprite;
         }
         else
         {
             button.transform.SetParent(publicParent.transform, false);
+            if (type == "공원")
+                button.GetComponent<Image>().sprite = parkSprite;
+            else if (type == "지하철")
+                button.GetComponent<Image>().sprite = subwaySprite;
+            else if (type == "화장실")
+                button.GetComponent<Image>().sprite = toiletSprite;
+            else if (type == "주차장")
+                button.GetComponent<Image>().sprite = parkingLotSprite;
         }
             
     }

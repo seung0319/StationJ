@@ -2,7 +2,7 @@
 	"pois": [
 		{
 			"name": "cafe 07 am",
-			"type": "카페",
+			"type": "화장실",
 			"image": "커피숍",
 			"latitude": 37.714779,
 			"longitude": 126.741800,
@@ -12,7 +12,7 @@
 		},
 		{
 			"name": "더브래드36.5도",
-			"type": "식당",
+			"type": "주차장",
 			"image": "빵집",
 			"latitude": 37.714677,
 			"longitude": 126.741665,
@@ -21,8 +21,8 @@
 			"coupon": "10%"
 		},
 		{
-			"name": "포토존",
-			"type": "포토존",
+			"name": "마장동 뚝배기 & 1인 한우육회",
+			"type": "병원",
 			"image": "뚝밲쓰",
 			"latitude": 37.714145,
 			"longitude": 126.741080,
@@ -31,8 +31,8 @@
 			"coupon": "10%"
 		},
 		{
-			"name": "경준병원",
-			"type": "병원",
+			"name": "홍익돈까스",
+			"type": "공원",
 			"image": "돈가쓰",
 			"latitude": 37.714277,
 			"longitude": 126.740820,
@@ -42,7 +42,7 @@
 		},
 		{
 			"name": "경기인력개발원",
-			"type": "공공기관",
+			"type": "포토존",
 			"image": "개발원",
 			"latitude": 37.713675,
 			"longitude": 126.743572,
