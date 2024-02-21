@@ -12,6 +12,7 @@ public class POI
     public float longitude;
     public string address;
     public string description;
+    public string coupon;
 }
 
 /// <summary>
