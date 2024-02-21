@@ -5,20 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-<<<<<<< Updated upstream
   - enabled: 1
-    path: Assets/01. Scenes/LoadingScreen.unity
-    guid: 5b6ce2b065b94264093025dc075cb9cc
-  - enabled: 1
-=======
-  - enabled: 0
->>>>>>> Stashed changes
     path: Assets/01. Scenes/HomeScreen.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
+  - enabled: 1
     path: Assets/01. Scenes/MapScreen.unity
     guid: 0ec934ff6928f33408a0edfd99138a66
-<<<<<<< Updated upstream
   - enabled: 1
     path: Assets/01. Scenes/PDListScreen.unity
     guid: 54cfa4895ea5d4d309d3b7d120d04eb0
@@ -27,16 +19,6 @@ EditorBuildSettings:
     guid: 101cb38d2014f224fb5783deba1562a1
   - enabled: 1
     path: Assets/01. Scenes/DocentPlay.unity
-=======
-  - enabled: 0
-    path: Assets/01. Scenes/P&D List.unity
-    guid: 54cfa4895ea5d4d309d3b7d120d04eb0
-  - enabled: 0
-    path: Assets/01. Scenes/AR-Nev-Start.unity
-    guid: 101cb38d2014f224fb5783deba1562a1
-  - enabled: 0
-    path: Assets/01. Scenes/Docent_Camera&PlayScene.unity
->>>>>>> Stashed changes
     guid: acc035a51db0687438ce856caf24c690
   - enabled: 1
     path: Assets/01. Scenes/TakeCamera.unity
