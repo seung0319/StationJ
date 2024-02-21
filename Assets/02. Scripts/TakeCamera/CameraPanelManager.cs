@@ -2,10 +2,14 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 
 //Photo, Video 기능 과 버튼 클릭을 통한 Panel 이동과 씬 이동에 관한 코드
 // 3개의 패널을 오고 가며 기능 구현
@@ -51,6 +55,14 @@ public class CameraPanelManager : MonoBehaviour
         //초기 상태 설정. ChoosePanel과 그 안의 버튼들만 활성화
         SetChooseMode();
         SaveCompletePnael.SetActive(false);
+<<<<<<< Updated upstream
+=======
+
+        VideopanelBackButton.GetComponent<Button>().onClick.AddListener(SetChooseMode);
+
+
+
+>>>>>>> Stashed changes
     }
 
     public void SetChooseMode()
