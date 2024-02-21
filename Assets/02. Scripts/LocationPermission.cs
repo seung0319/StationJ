@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Android;
 using UnityEngine.SceneManagement;
@@ -81,7 +82,7 @@ public class LocationPermission : MonoBehaviour
         }
     }
 
-    string[] permissions = { Permission.ExternalStorageWrite, Permission.ExternalStorageRead, Permission.Camera };
+    
 
     public void CamaraUseAllow(string NextScene)
     {
@@ -89,20 +90,7 @@ public class LocationPermission : MonoBehaviour
             !Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead) ||
             !Permission.HasUserAuthorizedPermission(Permission.Camera))
         {
-            Permission.RequestUserPermissions(permissions);
-
-            if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite) ||
-            !Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead) ||
-            !Permission.HasUserAuthorizedPermission(Permission.Camera))
-            {
-                //허용 X
-                return;
-            }
-            else
-            {
-                //허용 O
-                SceneManager.LoadScene(NextScene);
-            }
+            StartCoroutine("PermissionAllow",NextScene);
         }
         else
         {
@@ -110,23 +98,45 @@ public class LocationPermission : MonoBehaviour
         }
     }
 
-    //void CamaraUse2(string NextScene)
-    //{
-    //    if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
-    //    {
-    //        Permission.RequestUserPermission(Permission.Camera);
-    //        if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
-    //        {
-    //            return;
-    //        }
-    //        else
-    //        {
-    //            SceneManager.LoadScene(NextScene);
-    //        }
-    //    }
-    //    else
-    //    {
-    //        SceneManager.LoadScene(NextScene);
-    //    }
-    //}
+    IEnumerator PermissionAllow(string NextScene)
+    {
+        string[] permissions = { Permission.ExternalStorageWrite, Permission.ExternalStorageRead };
+        Permission.RequestUserPermissions(permissions);
+
+        float timer = 0f;
+        float timeout = 5f; // 타임아웃 시간 설정
+        while ((!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite) ||
+            !Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead)) && timer < timeout)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite) ||
+            !Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead))
+        {
+            yield break;
+        }
+
+        if (Permission.HasUserAuthorizedPermission(Permission.Camera))
+        {
+            SceneManager.LoadScene(NextScene);
+            yield break;
+        }
+
+        Permission.RequestUserPermission(Permission.Camera);
+
+        timer = 0f;
+        timeout = 5f;
+        while (!Permission.HasUserAuthorizedPermission(Permission.Camera) && timer < timeout)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        if (Permission.HasUserAuthorizedPermission(Permission.Camera))
+        {
+            SceneManager.LoadScene(NextScene);
+        }
+    }
 }
