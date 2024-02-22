@@ -5,22 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/01. Scenes/LoadingScreen.unity
-    guid: 5b6ce2b065b94264093025dc075cb9cc
-  - enabled: 1
+  - enabled: 0
     path: Assets/01. Scenes/HomeScreen.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/01. Scenes/MapScreen.unity
     guid: 0ec934ff6928f33408a0edfd99138a66
   - enabled: 1
     path: Assets/01. Scenes/PDListScreen.unity
     guid: 54cfa4895ea5d4d309d3b7d120d04eb0
-  - enabled: 1
+  - enabled: 0
     path: Assets/01. Scenes/ARNavigation.unity
     guid: 101cb38d2014f224fb5783deba1562a1
-  - enabled: 1
+  - enabled: 0
     path: Assets/01. Scenes/DocentPlay.unity
     guid: acc035a51db0687438ce856caf24c690
   - enabled: 1
@@ -28,6 +25,5 @@ EditorBuildSettings:
     guid: 37fae597ceb86e5408853c47a0e9ff34
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 553dab8a8f6fa0d4ba4e45e726c3c7d7, type: 2}
-    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: bada5f8647c8cdc428f0d61c6ecc2def, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: b63560865e260184688cff4b90b045af, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: c6f6cfded9214d74a88c8287d1ba9036, type: 2}
