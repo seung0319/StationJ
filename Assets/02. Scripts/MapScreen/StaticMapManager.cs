@@ -39,7 +39,7 @@ public class StaticMapManager : MonoBehaviour
         switch (request.result)
         {
             case UnityWebRequest.Result.ConnectionError:
-                debug.text = "CE";
+                //debug.text = "CE";
                 //Debug.Log("CE");
                 yield break;
             case UnityWebRequest.Result.ProtocolError:

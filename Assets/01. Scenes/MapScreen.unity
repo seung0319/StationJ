@@ -1378,7 +1378,7 @@ GameObject:
   - component: {fileID: 539475724}
   - component: {fileID: 539475723}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9 \uD31D\uC5C5 \uBA58\uD2B8 2"
+  m_Name: Text_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2121,7 +2121,7 @@ GameObject:
   - component: {fileID: 865896017}
   - component: {fileID: 865896016}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9"
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2411,7 +2411,7 @@ GameObject:
   - component: {fileID: 1023302941}
   - component: {fileID: 1023302940}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9 \uD31D\uC5C5"
+  m_Name: PopUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3678,7 +3678,7 @@ GameObject:
   - component: {fileID: 1553260064}
   - component: {fileID: 1553260063}
   m_Layer: 5
-  m_Name: "\uB4A4\uB85C\uAC00\uAE30 \uBC84\uD2BC"
+  m_Name: BackBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3811,7 +3811,7 @@ GameObject:
   - component: {fileID: 1571939061}
   - component: {fileID: 1571939060}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9 BT"
+  m_Name: AllowBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3957,7 +3957,7 @@ GameObject:
   - component: {fileID: 1606633325}
   - component: {fileID: 1606633324}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9 \uC548\uD568 BT"
+  m_Name: DenyBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4102,7 +4102,7 @@ GameObject:
   - component: {fileID: 1635520558}
   - component: {fileID: 1635520557}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9 \uC548\uD568"
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4772,7 +4772,7 @@ GameObject:
   - component: {fileID: 1856054896}
   - component: {fileID: 1856054895}
   m_Layer: 5
-  m_Name: "\uB0B4 \uC704\uCE58 \uC811\uADFC \uD5C8\uC6A9 \uD31D\uC5C5"
+  m_Name: LocationPermissionPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4850,7 +4850,7 @@ GameObject:
   - component: {fileID: 1857130836}
   - component: {fileID: 1857130835}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9 \uD31D\uC5C5 \uBA58\uD2B8 1"
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6009,7 +6009,7 @@ GameObject:
   - component: {fileID: 6446758837888337466}
   - component: {fileID: 6264273557515435878}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9 BT"
+  m_Name: AllowBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6239,7 +6239,7 @@ GameObject:
   - component: {fileID: 161943269556455349}
   - component: {fileID: 1869583916531063235}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9 \uC548\uD568 BT"
+  m_Name: DenyBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6345,7 +6345,7 @@ GameObject:
   - component: {fileID: 6201573662545671800}
   - component: {fileID: 4466011679273141199}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9 \uD31D\uC5C5"
+  m_Name: PopUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6436,7 +6436,7 @@ GameObject:
   - component: {fileID: 2662010507619931176}
   - component: {fileID: 7397380428555763610}
   m_Layer: 5
-  m_Name: "\uB4A4\uB85C\uAC00\uAE30 \uBC84\uD2BC"
+  m_Name: BackBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6454,7 +6454,7 @@ GameObject:
   - component: {fileID: 3550494034447489064}
   - component: {fileID: 1637508913787997698}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9"
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6492,7 +6492,7 @@ GameObject:
   - component: {fileID: 6366097212942168302}
   - component: {fileID: 1595398774054392411}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9 \uD31D\uC5C5 \uBA58\uD2B8 2"
+  m_Name: Text_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6612,7 +6612,7 @@ GameObject:
   - component: {fileID: 1485899044098057933}
   - component: {fileID: 3682459716533285698}
   m_Layer: 5
-  m_Name: "\uCE74\uBA54\uB77C \uC811\uADFC \uD5C8\uC6A9 \uD31D\uC5C5"
+  m_Name: CameraPermissionPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6748,7 +6748,7 @@ GameObject:
   - component: {fileID: 8620089533579617760}
   - component: {fileID: 2051375589541924699}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9 \uC548\uD568"
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6802,7 +6802,7 @@ GameObject:
   - component: {fileID: 8825977351566459924}
   - component: {fileID: 1688015284823271426}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9 \uD31D\uC5C5 \uBA58\uD2B8 1"
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

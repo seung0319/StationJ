@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 13929401}
   - component: {fileID: 13929400}
   m_Layer: 5
-  m_Name: "\uC900\uBE44\uC911\uC785\uB2C8\uB2E4."
+  m_Name: NotImplemented
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1021,7 +1021,7 @@ GameObject:
   - component: {fileID: 941329176}
   - component: {fileID: 941329175}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9 \uD31D\uC5C5"
+  m_Name: Permission
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1191,7 +1191,7 @@ GameObject:
   - component: {fileID: 1031649388}
   - component: {fileID: 1031649387}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9"
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1272,7 +1272,7 @@ GameObject:
   - component: {fileID: 1059287090}
   - component: {fileID: 1059287089}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9 BT"
+  m_Name: AllowBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1405,7 +1405,7 @@ GameObject:
   - component: {fileID: 1171269593}
   - component: {fileID: 1171269592}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9 \uD31D\uC5C5 \uBA58\uD2B8 1"
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
