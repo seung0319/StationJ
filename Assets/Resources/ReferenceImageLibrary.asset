@@ -10,30 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
-  m_Name: AR_ReferenceImageLibrary
+  m_Name: ReferenceImageLibrary
   m_EditorClassIdentifier: 
-  m_GuidLow: 5126819507113565185
-  m_GuidHigh: 17712011162108276650
+  m_GuidLow: 4968836439498676728
+  m_GuidHigh: 11105706523441769403
   m_DataStore:
     m_Storage: []
   m_Images:
   - m_SerializedGuid:
-      m_GuidLow: 5391683381377836982
-      m_GuidHigh: 4394562447018342067
+      m_GuidLow: 5113175056700572480
+      m_GuidHigh: 9308700041102688447
     m_SerializedTextureGuid:
       m_GuidLow: 12016894994319624273
       m_GuidHigh: 16519716681029095082
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
-    m_Name: Image
+    m_Size: {x: 0.2, y: 0.2}
+    m_SpecifySize: 1
+    m_Name: Image1
     m_Texture: {fileID: 2800000, guid: 3f9748519654a6c4aa8ed5d2cbd241e5, type: 3}
   - m_SerializedGuid:
-      m_GuidLow: 4728664452417745544
-      m_GuidHigh: 11661088172029847709
+      m_GuidLow: 5291483745593001824
+      m_GuidHigh: 3168628908098900906
     m_SerializedTextureGuid:
       m_GuidLow: 13831755141654718183
       m_GuidHigh: 3861521983905107355
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.2, y: 0.2}
+    m_SpecifySize: 1
     m_Name: Image2
     m_Texture: {fileID: 2800000, guid: 7e8326e74404bff49b8d06ffc8e19635, type: 3}

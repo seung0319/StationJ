@@ -3,10 +3,10 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
-//[RequireComponent(typeof(ARRaycastManager))]
+//RequireComponent(typeof(ARRaycastManager))]
 public class DocentImage : MonoBehaviour
 {
-    public GameObject videoPanel;
+    /*public GameObject videoPanel;
     private ARTrackedImageManager trackedImageManager;
     ARRaycastManager raycastManager;
     private Dictionary<string, GameObject> instantiatedObjects = new Dictionary<string, GameObject>();
@@ -75,6 +75,188 @@ public class DocentImage : MonoBehaviour
             }
         }
 
+    }
+
+    public void OnBackBtnClickedEvent()
+    {
+        trackedImageManager.trackedImagesChanged -= OnTrackedImagesEvent;
+    }*/
+
+    /*public GameObject videoPanel;
+    private ARTrackedImageManager trackedImageManager;
+    private ARRaycastManager raycastManager;
+    private Dictionary<string, GameObject> instantiatedObjects = new Dictionary<string, GameObject>();
+
+    void Awake()
+    {
+        trackedImageManager = GetComponent<ARTrackedImageManager>();
+        trackedImageManager.trackedImagesChanged += OnTrackedImagesEvent;
+        raycastManager = GetComponent<ARRaycastManager>();
+    }
+
+    void Start()
+    {
+        videoPanel.SetActive(false);
+    }
+
+    void OnTrackedImagesEvent(ARTrackedImagesChangedEventArgs args)
+    {
+        foreach (ARTrackedImage trackedImage in args.added)
+        {
+            string imageName = trackedImage.referenceImage.name;
+
+            if (!instantiatedObjects.ContainsKey(imageName))
+            {
+                GameObject prefab = GetPrefabForImage(imageName);
+
+                if (prefab != null)
+                {
+                    GameObject obj = Instantiate(prefab, trackedImage.transform.position, trackedImage.transform.rotation);
+                    obj.transform.SetParent(trackedImage.transform);
+                    //obj.transform.localPosition = Vector3.zero; // 도슨트 이미지의 위치를 이미지 트래킹 위치로 설정
+                    instantiatedObjects.Add(imageName, obj);
+                }
+            }
+
+            videoPanel.SetActive(true);
+        }
+
+        foreach (ARTrackedImage trackedImage in args.updated)
+        {
+            string imageName = trackedImage.referenceImage.name;
+
+            if (trackedImage.trackingState == TrackingState.Limited)
+            {
+                if (instantiatedObjects.ContainsKey(imageName))
+                {
+                    GameObject obj = instantiatedObjects[imageName];
+                    obj.SetActive(false);
+                    instantiatedObjects.Remove(imageName);
+                }
+            }
+            else if (trackedImage.trackingState == TrackingState.Tracking)
+            {
+                if (!instantiatedObjects.ContainsKey(imageName))
+                {
+                    GameObject prefab = GetPrefabForImage(imageName);
+
+                    if (prefab != null)
+                    {
+                        GameObject obj = Instantiate(prefab, trackedImage.transform.position, trackedImage.transform.rotation);
+                        obj.transform.SetParent(trackedImage.transform);
+                        //obj.transform.localPosition = Vector3.zero; // 도슨트 이미지의 위치를 이미지 트래킹 위치로 설정
+                        instantiatedObjects.Add(imageName, obj);
+                    }
+                }
+                else
+                {
+                    GameObject obj = instantiatedObjects[imageName];
+                    obj.SetActive(true);
+                }
+            }
+        }
+    }
+
+    private GameObject GetPrefabForImage(string imageName)
+    {
+        if (imageName == "Image1")
+        {
+            return Resources.Load<GameObject>("Image1");
+        }
+        else if (imageName == "Image2")
+        {
+            return Resources.Load<GameObject>("Image2");
+        }
+        else
+        {
+            return null; // 이미지 이름에 해당하는 프리팹이 없는 경우 null을 반환합니다.
+        }
+    }
+
+    public void OnBackBtnClickedEvent()
+    {
+        trackedImageManager.trackedImagesChanged -= OnTrackedImagesEvent;
+    }*/
+
+    public GameObject videoPanel;
+    public ARTrackedImageManager trackedImageManager;
+    private Dictionary<string, GameObject> instantiatedObjects = new Dictionary<string, GameObject>();
+
+    void Awake()
+    {
+        trackedImageManager = GetComponent<ARTrackedImageManager>();
+        trackedImageManager.trackedImagesChanged += OnTrackedImagesEvent;
+    }
+
+    void Start()
+    {
+        videoPanel.SetActive(false);
+    }
+
+    void OnTrackedImagesEvent(ARTrackedImagesChangedEventArgs args)
+    {
+        foreach (ARTrackedImage trackedImage in args.added)
+        {
+            InstantiateObjectForTrackedImage(trackedImage);
+            videoPanel.SetActive(true);
+        }
+
+        foreach (ARTrackedImage trackedImage in args.updated)
+        {
+            if (trackedImage.trackingState == TrackingState.Limited)
+            {
+                RemoveObjectForTrackedImage(trackedImage);
+            }
+            else if (trackedImage.trackingState == TrackingState.Tracking)
+            {
+                InstantiateObjectForTrackedImage(trackedImage);
+            }
+        }
+    }
+
+    void InstantiateObjectForTrackedImage(ARTrackedImage trackedImage)
+    {
+        string imageName = trackedImage.referenceImage.name;
+
+        if (!instantiatedObjects.ContainsKey(imageName))
+        {
+            GameObject prefab = GetPrefabForImage(imageName);
+
+            if (prefab != null)
+            {
+                GameObject obj = Instantiate(prefab, trackedImage.transform.position, trackedImage.transform.rotation);
+                obj.transform.SetParent(trackedImage.transform);
+                instantiatedObjects.Add(imageName, obj);
+            }
+        }
+    }
+
+    void RemoveObjectForTrackedImage(ARTrackedImage trackedImage)
+    {
+        string imageName = trackedImage.referenceImage.name;
+
+        if (instantiatedObjects.ContainsKey(imageName))
+        {
+            GameObject obj = instantiatedObjects[imageName];
+            Destroy(obj);
+            instantiatedObjects.Remove(imageName);
+        }
+    }
+
+    private GameObject GetPrefabForImage(string imageName)
+    {
+        if (imageName == "Image1")
+        {
+            return Resources.Load<GameObject>("Image1");
+        }
+        else if (imageName == "Image2")
+        {
+            return Resources.Load<GameObject>("Image2");
+        }
+        else
+        {
+            return null; // 이미지 이름에 해당하는 프리팹이 없는 경우 null을 반환합니다.
+        }
     }
 
     public void OnBackBtnClickedEvent()

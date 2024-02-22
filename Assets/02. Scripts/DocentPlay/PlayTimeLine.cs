@@ -125,33 +125,65 @@ public class PlayTimeLine : MonoBehaviour
     //    }
     //}
 
-    public List<AudioSource> audioSources;
     public Slider timelineSlider;
     public Button replayButton;
     private bool isPaused = true;
     private bool isTouching = false;
+    public Button startButton;
+    public List<string> imageNames; // 이미지 파일의 이름을 담을 리스트
+    public List<AudioClip> audioClips; // 오디오 클립을 담을 리스트
+    public AudioSource audioSource; // 오디오를 재생할 AudioSource 컴포넌트
+    private string recognizedImageName; // 인식된 이미지의 이름
+
 
     void Start()
     {
-        foreach (AudioSource audioSource in audioSources)
-        {
-            audioSource.loop = false;
-            audioSource.playOnAwake = false;
-        }
+        audioSource.loop = false;
+        audioSource.playOnAwake = false;
+        startButton.onClick.AddListener(StartAudio);
 
         replayButton.onClick.AddListener(ReplayAudio);
         timelineSlider.minValue = 0f;
         timelineSlider.maxValue = GetLongestClipLength();
+
+    }
+
+    void StartAudio()
+    {
+        recognizedImageName = RecognizeImage();
+
+        // 이미지의 이름과 매칭된 오디오 클립을 가져옴
+        int index = imageNames.IndexOf(recognizedImageName);
+        if (index != -1)
+        {
+            AudioClip audioClip = audioClips[index];
+
+            // 오디오를 재생
+            audioSource.clip = audioClip;
+            audioSource.Play();
+        }
+        else
+        {
+            Debug.Log("인식된 이미지의 이름과 매칭되는 오디오 클립을 찾을 수 없습니다.");
+        }
+    }
+
+    // 이미지 인식을 수행하는 함수
+    private string RecognizeImage()
+    {
+        //string imageName;
+        /*if (imageName == "숭의목공예")
+        {
+            PlayAAudio(0);
+        }*/
+        return recognizedImageName;
     }
 
     void ReplayAudio()
     {
-        foreach (AudioSource audioSource in audioSources)
-        {
-            audioSource.Stop();
-            audioSource.Play();
-            isPaused = false;
-        }
+        audioSource.Stop();
+        audioSource.Play();
+        isPaused = false;
     }
 
     void Update()
@@ -200,62 +232,45 @@ public class PlayTimeLine : MonoBehaviour
     private float GetLongestClipLength()
     {
         float maxLength = 0f;
-        foreach (AudioSource audioSource in audioSources)
+        if (audioSource.clip != null && audioSource.clip.length > maxLength)
         {
-            if (audioSource.clip != null && audioSource.clip.length > maxLength)
-            {
-                maxLength = audioSource.clip.length;
-            }
+            maxLength = audioSource.clip.length;
         }
         return maxLength;
     }
 
     private bool IsAnyAudioPlaying()
     {
-        foreach (AudioSource audioSource in audioSources)
+        if (audioSource.isPlaying)
         {
-            if (audioSource.isPlaying)
-            {
-                return true;
-            }
+            return true;
         }
         return false;
     }
 
     private void PauseAllAudio()
     {
-        foreach (AudioSource audioSource in audioSources)
-        {
-            audioSource.Pause();
-        }
+        audioSource.Pause();
     }
 
     private void PlayAllAudio()
     {
-        foreach (AudioSource audioSource in audioSources)
-        {
-            audioSource.Play();
-        }
+        audioSource.Play();
     }
 
     private float GetMaxAudioTime()
     {
         float maxTime = 0f;
-        foreach (AudioSource audioSource in audioSources)
+        if (audioSource.isPlaying && audioSource.time > maxTime)
         {
-            if (audioSource.isPlaying && audioSource.time > maxTime)
-            {
-                maxTime = audioSource.time;
-            }
+            maxTime = audioSource.time;
         }
         return maxTime;
     }
 
     private void SetAllAudioTime(float time)
     {
-        foreach (AudioSource audioSource in audioSources)
-        {
-            audioSource.time = time;
-        }
+        audioSource.time = time;
     }
+
 }
