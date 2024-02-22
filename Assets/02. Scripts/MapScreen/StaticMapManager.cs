@@ -40,19 +40,19 @@ public class StaticMapManager : MonoBehaviour
         {
             case UnityWebRequest.Result.ConnectionError:
                 debug.text = "CE";
-                Debug.Log("CE");
+                //Debug.Log("CE");
                 yield break;
             case UnityWebRequest.Result.ProtocolError:
                 debug.text = "PE";
-                Debug.Log("PE");
+                //Debug.Log("PE");
                 yield break;
             case UnityWebRequest.Result.DataProcessingError:
                 debug.text = "DP";
-                Debug.Log("DP");
+                //Debug.Log("DP");
                 yield break;
             case UnityWebRequest.Result.Success:
                 debug.text = "S";
-                Debug.Log("S");
+                //Debug.Log("S");
                 break;
         }
         // 데이터 로드 성공시
