@@ -167,7 +167,8 @@ public class CameraPanelManager : MonoBehaviour
 
             // Save the screenshot to Gallery/Photos
             string name = string.Format("{0}_Capture{1}_{2}.png", Application.productName, "{0}", System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
-            // Debug.Log("Permission result: " + NativeGallery.SaveImageToGallery(capturedTexture, Application.productName + " Captures", name));
+            NativeGallery.Permission permission = NativeGallery.SaveImageToGallery(bytes, Application.productName + " Captures", name);
+            Debug.Log("Permission result: " + permission);
             Debug.Log("Screenshot saved at: " + filePath);
         }
 
