@@ -11,6 +11,8 @@ public class POIInfoPanelManager : MonoBehaviour
     public Text addressText;
     public Text descriptionText;
 
+    
+
     //public Text imageText;
 
     public void SetPanel(POI poi)

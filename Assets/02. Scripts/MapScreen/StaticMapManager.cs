@@ -43,15 +43,15 @@ public class StaticMapManager : MonoBehaviour
                 //Debug.Log("CE");
                 yield break;
             case UnityWebRequest.Result.ProtocolError:
-                debug.text = "PE";
+                //debug.text = "PE";
                 //Debug.Log("PE");
                 yield break;
             case UnityWebRequest.Result.DataProcessingError:
-                debug.text = "DP";
+                //debug.text = "DP";
                 //Debug.Log("DP");
                 yield break;
             case UnityWebRequest.Result.Success:
-                debug.text = "S";
+                //debug.text = "S";
                 //Debug.Log("S");
                 break;
         }
