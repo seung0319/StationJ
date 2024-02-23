@@ -10,17 +10,17 @@ public class POIInfoPanelManager : MonoBehaviour
     public Text nameText;
     public Text addressText;
     public Text descriptionText;
-
-    
+    public Text endPointText;
 
     //public Text imageText;
 
     public void SetPanel(POI poi)
     {
         nameText.text = poi.name;
-
         addressText.text = poi.address;
         descriptionText.text = poi.description;
+        endPointText.text = poi.name;
+        infoPanel.SetActive(true);
 
         //imageText.text = poi.image;
 
@@ -28,6 +28,6 @@ public class POIInfoPanelManager : MonoBehaviour
         //latitudeText.text = poi.latitude.ToString();
         //longitudeText.text = poi.longitude.ToString();
 
-        infoPanel.SetActive(true);
+
     }
 }

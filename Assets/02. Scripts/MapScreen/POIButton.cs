@@ -14,7 +14,7 @@ public class POIButton : MonoBehaviour
         displayPOI = FindObjectOfType<POIInfoPanelManager>();
 
         sourceComponent = gameObject.GetComponent<POIData>();
-        selectedMarker = GameObject.Find("selectedMarker");
+        selectedMarker = GameObject.Find("Selected").transform.Find("selectedMarker").gameObject;
         selectedComponent = selectedMarker.GetComponent<POIData>(); 
         
     }
@@ -25,15 +25,11 @@ public class POIButton : MonoBehaviour
     }
     void MarkerSelected()
     {
-        // MyComponent의 모든 필드를 복사합니다.
+        // POIData의 모든 필드를 복사합니다.
         foreach (FieldInfo field in typeof(POIData).GetFields())
         {
             field.SetValue(selectedComponent, field.GetValue(sourceComponent));
+            selectedMarker.transform.position = sourceComponent.transform.position;
         }
-    }
-
-    public void MoveSelectedMarker()
-    {
-        selectedMarker.transform.position = sourceComponent.transform.position;
     }
 }
