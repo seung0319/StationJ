@@ -1,6 +1,7 @@
 using Google.XR.ARCoreExtensions;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.XR.ARSubsystems;
 
@@ -12,6 +13,10 @@ public class PathPoiCreator : MonoBehaviour
     Pose poiPose;
 
     [SerializeField] GameObject poiInfoPrefab;
+    [SerializeField] GameObject pathPrefab;
+
+    Vector3[] pathObjects;
+    [SerializeField] LineRenderer lineRenderer;
 
     void Start()
     {
@@ -41,9 +46,39 @@ public class PathPoiCreator : MonoBehaviour
             poiInfoObject.GetComponent<POIData>().SetpoiCouponButton();
         }
 
-        foreach ()
-        {
+        //혹시 모를 변수 제거
+        pathObjects = new Vector3[DataManager.instance.paths.Length+1];
+        pathObjects[0] = new Vector3(0, 0, 0);
 
+        //foreach ((double latitude, double longitude) path in DataManager.instance.paths)
+        //{
+        //    poiGPS.Latitude = path.latitude;
+        //    poiGPS.Longitude = path.longitude;
+
+        //    poiPose = earthManager.Convert(poiGPS);
+        //    poiPose.position.y = -1.6f;
+
+        //    Vector3 pathObject = Instantiate(pathPrefab, poiPose.position, poiPose.rotation).transform.position;
+        //    pathObjects.Add(pathObject);
+        //}
+
+        //계산한 경로들 하나하나 오브젝트 생성해서 배열에 추가
+        for (int i = 1; i < pathObjects.Length; i++)
+        {
+            poiGPS.Latitude = DataManager.instance.paths[i-1].latitude;
+            poiGPS.Longitude = DataManager.instance.paths[i-1].longitude;
+
+            poiPose = earthManager.Convert(poiGPS);
+            poiPose.position.y = -1.6f;
+
+            Instantiate(pathPrefab, poiPose.position, poiPose.rotation);
+            Vector3 pathObject = poiPose.position;
+
+            pathObjects[i] = pathObject;
         }
+
+        LineRenderer lineRendererObject = Instantiate(lineRenderer);
+        lineRendererObject.SetPositions(pathObjects);
+        lineRendererObject.transform.eulerAngles = new Vector3 (90f, 0, 0);
     }
 }
