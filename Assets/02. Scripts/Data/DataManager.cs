@@ -3,6 +3,7 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager instance = null;
     public POIList poiList;
+    public (double latitude,double longitude)[] paths;
 
     void Awake()
     {
