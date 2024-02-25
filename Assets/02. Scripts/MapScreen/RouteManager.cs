@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RouteManager : MonoBehaviour
 {
+    public GameObject directionManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +21,7 @@ public class RouteManager : MonoBehaviour
     public void OnRouteFindButtonClick()
     {
         GameObject.Find("Selected").transform.Find("selectedMarker").gameObject.SetActive(true);
+        //directionManager.SetActive(true);
+        DataManager.instance.LoadPath();
     }
 }
