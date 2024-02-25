@@ -308,10 +308,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 049ece0f241553a46a10bddc2219a18f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  earthManager: {fileID: 0}
-  poiInfoPrefab: {fileID: 0}
-  pathPrefab: {fileID: 0}
-  lineRenderer: {fileID: 0}
+  earthManager: {fileID: 884469125}
+  poiInfoPrefab: {fileID: 2372987937862994371, guid: 63a05d62eaee1bb4b92ebb0dcabe6f15, type: 3}
+  pathPrefab: {fileID: 3482568320548953467, guid: baecf97ac6b053f44a430eee25e5796b, type: 3}
+  lineRenderer: {fileID: 1368251156642226143, guid: f395ffedf7134394abf69e030bb1f29a, type: 3}
+  couponPanel: {fileID: 615954433}
+  poiNameText: {fileID: 1666829205}
+  poiAddressText: {fileID: 634591276}
+  poiOpeningHoursText: {fileID: 644803303}
+  poiCouponText: {fileID: 2091366865}
 --- !u!4 &45326014
 Transform:
   m_ObjectHideFlags: 0
@@ -379,7 +384,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 80
+  far clip plane: 20
   field of view: 60
   orthographic: 0
   orthographic size: 5

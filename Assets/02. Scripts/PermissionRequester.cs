@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class PermissionRequester : MonoBehaviour
 {
-    string[] permissions = new[] { "android.permission.CAMERA", "android.permission.WRITE_EXTERNAL_STORAGE" };
 
     public void CamaraUseAllow(string NextScene)
     {
@@ -16,8 +15,14 @@ public class PermissionRequester : MonoBehaviour
 
     public async void RequestPermission(string NextScene)
     {
-        AndroidRuntimePermissions.Permission[] result = await AndroidRuntimePermissions.RequestPermissionsAsync(permissions);
-        if (result.Contains(AndroidRuntimePermissions.Permission.Denied))
+        AndroidRuntimePermissions.Permission result = await AndroidRuntimePermissions.RequestPermissionAsync("android.permission.CAMERA");
+        if (result == AndroidRuntimePermissions.Permission.Denied)
+        {
+            AndroidRuntimePermissions.OpenSettings();
+            return;
+        }
+        AndroidRuntimePermissions.Permission result2 = await AndroidRuntimePermissions.RequestPermissionAsync("android.permission.WRITE_EXTERNAL_STORAGE");
+        if (result2 == AndroidRuntimePermissions.Permission.Denied)
         {
             AndroidRuntimePermissions.OpenSettings();
             return;

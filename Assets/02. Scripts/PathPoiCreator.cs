@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR.ARSubsystems;
 
 public class PathPoiCreator : MonoBehaviour
@@ -18,6 +19,12 @@ public class PathPoiCreator : MonoBehaviour
     Vector3[] pathObjects;
     [SerializeField] LineRenderer lineRenderer;
 
+    [SerializeField] GameObject couponPanel;
+    [SerializeField] Text poiNameText;
+    [SerializeField] Text poiAddressText;
+    [SerializeField] Text poiOpeningHoursText;
+    [SerializeField] Text poiCouponText;
+
     void Start()
     {
         if(DataManager.instance.poiList.pois != null)
@@ -30,7 +37,7 @@ public class PathPoiCreator : MonoBehaviour
     {
         yield return new WaitUntil(() => earthManager.EarthTrackingState == TrackingState.Tracking);
 
-        //경로 계산한거 도착
+        yield return new WaitForSeconds(3f);
 
         //POI 생성 위치배치
         foreach(POI poi in DataManager.instance.poiList.pois)
@@ -43,24 +50,12 @@ public class PathPoiCreator : MonoBehaviour
 
             GameObject poiInfoObject = Instantiate(poiInfoPrefab,poiPose.position,poiPose.rotation);
             poiInfoObject.GetComponent<POIData>().SetData(poi);
-            poiInfoObject.GetComponent<POIData>().SetpoiCouponButton();
+            poiInfoObject.GetComponent<POIData>().SetpoiCouponButton(
+                couponPanel, poiNameText, poiAddressText, poiOpeningHoursText, poiCouponText);
         }
 
-        //혹시 모를 변수 제거
         pathObjects = new Vector3[DataManager.instance.paths.Length+1];
-        pathObjects[0] = new Vector3(0, 0, 0);
-
-        //foreach ((double latitude, double longitude) path in DataManager.instance.paths)
-        //{
-        //    poiGPS.Latitude = path.latitude;
-        //    poiGPS.Longitude = path.longitude;
-
-        //    poiPose = earthManager.Convert(poiGPS);
-        //    poiPose.position.y = -1.6f;
-
-        //    Vector3 pathObject = Instantiate(pathPrefab, poiPose.position, poiPose.rotation).transform.position;
-        //    pathObjects.Add(pathObject);
-        //}
+        pathObjects[0] = new Vector3(0, -1.6f, 0);
 
         //계산한 경로들 하나하나 오브젝트 생성해서 배열에 추가
         for (int i = 1; i < pathObjects.Length; i++)
@@ -72,13 +67,16 @@ public class PathPoiCreator : MonoBehaviour
             poiPose.position.y = -1.6f;
 
             Instantiate(pathPrefab, poiPose.position, poiPose.rotation);
-            Vector3 pathObject = poiPose.position;
 
-            pathObjects[i] = pathObject;
+            pathObjects[i] = poiPose.position;
         }
 
-        LineRenderer lineRendererObject = Instantiate(lineRenderer);
-        lineRendererObject.SetPositions(pathObjects);
-        lineRendererObject.transform.eulerAngles = new Vector3 (90f, 0, 0);
+        for (int i = 0;i < pathObjects.Length-1; i++)
+        {
+            LineRenderer lineRendererObject = Instantiate(lineRenderer);
+            lineRenderer.SetPosition(0, pathObjects[i]);
+            lineRenderer.SetPosition(1, pathObjects[i + 1]);
+            lineRendererObject.transform.eulerAngles = new Vector3(90f, 0, 0);
+        }
     }
 }
