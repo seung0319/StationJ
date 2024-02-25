@@ -9,7 +9,7 @@ public class StaticMapManager : MonoBehaviour
 {
     [SerializeField] string baseUrl = "https://naveropenapi.apigw.ntruss.com/map-static/v2/raster";
     [SerializeField] string clientID = "w9g29xtrwz";
-    [SerializeField] string clientSecret = "WespgDc0DDelU0pN69HzZgyj5ByEBwhDGU0gxxTB";
+    [SerializeField] string clientSecret = "nTkuiJ3MlFuKyoVz2HXpnwXFR1J3vFgOYpIRJApm";
     public RawImage mapRawImage;
 
     public string latitude = "37.713675";
