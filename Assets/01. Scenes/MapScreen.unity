@@ -906,7 +906,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -148.8399, y: 152.8}
+  m_AnchoredPosition: {x: -148.8399, y: 152.79999}
   m_SizeDelta: {x: 672.0794, y: 116.6202}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &273333659
@@ -1357,7 +1357,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 963194227}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -4685,7 +4685,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 400}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1785999067
@@ -6020,6 +6020,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionManager: {fileID: 2145266856}
+  path: {fileID: 0}
+  pathPrefab: {fileID: 9164279537249193453, guid: b61cc059101ee8b42a6fc1f1138a7c0a, type: 3}
+  parentMap: {fileID: 2106120792}
+  canvasRect: {fileID: 476770839}
+  lineRenderer: {fileID: 0}
+  linePrefab: {fileID: 250327488798198305, guid: 8b9a3e9af6b6a734f88219ade8b6b124, type: 3}
   debugger: {fileID: 1379999959}
 --- !u!4 &2133426835
 Transform:
