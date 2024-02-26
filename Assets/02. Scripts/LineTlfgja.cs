@@ -1,12 +1,10 @@
 using Google.XR.ARCoreExtensions;
 using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARSubsystems;
 
-public class PathPoiCreator : MonoBehaviour
+public class LineTlfgja : MonoBehaviour
 {
     [SerializeField] AREarthManager earthManager;
 
@@ -17,7 +15,6 @@ public class PathPoiCreator : MonoBehaviour
     [SerializeField] GameObject pathPrefab;
 
     Vector3[] pathObjects;
-    [SerializeField] LineRenderer lineRenderer;
 
     public GameObject couponPanel;
     public Text poiNameText;
@@ -25,17 +22,24 @@ public class PathPoiCreator : MonoBehaviour
     public Text poiOpeningHoursText;
     public Text poiCouponText;
 
-    [SerializeField] Transform playerTransform;
+    [SerializeField] LineRenderer lineRenderer;
 
     [SerializeField] GameObject RO;
     [SerializeField] GameObject LO;
 
+    public (double latitude, double longitude)[] paths = new (double latitude, double longitude)[]
+    {
+        (37.714147,126.744462),
+        (37.714394,126.743880),
+        (37.714053,126.743606),
+        (37.714277,126.740820),
+    };
+
+    [SerializeField] Transform player;
+
     void Start()
     {
-        if(DataManager.instance.poiList.pois != null)
-        {
-            StartCoroutine(PathPoiCreat());
-        }
+        StartCoroutine(PathPoiCreat());
     }
 
     IEnumerator PathPoiCreat()
@@ -45,28 +49,24 @@ public class PathPoiCreator : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         //POI 생성 위치배치
-        foreach (POI poi in DataManager.instance.poiList.pois)
-        {
-            poiGPS.Latitude = poi.latitude;
-            poiGPS.Longitude = poi.longitude;
 
-            poiPose = earthManager.Convert(poiGPS);
-            poiPose.position.y = 0;
+        poiGPS.Latitude = 37.714278;
+        poiGPS.Longitude = 126.744409;
 
-            GameObject poiInfoObject = Instantiate(poiInfoPrefab, poiPose.position, poiPose.rotation);
-            poiInfoObject.GetComponent<POIData>().SetData(poi);
-            poiInfoObject.GetComponent<POIData>().SetpoiCouponButton(this);
-            poiInfoObject.GetComponent<PoiRotationSet>().SetPlayerTransform(playerTransform);
-        }
+        poiPose = earthManager.Convert(poiGPS);
+        poiPose.position.y = 0;
+        GameObject poiObject = Instantiate(poiInfoPrefab, poiPose.position, poiPose.rotation);
+        poiObject.GetComponent<PoiRotationSet>().SetPlayerTransform(player);
+        
 
-        pathObjects = new Vector3[DataManager.instance.paths.Length+1];
+        pathObjects = new Vector3[paths.Length + 1];
         pathObjects[0] = new Vector3(0, -1.6f, 0);
 
         //계산한 경로들 하나하나 오브젝트 생성해서 배열에 추가
         for (int i = 1; i < pathObjects.Length; i++)
         {
-            poiGPS.Latitude = DataManager.instance.paths[i-1].latitude;
-            poiGPS.Longitude = DataManager.instance.paths[i-1].longitude;
+            poiGPS.Latitude = paths[i - 1].latitude;
+            poiGPS.Longitude = paths[i - 1].longitude;
 
             poiPose = earthManager.Convert(poiGPS);
             poiPose.position.y = -1.6f;
@@ -100,8 +100,8 @@ public class PathPoiCreator : MonoBehaviour
 
             if (cross.y > 0)
             {
-                GameObject L = Instantiate(LO,
-                    new Vector3(pathObjects[i].x, 1.6f, pathObjects[i].z), Quaternion.identity);
+                GameObject L = Instantiate(LO, 
+                    new Vector3(pathObjects[i].x, 1.6f, pathObjects[i].z),Quaternion.identity);
                 L.transform.LookAt(firstPoint);
             }
             else if (cross.y < 0)
