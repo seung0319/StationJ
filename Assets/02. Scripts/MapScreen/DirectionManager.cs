@@ -4,6 +4,7 @@ using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class DirectionManager : MonoBehaviour
 {
@@ -18,14 +19,16 @@ public class DirectionManager : MonoBehaviour
     public static string destLatitude = "";
     public static string destLongitude = "";
 
+    public Text debugger;
+
     private void OnEnable()
     {
+        //debugger.text = "Enabled";
         StartCoroutine(OnEnableCo());
     }
 
     IEnumerator OnEnableCo()
     {
-        //"https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving?start={출발지}&goal={목적지}&option={탐색옵션}" \
         string apiRequestURL = $"{baseUrl}?start={startLongitude},{startLatitude}&goal={destLongitude},{destLatitude}&option={option}";
 
         UnityWebRequest request = UnityWebRequest.Get(apiRequestURL);
@@ -36,10 +39,13 @@ public class DirectionManager : MonoBehaviour
         switch (request.result)
         {
             case UnityWebRequest.Result.ConnectionError:
+                //debugger.text = "CE";
                 yield break;
             case UnityWebRequest.Result.ProtocolError:
+                //debugger.text = "PE";
                 yield break;
             case UnityWebRequest.Result.DataProcessingError:
+                //debugger.text = "DP";
                 yield break;
             case UnityWebRequest.Result.Success:
                 break;
@@ -47,13 +53,24 @@ public class DirectionManager : MonoBehaviour
         // 데이터 로드 성공시
         if (request.isDone)
         {
+            //debugger.text = "Success";
             string json = request.downloadHandler.text;
             //print(json);
             // Resources 폴더에 json.txt 파일로 저장
-            string path = Path.Combine(Application.dataPath, "04. Resources/path.json");
+            string path;
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                path = Path.Combine(Application.persistentDataPath, "path.json");
+            }
+            else
+            {
+                path = Path.Combine(Application.dataPath, "04. Resources/path.json");
+            }
             using (StreamWriter sw = File.CreateText(path))
             {
+                //debugger.text = "Wrote";
                 sw.Write(json);
+                //debugger.text = "Write";
             }
         }
     }

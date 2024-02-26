@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
-using static UnityEditor.FilePathAttribute;
-using static UnityEditor.Recorder.OutputPath;
-using Newtonsoft.Json.Linq;
 
 [System.Serializable]
 public class Traoptimal
@@ -32,6 +29,7 @@ public class DataManager : MonoBehaviour
     public POI selectedPoi;
     public (double latitude,double longitude)[] paths;
 
+
     void Awake()
     {
         if (instance == null)
@@ -56,7 +54,16 @@ public class DataManager : MonoBehaviour
 
     public void LoadPath()
     {
-        string path = Path.Combine(Application.dataPath, "04. Resources/path.json");
+        //string path = Path.Combine(Application.dataPath, "04. Resources/path.json");
+        string path;
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            path = Path.Combine(Application.persistentDataPath, "path.json");
+        }
+        else
+        {
+            path = Path.Combine(Application.dataPath, "04. Resources/path.json");
+        }
         string json = File.ReadAllText(path);
 
         Root root = Newtonsoft.Json.JsonConvert.DeserializeObject<Root>(json);  // Newtonsoft.Json을 사용한 파싱
@@ -93,7 +100,7 @@ public class DataManager : MonoBehaviour
             }
 
         }
-
+        
         // 위치 정보 출력
         foreach (var points in paths)
         {

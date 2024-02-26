@@ -2475,7 +2475,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 215a01a52446e9445b21e1d39bcbc447, type: 3}
   m_Name: 
@@ -3147,6 +3147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infoPanel: {fileID: 2000743659}
+  imageS: {fileID: 1866000991}
   nameText: {fileID: 273333659}
   addressText: {fileID: 904371896}
   descriptionText: {fileID: 1210918443}
@@ -5055,7 +5056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8584906, g: 0.5223834, b: 0.5223834, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6019,6 +6020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionManager: {fileID: 2145266856}
+  debugger: {fileID: 1379999959}
 --- !u!4 &2133426835
 Transform:
   m_ObjectHideFlags: 0
@@ -6171,6 +6173,7 @@ MonoBehaviour:
   startLatitude: 37.713675
   startLongitude: 126.743572
   option: traoptimal
+  debugger: {fileID: 1920381984}
 --- !u!114 &161943269556455349
 MonoBehaviour:
   m_ObjectHideFlags: 0

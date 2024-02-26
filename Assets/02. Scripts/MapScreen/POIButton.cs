@@ -1,5 +1,7 @@
+using System;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class POIButton : MonoBehaviour
 {
@@ -7,8 +9,9 @@ public class POIButton : MonoBehaviour
     private POIInfoPanelManager displayPOI;
     public GameObject selectedMarker;
     POIData sourceComponent;
-    POIData selectedComponent;
     public GameObject directionManager;
+
+    public Text debugger;
 
     private void Start()
     {
@@ -16,7 +19,6 @@ public class POIButton : MonoBehaviour
 
         sourceComponent = gameObject.GetComponent<POIData>();
         selectedMarker = GameObject.Find("Selected").transform.Find("selectedMarker").gameObject;
-        selectedComponent = selectedMarker.GetComponent<POIData>(); 
         directionManager = GameObject.Find("DirectionManagerP").transform.Find("DirectionManager").gameObject;
     }
     public void OnClick()
@@ -30,6 +32,7 @@ public class POIButton : MonoBehaviour
         DataManager.instance.selectedPoi = poiData.poi;
         DirectionManager.destLatitude = poiData.poi.latitude.ToString();
         DirectionManager.destLongitude = poiData.poi.longitude.ToString();
+        selectedMarker.transform.position = sourceComponent.transform.position;
         // POIData의 모든 필드를 복사합니다.
         //foreach (FieldInfo field in typeof(POIData).GetFields())
         //{

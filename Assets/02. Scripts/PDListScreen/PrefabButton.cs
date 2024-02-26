@@ -5,25 +5,26 @@ using UnityEngine.UI;
 
 public class PrefabButton : MonoBehaviour
 {
-    public bool controlsPanel1; // 이 버튼이 판넬1을 제어하는지 여부
+    public POIData poiData;
+    public InfoPanelManager panel;
 
-    private Button button;
+
 
     private void Start()
     {
-        button = GetComponent<Button>();
-        button.onClick.AddListener(TogglePanel);
+        panel = FindObjectOfType<InfoPanelManager>();
+        //button = GetComponent<Button>();
+        //button.onClick.AddListener(TogglePanel);
     }
 
-    private void TogglePanel()
+    public void OnClick()
     {
-        if (controlsPanel1)
-        {
-            PanelManager.Instance.TogglePanel1();
-        }
-        else
-        {
-            PanelManager.Instance.TogglePanel2();
-        }
+        panel.SetPanel(poiData.GetData());
+        ButtonSelected();
+        
+    }
+    void ButtonSelected()
+    {
+        DataManager.instance.selectedPoi = poiData.poi;
     }
 }

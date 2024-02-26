@@ -1,6 +1,6 @@
 {
 	"code":0,
-	"message":"±æÃ£±â¸¦ ¼º°øÇÏ¿´½À´Ï´Ù.",
+	"message":"ï¿½ï¿½Ã£ï¿½â¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.",
 	"currentDateTime":"2024-02-25T22:44:01",
 	"route":{
 		"traoptimal":[{
@@ -49,41 +49,41 @@
 				"pointIndex":6,
 				"pointCount":7,
 				"distance":107,
-				"name":"¿Í¼®¼øÈ¯·Î172¹ø±æ",
+				"name":"ï¿½Í¼ï¿½ï¿½ï¿½È¯ï¿½ï¿½172ï¿½ï¿½ï¿½ï¿½",
 				"congestion":0,"speed":11}
 			],
 			"guide":[{
 				"pointIndex":6,
 				"type":2,
-				"instructions":"'¿Í¼®¼øÈ¯·Î172¹ø±æ' ¹æ¸éÀ¸·Î ÁÂÈ¸Àü",
+				"instructions":"'ï¿½Í¼ï¿½ï¿½ï¿½È¯ï¿½ï¿½172ï¿½ï¿½ï¿½ï¿½' ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½ï¿½",
 				"distance":187,
 				"duration":52745
 			},
 			{
 				"pointIndex":9,
 				"type":3,
-				"instructions":"¿ìÈ¸Àü",
+				"instructions":"ï¿½ï¿½È¸ï¿½ï¿½",
 				"distance":39,
 				"duration":15600
 			},
 			{
 				"pointIndex":12,
 				"type":3,
-				"instructions":"¿ìÈ¸Àü",
+				"instructions":"ï¿½ï¿½È¸ï¿½ï¿½",
 				"distance":68,
 				"duration":18830
 			},
 			{
 				"pointIndex":14,
 				"type":3,
-				"instructions":"'¿Í¼®¼øÈ¯·Î192¹ø±æ' ¹æ¸éÀ¸·Î ¿ìÈ¸Àü",
+				"instructions":"'ï¿½Í¼ï¿½ï¿½ï¿½È¯ï¿½ï¿½192ï¿½ï¿½ï¿½ï¿½' ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½ï¿½",
 				"distance":30,
 				"duration":8307
 			},
 			{
 				"pointIndex":18,
 				"type":88,
-				"instructions":"¸ñÀûÁö",
+				"instructions":"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
 				"distance":64,
 				"duration":28799
 			}

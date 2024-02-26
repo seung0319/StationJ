@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 126877975}
   - component: {fileID: 126877974}
   m_Layer: 5
-  m_Name: BT_Back Icon
+  m_Name: BackBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -525,112 +525,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126877972}
   m_CullTransparentMesh: 1
---- !u!1001 &146962467
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1144970492}
-    m_Modifications:
-    - target: {fileID: 81202939946997812, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_Name
-      value: DocentContentImage
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 790
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 430
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 531.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -255
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
---- !u!224 &146962468 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2525845851029353938, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
-  m_PrefabInstance: {fileID: 146962467}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &258608289
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,7 +537,7 @@ GameObject:
   - component: {fileID: 258608292}
   - component: {fileID: 258608291}
   m_Layer: 5
-  m_Name: BG_blue
+  m_Name: BackgroundBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -720,7 +614,7 @@ GameObject:
   - component: {fileID: 280746573}
   - component: {fileID: 280746572}
   m_Layer: 5
-  m_Name: AR docent explain.txt
+  m_Name: DocentDesText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -802,7 +696,7 @@ GameObject:
   - component: {fileID: 454974919}
   - component: {fileID: 454974918}
   m_Layer: 5
-  m_Name: BT_Location
+  m_Name: LocationBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -873,16 +767,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LocationPermission, Assembly-CSharp
-        m_MethodName: PotoZonLocationInfoAllow
-        m_Mode: 1
+      - m_Target: {fileID: 1558906559}
+        m_TargetAssemblyTypeName: MoveScene, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: MapScreen
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &454974919
@@ -923,136 +817,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454974916}
   m_CullTransparentMesh: 1
---- !u!1001 &471450889
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 875896909}
-    m_Modifications:
-    - target: {fileID: 84878901650318905, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 84878901650318905, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 84878901650318905, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1558906559}
-    - target: {fileID: 84878901650318905, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 84878901650318905, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MoveScene, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 84878901650318905, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Docent_Camera&PlayScene_photocamera
-      objectReference: {fileID: 0}
-    - target: {fileID: 1243877764105683199, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_Name
-      value: PhtozoneContentImage
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 790
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 430
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 531.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -255
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
---- !u!224 &471450890 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5690399804604182122, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
-  m_PrefabInstance: {fileID: 471450889}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &479495852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1065,7 +829,7 @@ GameObject:
   - component: {fileID: 479495855}
   - component: {fileID: 479495854}
   m_Layer: 5
-  m_Name: AR docent name.txt
+  m_Name: DocentNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1088,8 +852,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -292, y: 214}
-  m_SizeDelta: {x: 465, y: 90}
+  m_AnchoredPosition: {x: 0, y: 210}
+  m_SizeDelta: {x: 1000, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &479495854
 MonoBehaviour:
@@ -1118,7 +882,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 70
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1145,7 +909,7 @@ GameObject:
   - component: {fileID: 482555133}
   - component: {fileID: 482555132}
   m_Layer: 5
-  m_Name: AR docent.txt
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1227,7 +991,7 @@ GameObject:
   - component: {fileID: 676610014}
   - component: {fileID: 676610015}
   m_Layer: 5
-  m_Name: BT_photozone
+  m_Name: PhotozoneCategory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1484,7 +1248,7 @@ GameObject:
   - component: {fileID: 746986928}
   - component: {fileID: 746986927}
   m_Layer: 5
-  m_Name: Docent.txt
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1581,8 +1345,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 471450890}
+  m_Children: []
   m_Father: {fileID: 2085479565}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1676,7 +1439,7 @@ GameObject:
   - component: {fileID: 1023892834}
   - component: {fileID: 1023892833}
   m_Layer: 5
-  m_Name: AR photo name.txt
+  m_Name: PhotozoneNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1699,8 +1462,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -347, y: 214}
-  m_SizeDelta: {x: 465, y: 90}
+  m_AnchoredPosition: {x: 0, y: 210}
+  m_SizeDelta: {x: 1000, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1023892833
 MonoBehaviour:
@@ -1729,7 +1492,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 70
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1756,7 +1519,7 @@ GameObject:
   - component: {fileID: 1065596145}
   - component: {fileID: 1065596144}
   m_Layer: 5
-  m_Name: BG_popup
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1873,8 +1636,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Content: {fileID: 0}
-  m_Horizontal: 1
+  m_Content: {fileID: 1144970492}
+  m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1
@@ -1958,8 +1721,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 146962468}
+  m_Children: []
   m_Father: {fileID: 1487051157}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2101,7 +1863,7 @@ GameObject:
   - component: {fileID: 1231686121}
   - component: {fileID: 1231686120}
   m_Layer: 5
-  m_Name: BT_ Back Icon
+  m_Name: BackBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2245,7 +2007,7 @@ GameObject:
   - component: {fileID: 1268536189}
   - component: {fileID: 1268536188}
   m_Layer: 5
-  m_Name: Example Image
+  m_Name: DocentImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2263,12 +2025,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1273902370}
+  m_Father: {fileID: 1373959590}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 213}
+  m_AnchoredPosition: {x: 0, y: 332.31714}
   m_SizeDelta: {x: 512.9953, y: 979.27637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1268536188
@@ -2321,7 +2083,7 @@ GameObject:
   - component: {fileID: 1269730090}
   - component: {fileID: 1269730089}
   m_Layer: 5
-  m_Name: BG_white
+  m_Name: BackgroundWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2398,7 +2160,7 @@ GameObject:
   - component: {fileID: 1273902372}
   - component: {fileID: 1273902371}
   m_Layer: 5
-  m_Name: PN_Docent Explain Panel
+  m_Name: DocentInfoPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2418,7 +2180,6 @@ RectTransform:
   m_Children:
   - {fileID: 1309654271}
   - {fileID: 1977268217}
-  - {fileID: 1268536187}
   - {fileID: 1231686119}
   m_Father: {fileID: 717236762}
   m_RootOrder: -1
@@ -2476,7 +2237,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1309654271}
   m_Layer: 0
-  m_Name: Back Ground Image
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2724,7 +2485,7 @@ GameObject:
   - component: {fileID: 1373959592}
   - component: {fileID: 1373959591}
   m_Layer: 5
-  m_Name: BG_blue
+  m_Name: BackgroundBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2741,7 +2502,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1268536187}
   m_Father: {fileID: 1858778025}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2801,7 +2563,7 @@ GameObject:
   - component: {fileID: 1467413621}
   - component: {fileID: 1467413620}
   m_Layer: 5
-  m_Name: BT_Location
+  m_Name: LocationBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2872,16 +2634,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LocationPermission, Assembly-CSharp
-        m_MethodName: PotoZonLocationInfoAllow
-        m_Mode: 1
+      - m_Target: {fileID: 1558906559}
+        m_TargetAssemblyTypeName: MoveScene, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: MapScreen
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1467413621
@@ -3058,7 +2820,7 @@ GameObject:
   - component: {fileID: 1513660662}
   - component: {fileID: 1513660661}
   m_Layer: 5
-  m_Name: Location.txt
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3138,7 +2900,7 @@ GameObject:
   - component: {fileID: 1534864823}
   - component: {fileID: 1534864822}
   m_Layer: 5
-  m_Name: Camera.txt
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3216,7 +2978,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1558906560}
   - component: {fileID: 1558906559}
-  - component: {fileID: 1558906561}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -3251,20 +3012,58 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1558906561
+--- !u!1 &1583987796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1583987799}
+  - component: {fileID: 1583987798}
+  m_Layer: 0
+  m_Name: InfoPanelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1583987798
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1558906558}
+  m_GameObject: {fileID: 1583987796}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c227ced365e0a64a9f48e7e75ada5fc, type: 3}
+  m_Script: {fileID: 11500000, guid: 59c0ee48ba879e24f90eb5a9f7257a61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel1: {fileID: 2000626737}
-  Panel2: {fileID: 1273902369}
+  photozoneInfoPanel: {fileID: 2000626737}
+  docentInfoPanel: {fileID: 1273902369}
+  photozoneImage: {fileID: 1675127070}
+  photozoneName: {fileID: 1023892831}
+  photozoneDes: {fileID: 2059076126}
+  docentImage: {fileID: 1268536186}
+  docentName: {fileID: 479495852}
+  docentDes: {fileID: 280746570}
+--- !u!4 &1583987799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583987796}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 122.37708, y: 1253.4862, z: -1.5341206}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1609558789
 GameObject:
   m_ObjectHideFlags: 0
@@ -3277,7 +3076,7 @@ GameObject:
   - component: {fileID: 1609558792}
   - component: {fileID: 1609558791}
   m_Layer: 5
-  m_Name: "AR \uCCB4\uD5D8\uC874.txt"
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3358,7 +3157,7 @@ GameObject:
   - component: {fileID: 1646394368}
   - component: {fileID: 1646394367}
   m_Layer: 5
-  m_Name: BT_Docent start
+  m_Name: DocentStartBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3491,7 +3290,7 @@ GameObject:
   - component: {fileID: 1675127073}
   - component: {fileID: 1675127072}
   m_Layer: 5
-  m_Name: Example Image
+  m_Name: PhotozoneImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3788,6 +3587,55 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1766574256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1766574257}
+  - component: {fileID: 1766574258}
+  m_Layer: 0
+  m_Name: ButtonMaker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1766574257
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766574256}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 122.37708, y: 1253.4862, z: -1.5341206}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1766574258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766574256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20073085c6e509b498a32555c5b1ff3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photozonePrefab: {fileID: 1243877764105683199, guid: 8e951f3b9fc2e9a448d0ce0a4ca209e9, type: 3}
+  docentPrefab: {fileID: 81202939946997812, guid: 9a6f0001e1db2fc44a9eb992a796aac2, type: 3}
+  photozoneParent: {fileID: 875896909}
+  docentParent: {fileID: 1144970492}
+  parent: {fileID: 0}
 --- !u!1 &1786424700
 GameObject:
   m_ObjectHideFlags: 0
@@ -3800,7 +3648,7 @@ GameObject:
   - component: {fileID: 1786424703}
   - component: {fileID: 1786424702}
   m_Layer: 5
-  m_Name: BG_popup
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3875,7 +3723,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1797163990}
   m_Layer: 0
-  m_Name: Back Ground Image
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3912,7 +3760,7 @@ GameObject:
   - component: {fileID: 1821808175}
   - component: {fileID: 1821808176}
   m_Layer: 5
-  m_Name: BT_docent
+  m_Name: DocentCategory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4096,7 +3944,7 @@ GameObject:
   - component: {fileID: 1852342646}
   - component: {fileID: 1852342645}
   m_Layer: 5
-  m_Name: AR photo.txt
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4176,7 +4024,7 @@ GameObject:
   - component: {fileID: 1858778027}
   - component: {fileID: 1858778026}
   m_Layer: 5
-  m_Name: BG_white
+  m_Name: BackgroundWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4253,7 +4101,7 @@ GameObject:
   - component: {fileID: 1955553443}
   - component: {fileID: 1955553442}
   m_Layer: 5
-  m_Name: pn_P&D list Panel
+  m_Name: PDListPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4366,7 +4214,7 @@ GameObject:
   - component: {fileID: 2000626740}
   - component: {fileID: 2000626739}
   m_Layer: 5
-  m_Name: PN_Potozone Explain Panel
+  m_Name: PhotozoneInfoPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4446,7 +4294,7 @@ GameObject:
   - component: {fileID: 2037739322}
   - component: {fileID: 2037739321}
   m_Layer: 5
-  m_Name: BT_Camera Start
+  m_Name: CameraStartBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4579,7 +4427,7 @@ GameObject:
   - component: {fileID: 2059076129}
   - component: {fileID: 2059076128}
   m_Layer: 5
-  m_Name: AR photo explain.txt
+  m_Name: PhotozoneDesText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4751,7 +4599,7 @@ GameObject:
   - component: {fileID: 2100048430}
   - component: {fileID: 2100048429}
   m_Layer: 5
-  m_Name: BG_White
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4827,7 +4675,7 @@ GameObject:
   - component: {fileID: 2115971302}
   - component: {fileID: 2115971301}
   m_Layer: 5
-  m_Name: Location.txt
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5100,7 +4948,7 @@ GameObject:
   - component: {fileID: 1249382989099853448}
   - component: {fileID: 8827607005761424435}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9 \uC548\uD568"
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5167,7 +5015,7 @@ GameObject:
   - component: {fileID: 2056506020047751036}
   - component: {fileID: 8186152152448052074}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9 \uD31D\uC5C5 \uBA58\uD2B8 1"
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5307,7 +5155,7 @@ GameObject:
   - component: {fileID: 6319646991274466112}
   - component: {fileID: 8092862262466547050}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9"
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5326,7 +5174,7 @@ GameObject:
   - component: {fileID: 4757871054719686464}
   - component: {fileID: 26670550639918322}
   m_Layer: 5
-  m_Name: "\uB4A4\uB85C\uAC00\uAE30 \uBC84\uD2BC"
+  m_Name: BackBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5408,7 +5256,7 @@ GameObject:
   - component: {fileID: 4516808439982240646}
   - component: {fileID: 8130677709773607219}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9 \uD31D\uC5C5 \uBA58\uD2B8 2"
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5426,7 +5274,7 @@ GameObject:
   - component: {fileID: 8244120288592897445}
   - component: {fileID: 6191534066744160298}
   m_Layer: 5
-  m_Name: "\uCE74\uBA54\uB77C \uC811\uADFC \uD5C8\uC6A9 \uD31D\uC5C5"
+  m_Name: CameraPermissionPopUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5533,7 +5381,7 @@ GameObject:
   - component: {fileID: 7262424369212196061}
   - component: {fileID: 9152473728951196331}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9 \uC548\uD568 BT"
+  m_Name: Deny
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5627,7 +5475,7 @@ GameObject:
   - component: {fileID: 3523623143335195920}
   - component: {fileID: 6560745210294780071}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9 \uD31D\uC5C5"
+  m_Name: PopUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5646,7 +5494,7 @@ GameObject:
   - component: {fileID: 4576074994023712082}
   - component: {fileID: 3465851328426769422}
   m_Layer: 5
-  m_Name: "\uD5C8\uC6A9 BT"
+  m_Name: Allow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

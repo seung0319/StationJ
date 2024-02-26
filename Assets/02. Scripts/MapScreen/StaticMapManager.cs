@@ -28,13 +28,13 @@ public class StaticMapManager : MonoBehaviour
     IEnumerator MapLoader()
     {
         string apiRequestURL = $"{baseUrl}?w={mapWidth}&h={mapHeight}&center={longitude},{latitude}&level={level}";
-        debug.text = "Hello";
+        //debug.text = "Hello";
         UnityWebRequest request = UnityWebRequestTexture.GetTexture(apiRequestURL);
-        debug.text = "Heck";
+        //debug.text = "Heck";
         request.SetRequestHeader("X-NCP-APIGW-API-KEY-ID", clientID);
         request.SetRequestHeader("X-NCP-APIGW-API-KEY", clientSecret);
         yield return request.SendWebRequest();
-        debug.text = "Hi";
+        //debug.text = "Hi";
         // 데이터 로드 실패시
         switch (request.result)
         {
@@ -60,8 +60,8 @@ public class StaticMapManager : MonoBehaviour
         {
             //string json = request.downloadHandler.text;
             //print(json);
-            debug.text = "YA";
-            Debug.Log("Ya");
+            //debug.text = "YA";
+            //Debug.Log("Ya");
 
 
             mapRawImage.texture = DownloadHandlerTexture.GetContent(request);

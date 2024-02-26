@@ -1,22 +1,59 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InfoPanelManager : MonoBehaviour
 {
-    public GameObject Panel; // 판넬을 public GameObject로 참조합니다.
+    public GameObject photozoneInfoPanel;
+    public GameObject docentInfoPanel;
 
-    private void Start()
+    GameObject infoPanel;
+
+    public GameObject photozoneImage;
+    public GameObject photozoneName;
+    public GameObject photozoneDes;
+    
+    public GameObject docentImage;
+    public GameObject docentName;
+    public GameObject docentDes;
+    public void SetPanel(POI poi)
     {
-        if (gameObject.name == "DocentContentImage")
-            Panel = GameObject.Find("PN_Docent Explain Panel");
-        else
-            Panel = GameObject.Find("PN_Potozone Explain Panel");
-    }
-    // 버튼 클릭 이벤트에 대응하는 함수입니다.
-    public void OnButtonClick()
-    {
-        // 판넬의 상태를 토글합니다.
-        Panel.SetActive(!Panel.activeSelf);
+        if(poi.type == "포토존")
+        {
+            string base64Image = poi.image;
+            byte[] imageBytes = Convert.FromBase64String(base64Image);
+
+            Texture2D texture = new Texture2D(2, 2);
+            texture.LoadImage(imageBytes);
+
+            Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            photozoneImage.GetComponent<Image>().sprite = sprite;
+
+            photozoneName.GetComponent<Text>().text = poi.name;
+            photozoneDes.GetComponent<Text>().text = poi.description;
+
+            infoPanel = photozoneInfoPanel;
+        }
+
+        else if(poi.type == "도슨트")
+        {
+            string base64Image = poi.image;
+            byte[] imageBytes = Convert.FromBase64String(base64Image);
+
+            Texture2D texture = new Texture2D(2, 2);
+            texture.LoadImage(imageBytes);
+
+            Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            docentImage.GetComponent<Image>().sprite = sprite;
+
+            docentName.GetComponent<Text>().text = poi.name;
+            docentDes.GetComponent<Text>().text = poi.description;
+
+            infoPanel = docentInfoPanel;
+        }
+
+        infoPanel.SetActive(!infoPanel.activeSelf);
     }
 }
