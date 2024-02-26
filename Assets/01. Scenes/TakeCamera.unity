@@ -2954,7 +2954,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 919858619}
         m_TargetAssemblyTypeName: CameraPanelManager, Assembly-CSharp
-        m_MethodName: OpenGallery
+        m_MethodName: PickImageFromGallery
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

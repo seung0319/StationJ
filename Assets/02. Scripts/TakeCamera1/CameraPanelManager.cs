@@ -5,6 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using NativeGalleryNamespace;
 
 
 //Photo, Video 기능 과 버튼 클릭을 통한 Panel 이동과 씬 이동에 관한 코드
@@ -192,5 +193,13 @@ public class CameraPanelManager : MonoBehaviour
         //뒤로가기 버튼을 누르면 특정 씬으로 이동
         SceneManager.LoadScene("YourSceneName");
     }
-    
+
+    public void PickImageFromGallery()
+    {
+        NativeGallery.GetImageFromGallery(null);
+
+
+
+    }
+
 }
