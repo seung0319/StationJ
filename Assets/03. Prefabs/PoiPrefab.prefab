@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2617772400123514800}
   - component: {fileID: 1964311763879515714}
   - component: {fileID: 3894787048472830490}
+  - component: {fileID: 8683297199036002043}
+  - component: {fileID: 7075323919361316185}
   m_Layer: 5
   m_Name: PoiPrefab
   m_TagString: Untagged
@@ -103,6 +105,42 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8683297199036002043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2372987937862994371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8fca9595a00add4cad7fb3dc375d143, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AD: {fileID: 1278358051411508382}
+  zzz: {fileID: 1554001455745744522}
+--- !u!114 &7075323919361316185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2372987937862994371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f3ce81f09fb9b848af23c39d4c6f899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poi:
+    name: 
+    type: 
+    image: 
+    latitude: 0
+    longitude: 0
+    address: 
+    description: 
+    coupon: 
+  poiCouponButton: {fileID: 1278358051411508382}
 --- !u!1 &2415674548132920328
 GameObject:
   m_ObjectHideFlags: 0

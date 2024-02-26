@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class POIData : MonoBehaviour
 {
     public POI poi;
-    Button poiCouponButton;
+    [SerializeField] Button poiCouponButton;
 
     public void SetData(POI newPOI)
     {
@@ -19,20 +19,19 @@ public class POIData : MonoBehaviour
         return poi;
     }
 
-    public void SetpoiCouponButton(GameObject couponPanel, Text poiNameText, Text poiAddressText, Text poiOpeningHoursText, Text poiCouponText)
+    public void SetpoiCouponButton(PathPoiCreator pathPoiCreator)
     {
-        poiCouponButton = GetComponent<Button>();
         poiCouponButton.onClick.RemoveAllListeners();
-        poiCouponButton.onClick.AddListener(() => CouponSet(couponPanel, poiNameText, poiAddressText, poiOpeningHoursText, poiCouponText));
+        poiCouponButton.onClick.AddListener(() => CouponSet(pathPoiCreator));
     }
 
-    void CouponSet(GameObject couponPanel, Text poiNameText, Text poiAddressText, Text poiOpeningHoursText, Text poiCouponText)
+    void CouponSet(PathPoiCreator pathPoiCreator)
     {
         //ÄíÆù ÆË¾÷ ÃÊ±âÈ­
-        couponPanel.SetActive(true);
-        poiNameText.text = poi.name;
-        poiAddressText.text = poi.address;
-        poiOpeningHoursText.text = poi.description;
-        poiCouponText.text = poi.coupon;
+        pathPoiCreator.couponPanel.SetActive(true);
+        pathPoiCreator.poiNameText.text = poi.name;
+        pathPoiCreator.poiAddressText.text = poi.address;
+        pathPoiCreator.poiOpeningHoursText.text = poi.description;
+        pathPoiCreator.poiCouponText.text = poi.coupon;
     }
 }
