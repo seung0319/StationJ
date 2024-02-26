@@ -36,7 +36,7 @@ public class MarkerMaker : MonoBehaviour
             CreateButtonAtLocation(poi.latitude, poi.longitude, poi.type);
             POIData poiData = button.GetComponent<POIData>();
             poiData.SetData(poi);
-            Debug.Log(poi.name);
+            //Debug.Log(poi.name);
         }
     }
     public void CreateButtonAtLocation(double latitude, double longitude, string type)

@@ -629,6 +629,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poiList:
     pois: []
+  selectedPoi:
+    name: 
+    type: 
+    image: 
+    latitude: 0
+    longitude: 0
+    address: 
+    description: 
+    coupon: 
 --- !u!1 &1376348270
 GameObject:
   m_ObjectHideFlags: 0

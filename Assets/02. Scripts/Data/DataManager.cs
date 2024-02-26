@@ -101,7 +101,7 @@ public class DataManager : MonoBehaviour
 
         }
         
-        // 위치 정보 출력
+        // 사용 예시
         foreach (var points in paths)
         {
             Debug.Log($"Longitude: {points.longitude}, Latitude: {points.latitude}");
