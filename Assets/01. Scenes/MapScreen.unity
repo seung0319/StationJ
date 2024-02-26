@@ -1958,6 +1958,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 2145266856}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &745796879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6024,7 +6036,6 @@ MonoBehaviour:
   pathPrefab: {fileID: 9164279537249193453, guid: b61cc059101ee8b42a6fc1f1138a7c0a, type: 3}
   parentMap: {fileID: 2106120792}
   canvasRect: {fileID: 476770839}
-  lineRenderer: {fileID: 0}
   linePrefab: {fileID: 250327488798198305, guid: 8b9a3e9af6b6a734f88219ade8b6b124, type: 3}
   debugger: {fileID: 1379999959}
 --- !u!4 &2133426835
@@ -6313,6 +6324,7 @@ MonoBehaviour:
     address: 
     description: 
     coupon: 
+  poiCouponButton: {fileID: 0}
 --- !u!114 &1637508913787997698
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -52,6 +53,9 @@ public class DataManager : MonoBehaviour
         poiList = JsonUtility.FromJson<POIList>(jsonFile.text);
     }
 
+    /// <summary>
+    /// 저장된 Json 파일을 읽어서 데이터 저장하는 함수
+    /// </summary>
     public void LoadPath()
     {
         //string path = Path.Combine(Application.dataPath, "04. Resources/path.json");
@@ -64,7 +68,8 @@ public class DataManager : MonoBehaviour
         {
             path = Path.Combine(Application.dataPath, "04. Resources/path.json");
         }
-        string json = File.ReadAllText(path);
+        //string json = File.ReadAllText(path);
+        string json = File.ReadAllText(DirectionManager.json);
 
         Root root = Newtonsoft.Json.JsonConvert.DeserializeObject<Root>(json);  // Newtonsoft.Json을 사용한 파싱
 
@@ -110,5 +115,17 @@ public class DataManager : MonoBehaviour
         
     }
 
+    public void ParseJson(string jsonString)
+    {
+        JObject data = JObject.Parse(jsonString);
+        JArray jsonPaths = (JArray)data["route"]["traoptimal"][0]["path"];
+
+        paths = new (double, double)[jsonPaths.Count];
+
+        for (int i = 0; i < jsonPaths.Count; i++)
+        {
+            paths[i] = (jsonPaths[i][1].ToObject<double>(), jsonPaths[i][0].ToObject<double>()); // API에서는 longitude, latitude 순서이지만 튜플에는 latitude, longitude 순서로 저장합니다.
+        }
+    }
 
 }

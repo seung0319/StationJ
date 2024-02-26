@@ -30,8 +30,12 @@ public class RouteManager : MonoBehaviour
     public void OnRouteFindButtonClick()
     {
         GameObject.Find("Selected").transform.Find("selectedMarker").gameObject.SetActive(true);
-        //directionManager.SetActive(true);
-        DataManager.instance.LoadPath();
+
+        ///
+        /// LoadPath();
+        ///
+        //DataManager.instance.LoadPath();
+
         //debugger.text = "Read";
         foreach (var points in DataManager.instance.paths)
         {
