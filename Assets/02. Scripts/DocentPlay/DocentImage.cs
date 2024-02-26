@@ -226,6 +226,8 @@ public class DocentImage : MonoBehaviour
             {
                 GameObject obj = Instantiate(prefab, trackedImage.transform.position, trackedImage.transform.rotation);
                 obj.transform.SetParent(trackedImage.transform);
+                obj.transform.localPosition = new Vector3(-0.2f, -0.3f, -0.2f);
+                obj.transform.localRotation = Quaternion.Euler(-90f, 180f, 0f);
                 instantiatedObjects.Add(imageName, obj);
             }
         }
@@ -247,11 +249,11 @@ public class DocentImage : MonoBehaviour
     {
         if (imageName == "Image1")
         {
-            return Resources.Load<GameObject>("Image1");
+            return Resources.Load<GameObject>("Prefab/Image1");
         }
         else if (imageName == "Image2")
         {
-            return Resources.Load<GameObject>("Image2");
+            return Resources.Load<GameObject>("Prefab/Image2");
         }
         else
         {

@@ -125,65 +125,30 @@ public class PlayTimeLine : MonoBehaviour
     //    }
     //}
 
-    public Slider timelineSlider;
+    //거의 완성본
+    /*public Slider timelineSlider;
     public Button replayButton;
     private bool isPaused = true;
     private bool isTouching = false;
-    public Button startButton;
-    public List<string> imageNames; // 이미지 파일의 이름을 담을 리스트
-    public List<AudioClip> audioClips; // 오디오 클립을 담을 리스트
     public AudioSource audioSource; // 오디오를 재생할 AudioSource 컴포넌트
     private string recognizedImageName; // 인식된 이미지의 이름
-
+    Dictionary<string, AudioClip> imageAudioDictionary = new Dictionary<string, AudioClip>();
 
     void Start()
     {
         audioSource.loop = false;
         audioSource.playOnAwake = false;
-        startButton.onClick.AddListener(StartAudio);
-
-        replayButton.onClick.AddListener(ReplayAudio);
         timelineSlider.minValue = 0f;
-        timelineSlider.maxValue = GetLongestClipLength();
-
-    }
-
-    void StartAudio()
-    {
-        recognizedImageName = RecognizeImage();
-
-        // 이미지의 이름과 매칭된 오디오 클립을 가져옴
-        int index = imageNames.IndexOf(recognizedImageName);
-        if (index != -1)
+        timelineSlider.maxValue = audioSource.clip ? audioSource.clip.length : 0f;
+        replayButton.onClick.AddListener(ReplayAudio);
+        GameObject panel = GameObject.Find("pn_Play Tap Panel");
+        if (panel != null && panel.activeSelf)
         {
-            AudioClip audioClip = audioClips[index];
-
-            // 오디오를 재생
-            audioSource.clip = audioClip;
-            audioSource.Play();
+            // 패널이 활성화되어 있으면 오디오 재생
+            StartAudio("Image");
+            isPaused = false;
         }
-        else
-        {
-            Debug.Log("인식된 이미지의 이름과 매칭되는 오디오 클립을 찾을 수 없습니다.");
-        }
-    }
 
-    // 이미지 인식을 수행하는 함수
-    private string RecognizeImage()
-    {
-        //string imageName;
-        /*if (imageName == "숭의목공예")
-        {
-            PlayAAudio(0);
-        }*/
-        return recognizedImageName;
-    }
-
-    void ReplayAudio()
-    {
-        audioSource.Stop();
-        audioSource.Play();
-        isPaused = false;
     }
 
     void Update()
@@ -191,10 +156,7 @@ public class PlayTimeLine : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began)
-            {
-                isTouching = true;
-            }
+            isTouching = touch.phase == TouchPhase.Began;
         }
         else
         {
@@ -205,22 +167,82 @@ public class PlayTimeLine : MonoBehaviour
         {
             if (IsAnyAudioPlaying() && !isPaused)
             {
-                PauseAllAudio();
-                isPaused = true;
+                PauseAudio();
             }
             else if (isPaused)
             {
-                PlayAllAudio();
-                isPaused = false;
+                PlayAudio();
             }
         }
 
         if (!isPaused)
         {
-            timelineSlider.value = GetMaxAudioTime();
+            timelineSlider.value = GetAudioTime();
         }
     }
 
+    /// <summary>
+    /// 오디오 조절
+    /// </summary>
+    /// <returns></returns>
+    private bool IsAnyAudioPlaying()
+    {
+        //if (audioSource.isPlaying)
+        //{
+        //    return true;
+        //}
+        //return false;
+        return audioSource.isPlaying;
+    }
+
+    private void PauseAudio()
+    {
+        audioSource.Pause();
+    }
+
+    private void PlayAudio()
+    {
+        audioSource.Play();
+    }
+
+    void ReplayAudio()
+    {
+        audioSource.Stop();
+        audioSource.Play();
+        isPaused = false;
+    }
+
+    void StartAudio(string imageName)
+    {
+        recognizedImageName = imageName;
+        Debug.Log("인식된 이미지 이름: " + recognizedImageName); // 인식된 이미지 이름 로깅
+        // 이미지와 오디오를 매칭
+        imageAudioDictionary["Image"] = Resources.Load<AudioClip>("Sounds/숭의목공예");
+        imageAudioDictionary["Image2"] = Resources.Load<AudioClip>("Sounds/영스퀘어");
+
+        foreach (var item in imageAudioDictionary)
+        {
+            Debug.Log("Key: " + item.Key + " Value: " + item.Value);
+        }
+
+        // 이미지 인식 후 매칭된 오디오 가져오기
+        AudioClip audioClip;
+        if (imageAudioDictionary.TryGetValue(recognizedImageName, out audioClip))
+        {
+            // 오디오를 재생
+            audioSource.clip = audioClip;
+            audioSource.Play();
+        }
+        else
+        {
+            Debug.Log("인식된 이미지와 매칭되는 오디오를 찾을 수 없습니다.");
+        }
+    }
+
+    /// <summary>
+    /// 타임라인
+    /// </summary>
+    /// <returns></returns>
     public void OnSliderValueChanged()
     {
         if (!isPaused)
@@ -229,48 +251,146 @@ public class PlayTimeLine : MonoBehaviour
         }
     }
 
-    private float GetLongestClipLength()
+    private float GetAudioTime()
     {
-        float maxLength = 0f;
-        if (audioSource.clip != null && audioSource.clip.length > maxLength)
-        {
-            maxLength = audioSource.clip.length;
-        }
-        return maxLength;
-    }
-
-    private bool IsAnyAudioPlaying()
-    {
-        if (audioSource.isPlaying)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    private void PauseAllAudio()
-    {
-        audioSource.Pause();
-    }
-
-    private void PlayAllAudio()
-    {
-        audioSource.Play();
-    }
-
-    private float GetMaxAudioTime()
-    {
-        float maxTime = 0f;
-        if (audioSource.isPlaying && audioSource.time > maxTime)
-        {
-            maxTime = audioSource.time;
-        }
-        return maxTime;
+        return audioSource.isPlaying ? audioSource.time : 0f;
     }
 
     private void SetAllAudioTime(float time)
     {
         audioSource.time = time;
+    }*/ //거의 완성?ㅠ
+
+    public Slider timelineSlider;
+    public Button replayButton;
+    public AudioSource audioSource;
+    private bool isPaused = true;
+    public Dictionary<string, AudioClip> imageAudioDictionary;
+
+    void Start()
+    {
+        // 오디오 클립을 미리 로드하도록 수정합니다.
+        LoadAudioClips();
+
+        InitializeAudioSource();
+        InitializeSlider();
+        InitializeReplayButton();
+
+        // 여기서 "pn_Play Tap Panel"의 상태를 체크하고 오디오 재생을 시작할 수 있습니다.
+        GameObject panel = GameObject.Find("pn_Play Tap Panel");
+        if (panel != null && panel.activeSelf)
+        {
+            // 패널이 활성화되어 있으면 오디오 재생
+            // StartAudio 함수에 올바른 이미지 이름을 전달해야 합니다.
+            StartAudio("Image");  // 예시 이미지 이름
+            StartAudio("Image2");  // 예시 이미지 이름
+            isPaused = false;
+        }
+        else
+        {
+            InitializeSliderWithNullClip(); // 슬라이더를 초기화합니다 (임시로 클립이 Null일 때)
+        }
     }
 
+    void Update()
+    {
+        CheckTouchInput();
+
+        if (!isPaused)
+        {
+            timelineSlider.value = audioSource.time;
+        }
+    }
+
+    private void LoadAudioClips()
+    {
+        imageAudioDictionary = new Dictionary<string, AudioClip>
+        {
+            { "Image", Resources.Load<AudioClip>("Sounds/숭의목공예") },
+            { "Image2", Resources.Load<AudioClip>("Sounds/영스퀘어") }
+            // 클립이 더 있다면 여기에 추가...
+        };
+    }
+
+    private void InitializeAudioSource()
+    {
+        audioSource.loop = false;
+        audioSource.playOnAwake = false;
+    }
+
+    private void InitializeSlider()
+    {
+        if (audioSource.clip != null)
+        {
+            timelineSlider.minValue = 0f;
+            timelineSlider.maxValue = audioSource.clip.length;
+        }
+        else
+        {
+            InitializeSliderWithNullClip(); // 클립이 Null일 때 슬라이더를 초기화합니다.
+        }
+    }
+
+    private void InitializeSliderWithNullClip()
+    {
+        // 오디오 클립이 Null일 때 기본 슬라이더 값 설정
+        timelineSlider.minValue = 0f;
+    }
+
+    private void InitializeReplayButton()
+    {
+        replayButton.onClick.AddListener(ReplayAudio);
+    }
+
+    private void CheckTouchInput()
+    {
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
+            {
+                isPaused = !isPaused;
+                if (isPaused)
+                {
+                    audioSource.Pause();
+                }
+                else
+                {
+                    audioSource.Play();
+                }
+            }
+        }
+    }
+
+    private void ReplayAudio()
+    {
+        if (audioSource.clip != null)
+        {
+            audioSource.Stop();
+            audioSource.Play();
+            isPaused = false;
+        }
+    }
+
+    public void StartAudio(string imageName)
+    {
+        // 이미지와 오디오를 매칭하여 해당 오디오 클립을 재생합니다.
+        if (imageAudioDictionary.TryGetValue(imageName, out AudioClip audioClip))
+        {
+            audioSource.clip = audioClip;
+            audioSource.Play();
+        }
+        else
+        {
+            Debug.LogError("인식된 이미지와 매칭되는 오디오를 찾을 수 없습니다: " + imageName);
+        }
+    }
+
+    public void OnSliderValueChanged()
+    {
+        if (audioSource.isPlaying)
+        {
+            audioSource.time = timelineSlider.value;
+        }
+    }
 }
