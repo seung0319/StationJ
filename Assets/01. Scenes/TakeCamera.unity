@@ -1292,7 +1292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &466300132
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2318,6 +2318,7 @@ GameObject:
   - component: {fileID: 1162877243}
   - component: {fileID: 1162877242}
   - component: {fileID: 1162877245}
+  - component: {fileID: 1162877246}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Untagged
@@ -2370,9 +2371,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dea56a9eaadd1c439095de4f9a371cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SerializedLibrary: {fileID: 11400000, guid: 398d57132d9102a459a380e12333ca8e, type: 2}
+  m_SerializedLibrary: {fileID: 11400000, guid: d9ef4308da4035c45a63f6285656c458, type: 2}
   m_MaxNumberOfMovingImages: 100
   m_TrackedImagePrefab: {fileID: 0}
+--- !u!114 &1162877246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162877241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42431972e2e04994db82e938ecf4ee8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1173058085
 GameObject:
   m_ObjectHideFlags: 0
@@ -3006,7 +3019,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1473262885
 RectTransform:
   m_ObjectHideFlags: 0

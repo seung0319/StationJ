@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: PhotozoneRefenceImageLibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 4775012615867032593
+  m_GuidHigh: 2906066795730436025
+  m_DataStore:
+    m_Storage: []
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 4723527201998326237
+      m_GuidHigh: 11464920100187163277
+    m_SerializedTextureGuid:
+      m_GuidLow: 4500289552027083297
+      m_GuidHigh: 7565001394799240746
+    m_Size: {x: 0.26743296, y: 0.2}
+    m_SpecifySize: 1
+    m_Name: P1 1
+    m_Texture: {fileID: 2800000, guid: 06f9e2213d813e742ae657feaf48fc68, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 4978640093543708000
+      m_GuidHigh: 8131141128170625460
+    m_SerializedTextureGuid:
+      m_GuidLow: 5923578220747170697
+      m_GuidHigh: 17200032819041679002
+    m_Size: {x: 0.2, y: 0.15019763}
+    m_SpecifySize: 1
+    m_Name: P2
+    m_Texture: {fileID: 2800000, guid: dee02389c70152349a360a20b8cab2ee, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5073486952457723847
+      m_GuidHigh: 14903118897864853386
+    m_SerializedTextureGuid:
+      m_GuidLow: 2325161991344578291
+      m_GuidHigh: 7152136013324158091
+    m_Size: {x: 0.2, y: 0.15019763}
+    m_SpecifySize: 1
+    m_Name: P3
+    m_Texture: {fileID: 2800000, guid: 0b555ef3a28320448b04777bcf7d4163, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5239764481084170589
+      m_GuidHigh: 1009843132624645509
+    m_SerializedTextureGuid:
+      m_GuidLow: 13471409767005365388
+      m_GuidHigh: 12929762211480406153
+    m_Size: {x: 0.2, y: 0.26622516}
+    m_SpecifySize: 1
+    m_Name: P4
+    m_Texture: {fileID: 2800000, guid: fa15248c0fcebaf489088ffd39be6fb3, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5017079147567481359
+      m_GuidHigh: 5074461292118504584
+    m_SerializedTextureGuid:
+      m_GuidLow: 16763797341843431592
+      m_GuidHigh: 5681635948586445659
+    m_Size: {x: 0.2, y: 0.15019763}
+    m_SpecifySize: 1
+    m_Name: P5
+    m_Texture: {fileID: 2800000, guid: 2f3720a8f8dde8a45bab95eaca39d94e, type: 3}
