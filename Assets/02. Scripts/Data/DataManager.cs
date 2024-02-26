@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
-using static UnityEditor.FilePathAttribute;
-using static UnityEditor.Recorder.OutputPath;
 using Newtonsoft.Json.Linq;
 
 [System.Serializable]
