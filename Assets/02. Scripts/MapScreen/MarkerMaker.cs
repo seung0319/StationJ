@@ -84,18 +84,13 @@ public class MarkerMaker : MonoBehaviour
         double originLongitude = 126.743572f;
         // 경기인력개발원 37.713675f; 126.743572f;
 
-        // 기준 x, y
-        double originX = 0;
-        double originY = 0;
-
         // 위도, 경도에 대한 x, y의 변화 비율
         double xRatio = 559092.4f;
         double yRatio = 714178.2f;
-        //Debug.Log(xRatio + " " + yRatio);
-        //559092.4 714178.2
+
         // 위도, 경도를 x, y로 변환
-        double x = originX + (longitude - originLongitude) * xRatio;
-        double y = originY + (latitude - originLatitude) * yRatio;
+        double x = (longitude - originLongitude) * xRatio;
+        double y = (latitude - originLatitude) * yRatio;
 
 
         return new Vector2D(x, y);

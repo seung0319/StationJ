@@ -35,7 +35,7 @@ public class LocationUpdate : MonoBehaviour
             // 위치 정보를 받아옴
             double latitude = Input.location.lastData.latitude;
             double longitude = Input.location.lastData.longitude;
-            //deb1.text = latitude + " " + longitude;
+
             // 기준 위도, 경도
             double originLatitude = 37.713675f;
             double originLongitude = 126.743572f;
@@ -44,13 +44,10 @@ public class LocationUpdate : MonoBehaviour
             // 위도, 경도에 대한 x, y의 변화 비율
             double xRatio = 559092.4f;
             double yRatio = 714178.2f;
-            //Debug.Log(xRatio + " " + yRatio);
-            //559092.4 714178.2
-            // 위도, 경도를 x, y로 변환
+
             double x = (longitude - originLongitude) * xRatio;
             double y = (latitude - originLatitude) * yRatio;
             
-
             // GameObject의 위치를 변경
             playerMarker.GetComponent<RectTransform>().anchoredPosition = new Vector2((float)x, (float)y); // Y 좌표는 필요에 따라 변경
    

@@ -23,21 +23,19 @@ public class DirectionManager : MonoBehaviour
 
     public Text debugger;
 
-    public RouteManager routeManager;
-
     private void Start()
     {
         
     }
     private void OnEnable()
     {
-        StartCoroutine(OnEnableCo());
-        // 위치 서비스가 활성화 되어 있는지 확인
         if (Input.location.isEnabledByUser)
         {
             startLatitude = Input.location.lastData.latitude.ToString();
             startLongitude = Input.location.lastData.longitude.ToString();
         }
+        StartCoroutine(OnEnableCo());
+        // 위치 서비스가 활성화 되어 있는지 확인
     }
 
     IEnumerator OnEnableCo()

@@ -23,8 +23,8 @@ public class POIButton : MonoBehaviour
     }
     public void OnClick()
     {
-        displayPOI.SetPanel(poiData.GetData());
         MarkerSelected();
+        displayPOI.SetPanel(poiData.GetData());
         directionManager.SetActive(true);
     }
     void MarkerSelected()
@@ -33,11 +33,5 @@ public class POIButton : MonoBehaviour
         DirectionManager.destLatitude = poiData.poi.latitude.ToString();
         DirectionManager.destLongitude = poiData.poi.longitude.ToString();
         selectedMarker.transform.position = sourceComponent.transform.position;
-        // POIData의 모든 필드를 복사합니다.
-        //foreach (FieldInfo field in typeof(POIData).GetFields())
-        //{
-        //    field.SetValue(DataManager.instance.selectedPoi, field.GetValue(sourceComponent));
-        //    selectedMarker.transform.position = sourceComponent.transform.position;
-        //}
     }
 }
