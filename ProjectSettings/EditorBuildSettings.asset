@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/01. Scenes/ARNavigation.unity
     guid: 101cb38d2014f224fb5783deba1562a1
-  - enabled: 1
+  - enabled: 0
     path: Assets/01. Scenes/DocentPlay.unity
     guid: acc035a51db0687438ce856caf24c690
   - enabled: 1
