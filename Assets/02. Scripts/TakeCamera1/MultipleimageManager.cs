@@ -83,7 +83,7 @@ public class MultipleimageManager : MonoBehaviour
             {
                 return Resources.Load<GameObject>("Prefab2/P2");
             }
-            else if (imageName == "P3")
+            else if (imageName == "P3 1")
             {
                 return Resources.Load<GameObject>("Prefab2/P3 1");
                 
