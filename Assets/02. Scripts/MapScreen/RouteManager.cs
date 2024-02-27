@@ -13,7 +13,8 @@ public class RouteManager : MonoBehaviour
     public RectTransform canvasRect; // 변환 대상인 UI Canvas의 RectTransform
     public Image linePrefab;
     RectTransform lastPoint = null;
-
+    private List<Image> lines = new List<Image>(); // 생성된 라인들의 리스트
+    private List<GameObject> paths = new List<GameObject>();
     public Text debugger;
     // Start is called before the first frame update
     void Start()
@@ -61,7 +62,7 @@ public class RouteManager : MonoBehaviour
 
             path = Instantiate(pathPrefab, new Vector3((float)x, (float)y, 0), Quaternion.identity);
             path.transform.SetParent(parentMap.transform, false);
-
+            paths.Add(path);
             if (lastPoint != null)
             {
                 // 새로운 Image 오브젝트를 생성
@@ -74,9 +75,25 @@ public class RouteManager : MonoBehaviour
                 lineImage.rectTransform.position = lastPoint.position;
                 float angle = Mathf.Atan2(differenceVector.y, differenceVector.x) * Mathf.Rad2Deg;
                 lineImage.rectTransform.rotation = Quaternion.Euler(0, 0, angle);
+
+                lines.Add(lineImage);
             }
 
             lastPoint = path.GetComponent<RectTransform>();
         }
+    }
+
+    private void OnDisable()
+    {
+        foreach(var path in paths)
+        {
+            Destroy(path.gameObject);
+        }
+        paths.Clear();
+        foreach (var line in lines)
+        {
+            Destroy(line.gameObject);
+        }
+        lines.Clear();
     }
 }

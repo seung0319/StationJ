@@ -23,6 +23,8 @@ public class DirectionManager : MonoBehaviour
 
     public Text debugger;
 
+    public RouteManager routeManager;
+
     private void OnEnable()
     {
         //debugger.text = "Enabled";
