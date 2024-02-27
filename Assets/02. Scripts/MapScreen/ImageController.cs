@@ -14,6 +14,7 @@ public class ImageController : MonoBehaviour
     private Vector2 oldTouchVector;
     private float oldTouchDistance;
 
+
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();

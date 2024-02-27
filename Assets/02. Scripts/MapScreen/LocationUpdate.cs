@@ -10,6 +10,7 @@ public class LocationUpdate : MonoBehaviour
     public RectTransform map;
     public Text deb1;
     public Text deb2;
+    bool isFirstLocationUpdate = true;
 
     void Start()
     {
@@ -25,14 +26,16 @@ public class LocationUpdate : MonoBehaviour
         // 위치 서비스를 시작
         Input.location.Start(1, 1);
         // 초기 위치 정보 업데이트를 위한 플래그
-        bool isFirstLocationUpdate = true;
+
+        YieldInstruction delay = new WaitForSeconds(1);
+        yield return new WaitUntil(() => Input.location.lastData.latitude != 0);
 
         while (true)
         {
             // 위치 정보를 받아옴
             double latitude = Input.location.lastData.latitude;
             double longitude = Input.location.lastData.longitude;
-            deb1.text = latitude + " " + longitude;
+            //deb1.text = latitude + " " + longitude;
             // 기준 위도, 경도
             double originLatitude = 37.713675f;
             double originLongitude = 126.743572f;
@@ -46,20 +49,19 @@ public class LocationUpdate : MonoBehaviour
             // 위도, 경도를 x, y로 변환
             double x = (longitude - originLongitude) * xRatio;
             double y = (latitude - originLatitude) * yRatio;
-            deb2.text = x + " " + y;
+            
 
             // GameObject의 위치를 변경
             playerMarker.GetComponent<RectTransform>().anchoredPosition = new Vector2((float)x, (float)y); // Y 좌표는 필요에 따라 변경
-
+   
             if (isFirstLocationUpdate)
             {
-                map.anchoredPosition = -playerMarker.GetComponent<RectTransform>().anchoredPosition;
+                map.anchoredPosition = -playerMarker.GetComponent<RectTransform>().localPosition;
+                deb2.text = map.anchoredPosition.ToString();
                 isFirstLocationUpdate = false;
             }
-                
 
-            // 1초 대기
-            yield return new WaitForSeconds(1);
+            yield return delay;
         }
     }
 }
