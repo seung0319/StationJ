@@ -2,6 +2,7 @@ using Google.XR.ARCoreExtensions;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
 public class LineTlfgja : MonoBehaviour
@@ -26,6 +27,8 @@ public class LineTlfgja : MonoBehaviour
 
     [SerializeField] GameObject RO;
     [SerializeField] GameObject LO;
+
+    [SerializeField] ARSession arSession;
 
     //public (double latitude, double longitude)[] paths = new (double latitude, double longitude)[]
     //{
@@ -59,14 +62,8 @@ public class LineTlfgja : MonoBehaviour
         poiObject.GetComponent<PoiRotationSet>().SetPlayerTransform(player);
         
         pathObjects = new Vector3[DataManager.instance.paths.Length + 1];
-        
-        poiGPS.Latitude = Input.location.lastData.latitude;
-        poiGPS.Longitude = Input.location.lastData.longitude;
 
-        poiPose = earthManager.Convert(poiGPS);
-        poiPose.position.y = -1.6f;
-
-        pathObjects[0] = poiPose.position;
+        pathObjects[0] = new Vector3(0, -1.6f, 0);
 
         //계산한 경로들 하나하나 오브젝트 생성해서 배열에 추가
         for (int i = 1; i < pathObjects.Length; i++)
@@ -104,14 +101,7 @@ public class LineTlfgja : MonoBehaviour
             // 두 벡터의 외적
             Vector3 cross = Vector3.Cross(forward, toThirdPoint);
 
-            // 두 벡터의 내적
-            float dot = Vector3.Dot(forward.normalized, toThirdPoint.normalized);
-            // 두 벡터가 이루는 각 (라디안)
-            float angle = Mathf.Acos(dot);
-            // 라디안을 도로 변환
-            float angleDegrees = angle * Mathf.Rad2Deg;
-
-            if (angleDegrees >= 75f && angleDegrees <= 105f)
+            if(Vector3.Distance(secondPoint, thirdPoint) >= 3)
             {
                 if (cross.y > 0)
                 {
@@ -127,5 +117,10 @@ public class LineTlfgja : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ArSessionDestroy()
+    {
+        arSession.Reset();
     }
 }

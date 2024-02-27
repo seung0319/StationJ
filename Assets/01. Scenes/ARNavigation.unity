@@ -387,7 +387,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 20
+  far clip plane: 35
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1292,6 +1292,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1009517317}
+        m_TargetAssemblyTypeName: LineTlfgja, Assembly-CSharp
+        m_MethodName: ArSessionDestroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 233540599}
         m_TargetAssemblyTypeName: MoveScene, Assembly-CSharp
         m_MethodName: ChangeScene
@@ -1799,6 +1811,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 1368251156642226143, guid: f395ffedf7134394abf69e030bb1f29a, type: 3}
   RO: {fileID: 2749464205602528093, guid: 35a30ee11586f4f4d8236e05c49d96e4, type: 3}
   LO: {fileID: 2749464205602528093, guid: da01bfac63173d241a83961d2a09b32d, type: 3}
+  arSession: {fileID: 890819305}
   player: {fileID: 173591480}
 --- !u!4 &1009517318
 Transform:
