@@ -768,7 +768,7 @@ GameObject:
   - component: {fileID: 4882481920500871233}
   - component: {fileID: 1522818814117767739}
   m_Layer: 0
-  m_Name: Image2
+  m_Name: "\uC601\uC2A4\uD018\uC5B4"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

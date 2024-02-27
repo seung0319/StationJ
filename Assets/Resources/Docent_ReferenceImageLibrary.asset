@@ -27,7 +27,7 @@ MonoBehaviour:
       m_GuidHigh: 16519716681029095082
     m_Size: {x: 0.2, y: 0.2}
     m_SpecifySize: 1
-    m_Name: Image1
+    m_Name: "\uC22D\uC758\uBAA9\uACF5\uC608"
     m_Texture: {fileID: 2800000, guid: 3f9748519654a6c4aa8ed5d2cbd241e5, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 5291483745593001824
@@ -37,5 +37,5 @@ MonoBehaviour:
       m_GuidHigh: 10828813926178956619
     m_Size: {x: 0.2, y: 0.2}
     m_SpecifySize: 1
-    m_Name: Image2
+    m_Name: "\uC601\uC2A4\uD018\uC5B4"
     m_Texture: {fileID: 2800000, guid: 73dfdddc768aa6f44b25b370e4ac4796, type: 3}
