@@ -11,7 +11,7 @@ public class ImageDragZoom : MonoBehaviour, IDragHandler, IPointerDownHandler, I
 
     private float minScale = 0.5f;
     private float maxScale = 2.0f;
-    private float zoomSpeed = 3f;
+    private float zoomSpeed = 1f;
 
     void Start()
     {

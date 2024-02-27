@@ -25,10 +25,19 @@ public class DirectionManager : MonoBehaviour
 
     public RouteManager routeManager;
 
+    private void Start()
+    {
+        
+    }
     private void OnEnable()
     {
-        //debugger.text = "Enabled";
         StartCoroutine(OnEnableCo());
+        // 위치 서비스가 활성화 되어 있는지 확인
+        if (Input.location.isEnabledByUser)
+        {
+            startLatitude = Input.location.lastData.latitude.ToString();
+            startLongitude = Input.location.lastData.longitude.ToString();
+        }
     }
 
     IEnumerator OnEnableCo()
@@ -43,13 +52,10 @@ public class DirectionManager : MonoBehaviour
         switch (request.result)
         {
             case UnityWebRequest.Result.ConnectionError:
-                //debugger.text = "CE";
                 yield break;
             case UnityWebRequest.Result.ProtocolError:
-                //debugger.text = "PE";
                 yield break;
             case UnityWebRequest.Result.DataProcessingError:
-                //debugger.text = "DP";
                 yield break;
             case UnityWebRequest.Result.Success:
                 break;
@@ -62,7 +68,7 @@ public class DirectionManager : MonoBehaviour
             DataManager.instance.ParseJson(json);
 
 
-            print(json);
+            //print(json);
             ///
             /// Json파일로 저장하는 함수
             ///
