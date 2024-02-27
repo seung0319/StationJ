@@ -282,7 +282,7 @@ public class PlayTimeLine : MonoBehaviour
         {
             // 패널이 활성화되어 있으면 오디오 재생
             // StartAudio 함수에 올바른 이미지 이름을 전달해야 합니다.
-            StartAudio("Image");  // 예시 이미지 이름
+            StartAudio("Image1");  // 예시 이미지 이름
             StartAudio("Image2");  // 예시 이미지 이름
             isPaused = false;
         }
@@ -306,7 +306,7 @@ public class PlayTimeLine : MonoBehaviour
     {
         imageAudioDictionary = new Dictionary<string, AudioClip>
         {
-            { "Image", Resources.Load<AudioClip>("Sounds/숭의목공예") },
+            { "Image1", Resources.Load<AudioClip>("Sounds/숭의목공예") },
             { "Image2", Resources.Load<AudioClip>("Sounds/영스퀘어") }
             // 클립이 더 있다면 여기에 추가...
         };
@@ -384,6 +384,27 @@ public class PlayTimeLine : MonoBehaviour
         {
             Debug.LogError("인식된 이미지와 매칭되는 오디오를 찾을 수 없습니다: " + imageName);
         }
+        ///
+        //AudioClip audioClip = null;
+        //switch (imageName)
+        //{
+        //    case "Image1":
+        //        audioClip = Resources.Load<AudioClip>("Sounds/숭의목공예");
+        //        break;
+        //    case "Image2":
+        //        audioClip = Resources.Load<AudioClip>("Sounds/영스퀘어");
+        //        break;
+        //    // 추가 이미지에 대한 case를 여기에 추가...
+        //    default:
+        //        Debug.LogError("인식된 이미지와 매칭되는 오디오를 찾을 수 없습니다: " + imageName);
+        //        return; // 매칭되는 오디오가 없으므로 함수를 종료합니다.
+        //}
+
+        //if (audioClip != null)
+        //{
+        //    audioSource.clip = audioClip;
+        //    audioSource.Play();
+        //}
     }
 
     public void OnSliderValueChanged()
