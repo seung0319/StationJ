@@ -34,6 +34,14 @@ public class LocationPermission : MonoBehaviour
             LocationInfoNotAllow();
         }
     }
+    void LocationInfoAllow()
+    {
+        debugger.text = "허용";
+    }
+    void LocationInfoNotAllow()
+    {
+        debugger.text = "허용안함";
+    }
 
     public async void RequestPermission2()
     {
@@ -47,14 +55,5 @@ public class LocationPermission : MonoBehaviour
             AndroidRuntimePermissions.OpenSettings();
             SceneManager.LoadScene("HomeScreen");
         }
-    }
-
-    void LocationInfoAllow()
-    {
-        debugger.text = "허용";
-    }
-    void LocationInfoNotAllow()
-    {
-        debugger.text = "허용안함";
     }
 }
