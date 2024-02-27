@@ -1,9 +1,8 @@
 using Google.XR.ARCoreExtensions;
 using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
 public class PathPoiCreator : MonoBehaviour
@@ -29,10 +28,13 @@ public class PathPoiCreator : MonoBehaviour
 
     [SerializeField] GameObject RO;
     [SerializeField] GameObject LO;
+    [SerializeField] GameObject goalPrefab;
+
+    [SerializeField] ARSession arSession;
 
     void Start()
     {
-        if(DataManager.instance.poiList.pois != null)
+        if (DataManager.instance.poiList.pois != null)
         {
             StartCoroutine(PathPoiCreat());
         }
@@ -59,14 +61,14 @@ public class PathPoiCreator : MonoBehaviour
             poiInfoObject.GetComponent<PoiRotationSet>().SetPlayerTransform(playerTransform);
         }
 
-        pathObjects = new Vector3[DataManager.instance.paths.Length+1];
-        pathObjects[0] = new Vector3(0,-1.6f,0);
+        pathObjects = new Vector3[DataManager.instance.paths.Length + 1];
+        pathObjects[0] = new Vector3(0, -1.6f, 0);
 
         //계산한 경로들 하나하나 오브젝트 생성해서 배열에 추가
         for (int i = 1; i < pathObjects.Length; i++)
         {
-            poiGPS.Latitude = DataManager.instance.paths[i-1].latitude;
-            poiGPS.Longitude = DataManager.instance.paths[i-1].longitude;
+            poiGPS.Latitude = DataManager.instance.paths[i - 1].latitude;
+            poiGPS.Longitude = DataManager.instance.paths[i - 1].longitude;
 
             poiPose = earthManager.Convert(poiGPS);
             poiPose.position.y = -1.6f;
@@ -94,12 +96,13 @@ public class PathPoiCreator : MonoBehaviour
             Vector3 forward = secondPoint - firstPoint;
             // 첫 번째 점에서 세 번째 점을 향하는 벡터
             Vector3 toThirdPoint = thirdPoint - firstPoint;
-
             // 두 벡터의 외적
             Vector3 cross = Vector3.Cross(forward, toThirdPoint);
 
-            // 두 벡터의 내적
-            float dot = Vector3.Dot(forward.normalized, toThirdPoint.normalized);
+            Vector3 forward2 = secondPoint - firstPoint;
+            Vector3 toThirdPoint2 = thirdPoint - secondPoint;
+
+            float dot = Vector3.Dot(forward2.normalized, toThirdPoint2.normalized);
             // 두 벡터가 이루는 각 (라디안)
             float angle = Mathf.Acos(dot);
             // 라디안을 도로 변환
@@ -120,6 +123,15 @@ public class PathPoiCreator : MonoBehaviour
                     R.transform.LookAt(firstPoint);
                 }
             }
+
+            GameObject goalObject = Instantiate(goalPrefab,
+                new Vector3(pathObjects[pathObjects.Length - 1].x, 1.6f, pathObjects[pathObjects.Length - 1].z)
+                , Quaternion.identity);
+            goalObject.GetComponent<PoiRotationSet>().SetPlayerTransform(playerTransform);
         }
+    }
+    public void ArSessionDestroy()
+    {
+        arSession.Reset();
     }
 }

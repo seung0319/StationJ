@@ -8,10 +8,15 @@ public class POIData : MonoBehaviour
 {
     public POI poi;
     [SerializeField] Button poiCouponButton;
+    [SerializeField] Text poiObjectName;
 
     public void SetData(POI newPOI)
     {
         poi = newPOI;
+        if(poiCouponButton != null)
+        {
+            poiObjectName.text = poi.name;
+        }
     }
 
     public POI GetData()

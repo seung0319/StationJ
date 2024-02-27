@@ -295,7 +295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &45326013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,9 +317,11 @@ MonoBehaviour:
   poiAddressText: {fileID: 634591276}
   poiOpeningHoursText: {fileID: 644803303}
   poiCouponText: {fileID: 2091366865}
-  playerTransform: {fileID: 0}
-  RO: {fileID: 0}
-  LO: {fileID: 0}
+  playerTransform: {fileID: 173591480}
+  RO: {fileID: 2749464205602528093, guid: 35a30ee11586f4f4d8236e05c49d96e4, type: 3}
+  LO: {fileID: 2749464205602528093, guid: da01bfac63173d241a83961d2a09b32d, type: 3}
+  goalPrefab: {fileID: 2749464205602528093, guid: d18cf94b891702a4ba60c6ae809f6484, type: 3}
+  arSession: {fileID: 890819305}
 --- !u!4 &45326014
 Transform:
   m_ObjectHideFlags: 0
@@ -1292,8 +1294,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1009517317}
-        m_TargetAssemblyTypeName: LineTlfgja, Assembly-CSharp
+      - m_Target: {fileID: 45326013}
+        m_TargetAssemblyTypeName: PathPoiCreator, Assembly-CSharp
         m_MethodName: ArSessionDestroy
         m_Mode: 1
         m_Arguments:
@@ -1771,63 +1773,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1009517316
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1009517318}
-  - component: {fileID: 1009517317}
-  m_Layer: 0
-  m_Name: "\uC751\uC560"
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1009517317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1009517316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3196e04e6155231499b85f7624c94c0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  earthManager: {fileID: 884469125}
-  poiInfoPrefab: {fileID: 2372987937862994371, guid: 63a05d62eaee1bb4b92ebb0dcabe6f15, type: 3}
-  pathPrefab: {fileID: 3482568320548953467, guid: baecf97ac6b053f44a430eee25e5796b, type: 3}
-  couponPanel: {fileID: 0}
-  poiNameText: {fileID: 0}
-  poiAddressText: {fileID: 0}
-  poiOpeningHoursText: {fileID: 0}
-  poiCouponText: {fileID: 0}
-  lineRenderer: {fileID: 1368251156642226143, guid: f395ffedf7134394abf69e030bb1f29a, type: 3}
-  RO: {fileID: 2749464205602528093, guid: 35a30ee11586f4f4d8236e05c49d96e4, type: 3}
-  LO: {fileID: 2749464205602528093, guid: da01bfac63173d241a83961d2a09b32d, type: 3}
-  arSession: {fileID: 890819305}
-  player: {fileID: 173591480}
---- !u!4 &1009517318
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1009517316}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 264.1624, y: 1191.7281, z: -272.88458}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1051084337
 GameObject:
   m_ObjectHideFlags: 0
@@ -1845,7 +1790,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1051084338
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3938566045054513447}
   - component: {fileID: 4079412062785641215}
   m_Layer: 5
-  m_Name: R
+  m_Name: Goal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 3, y: 3}
+  m_AnchoredPosition: {x: 0, y: 0.0000166}
+  m_SizeDelta: {x: 3, y: 3.9917}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3938566045054513447
 CanvasRenderer:
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0fcf3dfe6f629e145ae305e7f3e0a71b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 847d5909e7865df4b82350bc5a3be3eb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -88,8 +88,9 @@ GameObject:
   - component: {fileID: 2118820015537785559}
   - component: {fileID: 4746110029478077321}
   - component: {fileID: 1491544742528357202}
+  - component: {fileID: 7344906376086287659}
   m_Layer: 5
-  m_Name: RDirectionsPrefab
+  m_Name: GoalPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,7 +162,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &1491544742528357202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,3 +180,15 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7344906376086287659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2749464205602528093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8fca9595a00add4cad7fb3dc375d143, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
