@@ -27,13 +27,13 @@ public class LineTlfgja : MonoBehaviour
     [SerializeField] GameObject RO;
     [SerializeField] GameObject LO;
 
-    public (double latitude, double longitude)[] paths = new (double latitude, double longitude)[]
-    {
-        (37.714147,126.744462),
-        (37.714394,126.743880),
-        (37.714053,126.743606),
-        (37.714277,126.740820),
-    };
+    //public (double latitude, double longitude)[] paths = new (double latitude, double longitude)[]
+    //{
+    //    (37.714147,126.744462),
+    //    (37.714394,126.743880),
+    //    (37.714053,126.743606),
+    //    (37.714277,126.740820),
+    //};
 
     [SerializeField] Transform player;
 
@@ -58,15 +58,14 @@ public class LineTlfgja : MonoBehaviour
         GameObject poiObject = Instantiate(poiInfoPrefab, poiPose.position, poiPose.rotation);
         poiObject.GetComponent<PoiRotationSet>().SetPlayerTransform(player);
         
-
-        pathObjects = new Vector3[paths.Length + 1];
+        pathObjects = new Vector3[DataManager.instance.paths.Length + 1];
         pathObjects[0] = new Vector3(0, -1.6f, 0);
 
         //계산한 경로들 하나하나 오브젝트 생성해서 배열에 추가
         for (int i = 1; i < pathObjects.Length; i++)
         {
-            poiGPS.Latitude = paths[i - 1].latitude;
-            poiGPS.Longitude = paths[i - 1].longitude;
+            poiGPS.Latitude = DataManager.instance.paths[i - 1].latitude;
+            poiGPS.Longitude = DataManager.instance.paths[i - 1].longitude;
 
             poiPose = earthManager.Convert(poiGPS);
             poiPose.position.y = -1.6f;
