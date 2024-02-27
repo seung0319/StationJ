@@ -35,6 +35,20 @@ public class LocationPermission : MonoBehaviour
         }
     }
 
+    public async void RequestPermission2()
+    {
+        AndroidRuntimePermissions.Permission result = await AndroidRuntimePermissions.RequestPermissionAsync("android.permission.ACCESS_FINE_LOCATION");
+        if (result == AndroidRuntimePermissions.Permission.Granted)
+        {
+            routeFindPanel.SetActive(true);
+        }
+        else
+        {
+            AndroidRuntimePermissions.OpenSettings();
+            SceneManager.LoadScene("HomeScreen");
+        }
+    }
+
     void LocationInfoAllow()
     {
         debugger.text = "Çã¿ë";

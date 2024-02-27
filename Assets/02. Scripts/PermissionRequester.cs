@@ -28,4 +28,22 @@ public class PermissionRequester : MonoBehaviour
         }
         SceneManager.LoadScene(NextScene);
     }
+
+    public void LocationUseAllow(string NextScene)
+    {
+        RequestPermission2(NextScene);
+    }
+
+    public async void RequestPermission2(string NextScene)
+    {
+        AndroidRuntimePermissions.Permission result = await AndroidRuntimePermissions.RequestPermissionAsync("android.permission.ACCESS_FINE_LOCATION");
+        if (result == AndroidRuntimePermissions.Permission.Granted)
+        {
+            SceneManager.LoadScene(NextScene);
+        }
+        else
+        {
+            AndroidRuntimePermissions.OpenSettings();
+        }
+    }
 }
