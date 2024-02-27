@@ -19,124 +19,28 @@ public class LocationPermission : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
-        {
-            markerPanel.SetActive(false);
-            Permission.RequestUserPermission(Permission.FineLocation);
-            if (Permission.HasUserAuthorizedPermission(Permission.FineLocation))
-            {
-                //허용 O
-                //현재 내위치 시작
-            }
-            else
-            {
-                //허용 X
-                //제물포역 위치 시작
-            }
-            markerPanel.SetActive(true);
-        }
+        RequestPermission();
     }
 
-    // Update is called once per frame
-    void Update()
+    public async void RequestPermission()
     {
-        //debugger2.text = locationOK.ToString();
-    }
-
-    public void LocationInfoAllow()
-    {
-        if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
+        AndroidRuntimePermissions.Permission result = await AndroidRuntimePermissions.RequestPermissionAsync("android.permission.ACCESS_FINE_LOCATION");
+        if (result == AndroidRuntimePermissions.Permission.Granted)
         {
-            Permission.RequestUserPermission(Permission.FineLocation);
-            if (Permission.HasUserAuthorizedPermission(Permission.FineLocation))
-            {
-                //허용 O
-                routeFindPanel.SetActive(true);
-            }
-            else
-            {
-                //허용 X
-                markerPanel.SetActive(true);
-                infoPanel.SetActive(true);
-            }
+            LocationInfoAllow();
         }
         else
         {
-            routeFindPanel.SetActive(true);
+            LocationInfoNotAllow();
         }
     }
 
-    public void PotoZonLocationInfoAllow()
+    void LocationInfoAllow()
     {
-        if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
-        {
-            Permission.RequestUserPermission(Permission.FineLocation);
-            if (Permission.HasUserAuthorizedPermission(Permission.FineLocation))
-            {
-                SceneManager.LoadScene("MapScreen");
-            }
-        }
-        else
-        {
-            SceneManager.LoadScene("MapScreen");
-        }
+        debugger.text = "허용";
     }
-
-    
-
-    public void CamaraUseAllow(string NextScene)
+    void LocationInfoNotAllow()
     {
-        if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite) ||
-            !Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead) ||
-            !Permission.HasUserAuthorizedPermission(Permission.Camera))
-        {
-            StartCoroutine("PermissionAllow",NextScene);
-        }
-        else
-        {
-            SceneManager.LoadScene(NextScene);
-        }
-    }
-
-    IEnumerator PermissionAllow(string NextScene)
-    {
-        string[] permissions = { Permission.ExternalStorageWrite, Permission.ExternalStorageRead };
-        Permission.RequestUserPermissions(permissions);
-
-        float timer = 0f;
-        float timeout = 5f; // 타임아웃 시간 설정
-        while ((!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite) ||
-            !Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead)) && timer < timeout)
-        {
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
-        if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite) ||
-            !Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead))
-        {
-            yield break;
-        }
-
-        if (Permission.HasUserAuthorizedPermission(Permission.Camera))
-        {
-            SceneManager.LoadScene(NextScene);
-            yield break;
-        }
-
-        Permission.RequestUserPermission(Permission.Camera);
-
-        timer = 0f;
-        timeout = 5f;
-        while (!Permission.HasUserAuthorizedPermission(Permission.Camera) && timer < timeout)
-        {
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
-        if (Permission.HasUserAuthorizedPermission(Permission.Camera))
-        {
-            SceneManager.LoadScene(NextScene);
-        }
+        debugger.text = "허용안함";
     }
 }

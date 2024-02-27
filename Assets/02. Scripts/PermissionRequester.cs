@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class PermissionRequester : MonoBehaviour
 {
-
     public void CamaraUseAllow(string NextScene)
     {
         RequestPermission(NextScene);
