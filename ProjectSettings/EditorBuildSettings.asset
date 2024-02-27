@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01. Scenes/PDListScreen.unity
     guid: 54cfa4895ea5d4d309d3b7d120d04eb0
-  - enabled: 0
+  - enabled: 1
     path: Assets/01. Scenes/ARNavigation.unity
     guid: 101cb38d2014f224fb5783deba1562a1
   - enabled: 1

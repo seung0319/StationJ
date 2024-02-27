@@ -54,6 +54,7 @@ public class DataManager : MonoBehaviour
 
     public void LoadPath()
     {
+        paths = null;
         //string path = Path.Combine(Application.dataPath, "04. Resources/path.json");
         string path;
         if (Application.platform == RuntimePlatform.Android)
@@ -106,9 +107,5 @@ public class DataManager : MonoBehaviour
         {
             Debug.Log($"Longitude: {points.longitude}, Latitude: {points.latitude}");
         }
-
-        
     }
-
-
 }

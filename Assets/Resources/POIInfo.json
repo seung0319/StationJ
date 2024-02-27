@@ -49,6 +49,16 @@
 			"address": "경기 파주시 와석순환로172번길 16",
 			"description": "영업시간: 09시~20시",
 			"coupon": "10%"
+		},
+		{
+			"name": "운정골감자탕",
+			"type": "식당",
+			"image": "i",
+			"latitude": 37.713926,
+			"longitude": 126.746967,
+			"address": "경기도 파주시 운정3동 636-105",
+			"description": "영업시간: 09시~20시",
+			"coupon": "50%"
 		}
 	]
 }
