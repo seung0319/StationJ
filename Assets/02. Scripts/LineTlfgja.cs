@@ -59,7 +59,14 @@ public class LineTlfgja : MonoBehaviour
         poiObject.GetComponent<PoiRotationSet>().SetPlayerTransform(player);
         
         pathObjects = new Vector3[DataManager.instance.paths.Length + 1];
-        pathObjects[0] = new Vector3(0, -1.6f, 0);
+        
+        poiGPS.Latitude = Input.location.lastData.latitude;
+        poiGPS.Longitude = Input.location.lastData.longitude;
+
+        poiPose = earthManager.Convert(poiGPS);
+        poiPose.position.y = -1.6f;
+
+        pathObjects[0] = poiPose.position;
 
         //계산한 경로들 하나하나 오브젝트 생성해서 배열에 추가
         for (int i = 1; i < pathObjects.Length; i++)
@@ -97,17 +104,27 @@ public class LineTlfgja : MonoBehaviour
             // 두 벡터의 외적
             Vector3 cross = Vector3.Cross(forward, toThirdPoint);
 
-            if (cross.y > 0)
+            // 두 벡터의 내적
+            float dot = Vector3.Dot(forward.normalized, toThirdPoint.normalized);
+            // 두 벡터가 이루는 각 (라디안)
+            float angle = Mathf.Acos(dot);
+            // 라디안을 도로 변환
+            float angleDegrees = angle * Mathf.Rad2Deg;
+
+            if (angleDegrees >= 75f && angleDegrees <= 105f)
             {
-                GameObject L = Instantiate(LO, 
-                    new Vector3(pathObjects[i].x, 1.6f, pathObjects[i].z),Quaternion.identity);
-                L.transform.LookAt(firstPoint);
-            }
-            else if (cross.y < 0)
-            {
-                GameObject R = Instantiate(RO,
-                    new Vector3(pathObjects[i].x, 1.6f, pathObjects[i].z), Quaternion.identity);
-                R.transform.LookAt(firstPoint);
+                if (cross.y > 0)
+                {
+                    GameObject L = Instantiate(LO,
+                        new Vector3(pathObjects[i].x, 1.6f, pathObjects[i].z), Quaternion.identity);
+                    L.transform.LookAt(firstPoint);
+                }
+                else if (cross.y < 0)
+                {
+                    GameObject R = Instantiate(RO,
+                        new Vector3(pathObjects[i].x, 1.6f, pathObjects[i].z), Quaternion.identity);
+                    R.transform.LookAt(firstPoint);
+                }
             }
         }
     }
