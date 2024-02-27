@@ -1,5 +1,6 @@
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -28,8 +29,9 @@ public class DataManager : MonoBehaviour
     public static DataManager instance = null;
     public POIList poiList;
     public POI selectedPoi;
-    public (double latitude,double longitude)[] paths;
-
+    public (double latitude, double longitude)[] paths;
+    
+    bool isStartCoroutine = false;
 
     void Awake()
     {
@@ -128,4 +130,39 @@ public class DataManager : MonoBehaviour
         }
     }
 
+    public void LocationInfoGetStart()
+    {
+        if (isStartCoroutine)
+            return;
+
+        isStartCoroutine = true;
+        StartCoroutine(LocationInfoGet());
+    }
+
+    IEnumerator LocationInfoGet()
+    {
+        Input.location.Start(1,1);
+
+        YieldInstruction dealy = new WaitForSeconds(1);
+
+        int maxWait = 20;
+        while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0)
+        {
+            yield return dealy;
+            maxWait--;
+        }
+
+        // 시간 초과
+        if (maxWait < 1)
+        {
+            print("Timed out");
+            yield break;
+        }
+        // 위치 서비스 시작 실패
+        if (Input.location.status == LocationServiceStatus.Failed)
+        {
+            print("Unable to determine device location");
+            yield break;
+        }
+    }
 }
