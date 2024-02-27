@@ -101,7 +101,7 @@ public class LineTlfgja : MonoBehaviour
             // 두 벡터의 외적
             Vector3 cross = Vector3.Cross(forward, toThirdPoint);
 
-            if(Vector3.Distance(secondPoint, thirdPoint) >= 3)
+            if(Vector3.Distance(secondPoint, thirdPoint) >= 10)
             {
                 if (cross.y > 0)
                 {
