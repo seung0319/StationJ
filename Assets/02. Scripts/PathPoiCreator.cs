@@ -60,14 +60,7 @@ public class PathPoiCreator : MonoBehaviour
         }
 
         pathObjects = new Vector3[DataManager.instance.paths.Length+1];
-
-        poiGPS.Latitude = Input.location.lastData.latitude;
-        poiGPS.Longitude = Input.location.lastData.longitude;
-
-        poiPose = earthManager.Convert(poiGPS);
-        poiPose.position.y = -1.6f;
-
-        pathObjects[0] = poiPose.position;
+        pathObjects[0] = new Vector3(0,-1.6f,0);
 
         //계산한 경로들 하나하나 오브젝트 생성해서 배열에 추가
         for (int i = 1; i < pathObjects.Length; i++)
