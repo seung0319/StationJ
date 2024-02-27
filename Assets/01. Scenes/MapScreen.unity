@@ -6201,6 +6201,7 @@ MonoBehaviour:
   canvas: {fileID: 476770839}
   minSize: {x: 2400, y: 2400}
   maxSize: {x: 9600, y: 9600}
+  playerMarker: {fileID: 59508638}
 --- !u!1 &2133426833
 GameObject:
   m_ObjectHideFlags: 0

@@ -66,28 +66,6 @@ public class DirectionManager : MonoBehaviour
             //debugger.text = "Success";
             json = request.downloadHandler.text;
             DataManager.instance.ParseJson(json);
-
-
-            //print(json);
-            ///
-            /// Json파일로 저장하는 함수
-            ///
-            // Resources 폴더에 json.txt 파일로 저장
-            //string path;
-            //if (Application.platform == RuntimePlatform.Android)
-            //{
-            //    path = Path.Combine(Application.persistentDataPath, "path.json");
-            //}
-            //else
-            //{
-            //    path = Path.Combine(Application.dataPath, "04. Resources/path.json");
-            //}
-            //using (StreamWriter sw = File.CreateText(path))
-            //{
-            //    //debugger.text = "Wrote";
-            //    sw.Write(json);
-            //    //debugger.text = "Write";
-            //}
         }
     }
 }

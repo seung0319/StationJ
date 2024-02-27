@@ -121,13 +121,15 @@ public class DataManager : MonoBehaviour
     {
         JObject data = JObject.Parse(jsonString);
         JArray jsonPaths = (JArray)data["route"]["traoptimal"][0]["path"];
+        JArray jsonGoal = (JArray)data["route"]["traoptimal"][0]["summary"]["goal"]["location"];
 
-        paths = new (double, double)[jsonPaths.Count];
+        paths = new (double, double)[jsonPaths.Count + 1];
 
         for (int i = 0; i < jsonPaths.Count; i++)
         {
             paths[i] = (jsonPaths[i][1].ToObject<double>(), jsonPaths[i][0].ToObject<double>()); // API에서는 longitude, latitude 순서이지만 튜플에는 latitude, longitude 순서로 저장합니다.
         }
+        paths[jsonPaths.Count] = (jsonGoal[1].ToObject<double>(), jsonGoal[0].ToObject<double>()); // 마지막에 jsonGoal의 좌표를 추가합니다.
     }
 
     public void LocationInfoGetStart()
