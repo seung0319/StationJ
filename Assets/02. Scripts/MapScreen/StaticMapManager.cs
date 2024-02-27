@@ -28,42 +28,25 @@ public class StaticMapManager : MonoBehaviour
     IEnumerator MapLoader()
     {
         string apiRequestURL = $"{baseUrl}?w={mapWidth}&h={mapHeight}&center={longitude},{latitude}&level={level}";
-        //debug.text = "Hello";
         UnityWebRequest request = UnityWebRequestTexture.GetTexture(apiRequestURL);
-        //debug.text = "Heck";
         request.SetRequestHeader("X-NCP-APIGW-API-KEY-ID", clientID);
         request.SetRequestHeader("X-NCP-APIGW-API-KEY", clientSecret);
         yield return request.SendWebRequest();
-        //debug.text = "Hi";
         // 데이터 로드 실패시
         switch (request.result)
         {
             case UnityWebRequest.Result.ConnectionError:
-                //debug.text = "CE";
-                //Debug.Log("CE");
                 yield break;
             case UnityWebRequest.Result.ProtocolError:
-                //debug.text = "PE";
-                //Debug.Log("PE");
                 yield break;
             case UnityWebRequest.Result.DataProcessingError:
-                //debug.text = "DP";
-                //Debug.Log("DP");
                 yield break;
             case UnityWebRequest.Result.Success:
-                //debug.text = "S";
-                //Debug.Log("S");
                 break;
         }
         // 데이터 로드 성공시
         if (request.isDone)
         {
-            //string json = request.downloadHandler.text;
-            //print(json);
-            //debug.text = "YA";
-            //Debug.Log("Ya");
-
-
             mapRawImage.texture = DownloadHandlerTexture.GetContent(request);
         }
     }
