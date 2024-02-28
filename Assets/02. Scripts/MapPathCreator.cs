@@ -28,9 +28,9 @@ public class MapPathCreator : MonoBehaviour
             double xRatio = 559092.4f;
             double yRatio = 714178.2f;
 
-            // 위도, 경도를 x, y로 변환
             double x = (points.longitude - originLongitude) * xRatio;
             double y = (points.latitude - originLatitude) * yRatio;
+
 
             path = Instantiate(pathPrefab, new Vector3((float)x, (float)y, 0), Quaternion.identity);
             path.transform.SetParent(parentMap.transform, false);
