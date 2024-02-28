@@ -3,6 +3,11 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using static UnityEngine.UI.Image;
 
+/// <summary>
+/// 도슨트 플레이 씬에서 p&d씬으로 넘어갔다가 다시 도슨트 씬으로 돌아오면
+/// ar배경(임시 작업용) 및 카메라가 파괴된다는 오류가 떠서 수정하기 위해 작업한 코드
+/// -> 모바일에서는 정상작동 되어 사용하지 않음
+/// </summary>
 public class DocentCameraManager : MonoBehaviour
 {
     /*public XROrigin origin;
