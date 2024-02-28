@@ -196,8 +196,21 @@ public class CameraPanelManager : MonoBehaviour
 
     public void PickImageFromGallery()
     {
-        NativeGallery.GetImageFromGallery(null);
+#if UNITY_ANDROID && !UNITY_EDITOR
+    using (AndroidJavaClass unity = new AndroidJavaClass("com.unity3d.player.UnityPlayer")) 
+    {
+        using (AndroidJavaObject currentActivity = unity.GetStatic<AndroidJavaObject>("currentActivity")) 
+        {
+            using (AndroidJavaObject intent = new AndroidJavaObject("android.content.Intent")) 
+            {
+                intent.Call<AndroidJavaObject>("setAction", intent.GetStatic<string>("ACTION_VIEW"));
+                intent.Call<AndroidJavaObject>("setType", "image/*"); // "image/*"은 모든 이미지를 표시합니다. 
 
+                currentActivity.Call("startActivity", intent);
+            }
+        }
+    }
+#endif
 
 
     }
