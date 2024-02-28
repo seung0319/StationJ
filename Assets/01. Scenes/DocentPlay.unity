@@ -1611,6 +1611,7 @@ MonoBehaviour:
   timelineSlider: {fileID: 1258796352}
   replayButton: {fileID: 1688924426}
   animator: {fileID: 0}
+  aRSession: {fileID: 3658134263467556613}
 --- !u!82 &8003184941109453904
 AudioSource:
   m_ObjectHideFlags: 0

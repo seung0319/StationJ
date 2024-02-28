@@ -30,6 +30,7 @@ public class DocentImage : MonoBehaviour
 
     // *애니메이션 파트*
     public Animator animator;
+    [SerializeField] ARSession aRSession;
 
     void Awake()
     {
@@ -43,11 +44,6 @@ public class DocentImage : MonoBehaviour
         // *오디오파트*
         timelineSlider.value = 0f;
         replayButton.onClick.AddListener(ReplayAudio);
-        //시작시 오디오 나와서 멈추게 수정
-        audioSource.Stop();
-
-        // *애니메이션 파트*
-        animator = GetComponent<Animator>();
     }
 
     // *오디오파트*
@@ -202,10 +198,11 @@ public class DocentImage : MonoBehaviour
         animator.Rebind();
     }
 
-    //이벤트 종료시
+    //씬 탈출시 이벤트 제거
     public void OnBackBtnClickedEvent()
     {
         trackedImageManager.trackedImagesChanged -= OnTrackedImagesEvent;
+        aRSession.Reset();
     }
 }
 
