@@ -14,7 +14,6 @@ public class DirectionManager : MonoBehaviour
     [SerializeField] string clientSecret = "nTkuiJ3MlFuKyoVz2HXpnwXFR1J3vFgOYpIRJApm";
     [SerializeField] string startLatitude = "37.713675";
     [SerializeField] string startLongitude = "126.743572";
-    
     [SerializeField] string option = "traoptimal";
 
     public static string destLatitude = "";

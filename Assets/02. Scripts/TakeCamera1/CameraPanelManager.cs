@@ -42,24 +42,20 @@ public class CameraPanelManager : MonoBehaviour
     private Texture2D capturedTexture;
     public Image ResultImage;
     public GameObject SizePanel;
-    
+
+    YieldInstruction delay;
+
+
 
     void Start()
     {
         //권한요청 코드 넣어주세요.
-
-
         //초기 상태 설정. ChoosePanel과 그 안의 버튼들만 활성화
         SetChooseMode();
         SaveCompletePnael.SetActive(false);
 
-
-
         VideopanelBackButton.GetComponent<Button>().onClick.AddListener(SetChooseMode);
-
-
-
-
+        delay = new WaitForSeconds(0.5f);
     }
 
     public void SetChooseMode()
@@ -87,11 +83,13 @@ public class CameraPanelManager : MonoBehaviour
     public void TakeScreenshot()
     {
         StartCoroutine(CaptureScreenshot());
-        SetResultMode();
+        
     }
 
     private IEnumerator CaptureScreenshot()
     {
+        choosepanelBackButton.SetActive(false);
+        yield return delay;
         ResultImage.color = new Color(0, 0, 0, 0);
         //스크린샷을 찍을 때 결과물이 Result Image 가 같이 찍혀나와서
         // 이부분을 수정하고자 사진찍히는 순간에는 이 Result Image의 투명도를
@@ -100,9 +98,7 @@ public class CameraPanelManager : MonoBehaviour
 
         // 프레임 대기
         yield return new WaitForEndOfFrame();
-
-
-
+        
         RectTransform SizePanelRectTransform = SizePanel.GetComponent<RectTransform>();
         Vector2 panelSize = SizePanelRectTransform.sizeDelta;
 
@@ -116,17 +112,11 @@ public class CameraPanelManager : MonoBehaviour
         ResultImage.sprite = Sprite.Create(capturedTexture, new Rect(0, 0, capturedTexture.width, capturedTexture.height), Vector2.zero);
         ResultPanel.SetActive(true);
         SizePanel.SetActive(false);
-
         ResultImage.color = new Color(1, 1, 1, 1);
-
-
-
+        yield return delay;
+        choosepanelBackButton.SetActive(true);
+        SetResultMode();
     }
-
-
-
-
-
 
     public void OnVideoButtonClicked()
     {
@@ -150,8 +140,15 @@ public class CameraPanelManager : MonoBehaviour
         // 촬영이 끝난 후 결과 모드로 전환
         SetVideoMode();
     }
-    public void SaveScreenshot()
+
+    public void screenCapture()
     {
+        StartCoroutine(SaveScreenshotCoroutine());
+    }
+    IEnumerator SaveScreenshotCoroutine()
+    {
+        resultpanelBackButton.SetActive(false);
+        yield return delay;
         if (capturedTexture != null)
         {
             // 현재 텍스처를 이미지 파일로 저장
@@ -167,16 +164,19 @@ public class CameraPanelManager : MonoBehaviour
             }
 
             // Save the screenshot to Gallery/Photos
-            string name = string.Format("{0}_Capture{1}_{2}.png", Application.productName, "{0}", System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
+            string name = string.Format("{0}_Capture{1}_{2}.png", Application.productName, System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
             NativeGallery.Permission permission = NativeGallery.SaveImageToGallery(bytes, Application.productName + " Captures", name);
             Debug.Log("Permission result: " + permission);
             Debug.Log("Screenshot saved at: " + filePath);
         }
 
         SaveCompletePnael.SetActive(true);
-        Invoke("HideSaveCompletePanel", 3f);
+        yield return delay;
+        resultpanelBackButton.SetActive(true);
+        yield return new WaitForSeconds(3f); // Invoke 대신 코루틴의 WaitForSeconds를 사용합니다.
+        HideSaveCompletePanel();
+
     }
-    
     public void HideSaveCompletePanel()
     {
         SaveCompletePnael.SetActive(false);
@@ -194,37 +194,22 @@ public class CameraPanelManager : MonoBehaviour
         SceneManager.LoadScene("YourSceneName");
     }
 
-    public void PickImageFromGallery()
+    public void OpenGalleryApp()
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
-    using (AndroidJavaClass unity = new AndroidJavaClass("com.unity3d.player.UnityPlayer")) 
-    {
-        using (AndroidJavaObject currentActivity = unity.GetStatic<AndroidJavaObject>("currentActivity")) 
+        using (AndroidJavaClass unity = new AndroidJavaClass("com.unity3d.player.UnityPlayer")) 
         {
-            using (AndroidJavaObject intent = new AndroidJavaObject("android.content.Intent")) 
+            using (AndroidJavaObject currentActivity = unity.GetStatic<AndroidJavaObject>("currentActivity")) 
             {
-                intent.Call<AndroidJavaObject>("setAction", intent.GetStatic<string>("ACTION_VIEW"));
-                intent.Call<AndroidJavaObject>("setType", "image/*"); // "image/*"은 모든 이미지를 표시합니다. 
+                using (AndroidJavaObject intent = new AndroidJavaObject("android.content.Intent")) 
+                {
+                    intent.Call<AndroidJavaObject>("setAction", intent.GetStatic<string>("ACTION_VIEW"));
+                    intent.Call<AndroidJavaObject>("setType", "image/*");
 
-                currentActivity.Call("startActivity", intent);
+                    currentActivity.Call("startActivity", intent);
+                }
             }
         }
-    }
 #endif
-
-
     }
-
-    public void OpenGallery()
-    {
-        AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-        AndroidJavaObject unityActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
-        AndroidJavaClass intentStaticClass = new AndroidJavaClass("android.content.Intent");
-        string actionView = intentStaticClass.GetStatic<string>("ACTION_VIEW");
-        AndroidJavaClass uriClass = new AndroidJavaClass("android.net.Uri");
-        AndroidJavaObject uriObject = uriClass.CallStatic<AndroidJavaObject>("parse", "content://media/external/images/media");
-        AndroidJavaObject intent = new AndroidJavaObject("android.content.Intent", actionView, uriObject);
-        unityActivity.Call("startActivity", intent);
-    }
-
 }

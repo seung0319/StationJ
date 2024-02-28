@@ -41,25 +41,26 @@ public class MultipleimageManager : MonoBehaviour
         Debug.Log("ㅇㅇ");
     }
 
-        void InstantiateObjectForTrackedImage(ARTrackedImage trackedImage)
+    void InstantiateObjectForTrackedImage(ARTrackedImage trackedImage)
+    {
+        string imageName = trackedImage.referenceImage.name;
+
+        if (!instantiatedObjects.ContainsKey(imageName))
         {
-            string imageName = trackedImage.referenceImage.name;
+            GameObject prefab = GetPrefabForImage(imageName);
 
-            if (!instantiatedObjects.ContainsKey(imageName))
+            if (prefab != null)
             {
-                GameObject prefab = GetPrefabForImage(imageName);
+                GameObject obj = Instantiate(prefab, trackedImage.transform.position, trackedImage.transform.rotation);
+                obj.transform.SetParent(trackedImage.transform);
 
-                if (prefab != null)
-                {
-                    GameObject obj = Instantiate(prefab, trackedImage.transform.position, trackedImage.transform.rotation);
-                    obj.transform.SetParent(trackedImage.transform);
-                    obj.transform.localPosition = new Vector3(-0.2f, -0.3f, -0.2f);
-                    obj.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
+                obj.transform.localPosition = new Vector3(0f, -0.2f, 0f);
+                    obj.transform.localRotation = Quaternion.Euler(270f, -180f, 0f);
                     ///인식한 이미지의 바로 앞의 위치에 생성되도록 만들어놓았다.
                     instantiatedObjects.Add(imageName, obj);
-                }
             }
         }
+    }
 
         void RemoveObjectForTrackedImage(ARTrackedImage trackedImage)
         {
@@ -86,7 +87,6 @@ public class MultipleimageManager : MonoBehaviour
             else if (imageName == "P3 1")
             {
                 return Resources.Load<GameObject>("Prefab2/P3 1");
-                
             }
             else if (imageName == "P4")
             {
