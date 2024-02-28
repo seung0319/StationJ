@@ -84,6 +84,7 @@ public class DocentImage : MonoBehaviour
     {
         foreach (ARTrackedImage trackedImage in args.added)
         {
+            //이미지가 인식되면 패널 온
             InstantiateObjectForTrackedImage(trackedImage);
             videoPanel.SetActive(true);
         }
@@ -92,11 +93,13 @@ public class DocentImage : MonoBehaviour
         {
             if (trackedImage.trackingState == TrackingState.Limited)
             {
+                //인식 안되면 패널 오프
                 RemoveObjectForTrackedImage(trackedImage);
                 videoPanel.SetActive(false);
             }
             else if (trackedImage.trackingState == TrackingState.Tracking)
             {
+                //트래킹 중일때 패널 온
                 InstantiateObjectForTrackedImage(trackedImage);
                 videoPanel.SetActive(true);
             }
@@ -138,7 +141,7 @@ public class DocentImage : MonoBehaviour
         }
     }
 
-    //track중인 이미지가 track되지 않으면 오브젝트 삭제
+    //track중인 이미지가 track되지 않으면 3d오브젝트 삭제
     void RemoveObjectForTrackedImage(ARTrackedImage trackedImage)
     {
         string imageName = trackedImage.referenceImage.name;
