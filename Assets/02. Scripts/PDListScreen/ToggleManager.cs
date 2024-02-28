@@ -9,7 +9,7 @@ public class ToggleManager : MonoBehaviour
     public Sprite selectedSprite;
     public Sprite originalSprite;
 
-    void Start()
+    void Awake()
     {
         toggle = GetComponent<Toggle>();
         toggle.onValueChanged.AddListener(delegate {
