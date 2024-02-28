@@ -13,14 +13,16 @@ public class RouteManager : MonoBehaviour
     public GameObject parentMap;
     public RectTransform canvasRect; // 변환 대상인 UI Canvas의 RectTransform
     public Image linePrefab;
-    RectTransform lastPoint = null;
     private List<Image> lines = new List<Image>(); // 생성된 라인들의 리스트
     private List<GameObject> paths = new List<GameObject>();
     public Text debugger;
+    public GameObject selectedMarker;
+    public Text durationText;
+    public Text distanceText;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -29,9 +31,13 @@ public class RouteManager : MonoBehaviour
 
     }
 
-    public void OnRouteFindButtonClick()
+    private void OnEnable()
     {
-        GameObject.Find("Selected").transform.Find("selectedMarker").gameObject.SetActive(true);
+        RectTransform lastPoint = null;
+
+        selectedMarker.gameObject.SetActive(true);
+        durationText.text = Mathf.RoundToInt(DataManager.instance.duration / 60000).ToString() + " 분";
+        distanceText.text = DataManager.instance.distance.ToString() + " m";
         foreach (var points in DataManager.instance.paths)
         {
             // 기준 위도, 경도
@@ -65,14 +71,14 @@ public class RouteManager : MonoBehaviour
 
                 lines.Add(lineImage);
             }
-
             lastPoint = path.GetComponent<RectTransform>();
         }
     }
 
     private void OnDisable()
     {
-        foreach(var path in paths)
+        selectedMarker.gameObject.SetActive(false);
+        foreach (var path in paths)
         {
             Destroy(path.gameObject);
         }

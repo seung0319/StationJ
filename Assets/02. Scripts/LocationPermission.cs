@@ -11,7 +11,11 @@ public class LocationPermission : MonoBehaviour
 {
     public GameObject markerPanel;
     public GameObject routeFindPanel;
+    public GameObject categoryPanel;
     public GameObject infoPanel;
+    public GameObject routeManager;
+    public GameObject locationUpdater;
+    public GameObject playerMarker;
 
     public Text debugger;
     public Text debugger2;
@@ -19,6 +23,7 @@ public class LocationPermission : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // MapScreen 씬 시작 시 위치요청
         RequestPermission();
     }
 
@@ -36,24 +41,34 @@ public class LocationPermission : MonoBehaviour
     }
     void LocationInfoAllow()
     {
-        debugger.text = "허용";
+        // 허용됐을 시 액션
+        locationUpdater.SetActive(true);
+        playerMarker.SetActive(true);
     }
     void LocationInfoNotAllow()
     {
-        debugger.text = "허용안함";
+        // 거부 시 아무것도 안함
     }
 
+    public void RouteButtonClick()
+    {
+        RequestPermission2();
+    }
     public async void RequestPermission2()
     {
         AndroidRuntimePermissions.Permission result = await AndroidRuntimePermissions.RequestPermissionAsync("android.permission.ACCESS_FINE_LOCATION");
         if (result == AndroidRuntimePermissions.Permission.Granted)
         {
+            markerPanel.SetActive(false);
+            categoryPanel.SetActive(false);
+            infoPanel.SetActive(false);
+            routeManager.SetActive(true);
             routeFindPanel.SetActive(true);
         }
         else
         {
+            // OpenSettings 전에 UI 띄우기
             AndroidRuntimePermissions.OpenSettings();
-            SceneManager.LoadScene("HomeScreen");
         }
     }
 }

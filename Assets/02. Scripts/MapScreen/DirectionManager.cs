@@ -61,7 +61,6 @@ public class DirectionManager : MonoBehaviour
         // 데이터 로드 성공시
         if (request.isDone)
         {
-            //debugger.text = "Success";
             json = request.downloadHandler.text;
             DataManager.instance.ParseJson(json);
         }
