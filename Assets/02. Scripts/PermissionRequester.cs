@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class PermissionRequester : MonoBehaviour
 {
+    [SerializeField] GameObject locationPanel;
+    [SerializeField] GameObject cameraPanel;
+    
     public void CamaraUseAllow(string NextScene)
     {
         // 카메라/도슨트, 카메라, 저장소 요청
@@ -15,13 +18,13 @@ public class PermissionRequester : MonoBehaviour
 
     public void CamaraUseAllow2(string NextScene)
     {
-        // AR네비게이션, 카메라 요청
+        // 카메라/도슨트, 위치 요청
         RequestPermission2(NextScene);
     }
 
     public void CamaraUseAllow3(string NextScene)
     {
-        // 카메라/도슨트, 위치 요청
+        // AR네비게이션, 카메라 요청
         RequestPermission3(NextScene);
     }
 
@@ -30,12 +33,12 @@ public class PermissionRequester : MonoBehaviour
         AndroidRuntimePermissions.Permission result = await AndroidRuntimePermissions.RequestPermissionAsync("android.permission.CAMERA");
         if (result == AndroidRuntimePermissions.Permission.Denied)
         {
-            AndroidRuntimePermissions.OpenSettings();
+            cameraPanel.SetActive(true);
         }
         AndroidRuntimePermissions.Permission result2 = await AndroidRuntimePermissions.RequestPermissionAsync("android.permission.WRITE_EXTERNAL_STORAGE");
         if (result2 == AndroidRuntimePermissions.Permission.Denied)
         {
-            AndroidRuntimePermissions.OpenSettings();
+            cameraPanel.SetActive(true);
         }
         if (result == AndroidRuntimePermissions.Permission.Granted && result2 == AndroidRuntimePermissions.Permission.Granted)
         {
@@ -47,9 +50,9 @@ public class PermissionRequester : MonoBehaviour
         AndroidRuntimePermissions.Permission result = await AndroidRuntimePermissions.RequestPermissionAsync("android.permission.CAMERA");
         if (result == AndroidRuntimePermissions.Permission.Denied)
         {
-            AndroidRuntimePermissions.OpenSettings();
+            cameraPanel.SetActive(true);
         }
-        if (result == AndroidRuntimePermissions.Permission.Granted)
+        else if (result == AndroidRuntimePermissions.Permission.Granted)
         {
             SceneManager.LoadScene(NextScene);
         }
@@ -69,7 +72,7 @@ public class PermissionRequester : MonoBehaviour
         }
         else
         {
-            AndroidRuntimePermissions.OpenSettings();
+            locationPanel.SetActive(true);
         }
     }
 }
