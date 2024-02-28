@@ -1,10 +1,13 @@
+using Google.XR.ARCoreExtensions;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using UnityEditor.iOS;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class DataManager : MonoBehaviour
@@ -31,13 +34,24 @@ public class DataManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        LoadData();
+        StartCoroutine(LoadData());
     }
 
-    void LoadData()
+    IEnumerator LoadData()
     {
-        TextAsset jsonFile = Resources.Load<TextAsset>("POIInfo");
-        poiList = JsonUtility.FromJson<POIList>(jsonFile.text);
+        var request = Resources.LoadAsync<TextAsset>("POIInfo");
+        yield return request;
+
+        if (request.asset != null)
+        {
+            TextAsset jsonFile = request.asset as TextAsset;
+            poiList = JsonUtility.FromJson<POIList>(jsonFile.text);
+
+            yield return new WaitUntil(() => poiList != null);
+
+            yield return new WaitForSeconds(0.5f);
+            SceneManager.LoadScene("HomeScreen");
+        }
     }
 
     public void ParseJson(string jsonString)
