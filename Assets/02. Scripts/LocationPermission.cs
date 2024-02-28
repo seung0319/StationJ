@@ -1,12 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.Android;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+/// <summary>
+/// MapScreen씬용 위치정보 클래스(Strat가 필요하기 때문에 스크립트 2개로 분리)
+/// </summary>
 public class LocationPermission : MonoBehaviour
 {
     public GameObject markerPanel;
@@ -16,11 +12,7 @@ public class LocationPermission : MonoBehaviour
     public GameObject routeManager;
     public GameObject locationUpdater;
     public GameObject playerMarker;
-
     public GameObject locationPanel;
-
-    public Text debugger;
-    public Text debugger2;
 
     // Start is called before the first frame update
     void Start()
@@ -29,15 +21,19 @@ public class LocationPermission : MonoBehaviour
         RequestPermission();
     }
 
+    //비동기로 사용자에게 위치권한을 요청해 그값을 리턴받아 값에 따른 코드를 실행하는 함수
     public async void RequestPermission()
     {
+        //권한 요청코드
         AndroidRuntimePermissions.Permission result = await AndroidRuntimePermissions.RequestPermissionAsync("android.permission.ACCESS_FINE_LOCATION");
         if (result == AndroidRuntimePermissions.Permission.Granted)
         {
+            //허용했을때
             LocationInfoAllow();
         }
         else
         {
+            //허용하지 않았을때
             LocationInfoNotAllow();
         }
     }
@@ -52,6 +48,8 @@ public class LocationPermission : MonoBehaviour
         // 거부 시 아무것도 안함
     }
 
+    //길안내 버튼을 누른후 허용하지 않음을 눌러도 되는 처음권한요청과 달리 허용하지 않음이면 기능이 작동하지 않아야 하는
+    //함수기 때문에 분리
     public void RouteButtonClick()
     {
         RequestPermission2();
@@ -61,6 +59,7 @@ public class LocationPermission : MonoBehaviour
         AndroidRuntimePermissions.Permission result = await AndroidRuntimePermissions.RequestPermissionAsync("android.permission.ACCESS_FINE_LOCATION");
         if (result == AndroidRuntimePermissions.Permission.Granted)
         {
+            //허용했을때 다음 스텝으로 이동
             markerPanel.SetActive(false);
             categoryPanel.SetActive(false);
             infoPanel.SetActive(false);
@@ -69,7 +68,8 @@ public class LocationPermission : MonoBehaviour
         }
         else
         {
-            // OpenSettings 전에 UI 띄우기
+            //허용하지 않았을때 사용자에게 권한을 수동으로 켜야한다는 팝업(사용자가 한번 거부 누르면 다시 안물어봄)
+            //팝업에 설정에서 뭘 켜야 하며 설정으로 이동버튼 존재
             locationPanel.SetActive(true);
         }
     }
