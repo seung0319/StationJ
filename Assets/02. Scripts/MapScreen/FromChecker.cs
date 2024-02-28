@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FromChecker : MonoBehaviour
 {
@@ -12,6 +13,12 @@ public class FromChecker : MonoBehaviour
     public POIInfoPanelManager displayPOI;
     public GameObject destinationMarker;
     public GameObject selectedMarker;
+    public GameObject locationUpdater;
+    public GameObject playerMarker;
+    public GameObject routeManager;
+    public GameObject routeFindPanel;
+    public Text endPointText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,19 +26,39 @@ public class FromChecker : MonoBehaviour
         {
             //markerPanel.SetActive(false);
             //categoryPanel.SetActive(false);
-            directionManager.gameObject.SetActive(true);
-            displayPOI.SetPanel(DataManager.instance.selectedPoi);
-            infoPanel.SetActive(true);
+            //infoPanel.SetActive(true);
+            //displayPOI.SetPanel(DataManager.instance.selectedPoi);
+
+
             DestinationMarkerMove();
-            
+            directionManager.gameObject.SetActive(true);
+            locationUpdater.SetActive(true);
+            markerPanel.SetActive(false);
+            categoryPanel.SetActive(false);
+            endPointText.text = DataManager.instance.selectedPoi.name;
+
+            StartCoroutine(LoadPath());
+
             DataManager.instance.fromPhodocent = false;
         }
+    }
+
+    IEnumerator LoadPath()
+    {
+        yield return new WaitUntil(() => DataManager.instance.paths != null);
+
+        playerMarker.SetActive(true);
+        routeManager.SetActive(true);
+        routeFindPanel.SetActive(true);
     }
 
     void DestinationMarkerMove()
     {
         double latitude = DataManager.instance.selectedPoi.latitude;
         double longitude = DataManager.instance.selectedPoi.longitude;
+
+        DirectionManager.destLatitude = latitude.ToString();
+        DirectionManager.destLongitude = longitude.ToString();
 
         // 기준 위도, 경도
         double originLatitude = 37.713675f;

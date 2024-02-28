@@ -18,9 +18,12 @@ public class PDListStateSaver : MonoBehaviour
             return;
 
         docentToggle.isOn = docentOn;
-        docentOn = false;
-
         infoPanelManager.SetPanel(statesaverPOI);
+    }
+
+    public void PoiNull()
+    {
+        docentOn = false;
         statesaverPOI = null;
     }
 }

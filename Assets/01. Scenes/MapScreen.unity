@@ -1231,7 +1231,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uACBD\uAE30\uC778\uB825\uAC1C\uBC1C\uC6D0"
+  m_Text: 
 --- !u!222 &273333660
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1444,6 +1444,11 @@ MonoBehaviour:
   displayPOI: {fileID: 1373214398}
   destinationMarker: {fileID: 927927685962403718}
   selectedMarker: {fileID: 0}
+  locationUpdater: {fileID: 1102644554}
+  playerMarker: {fileID: 59508638}
+  routeManager: {fileID: 2133426833}
+  routeFindPanel: {fileID: 1745484605}
+  endPointText: {fileID: 1552435787}
 --- !u!1 &363220881
 GameObject:
   m_ObjectHideFlags: 0
@@ -2499,6 +2504,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1376348274}
+        m_TargetAssemblyTypeName: MoveScene, Assembly-CSharp
+        m_MethodName: MapScreenChangeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1745484605}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -2539,18 +2556,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1376348274}
-        m_TargetAssemblyTypeName: MoveScene, Assembly-CSharp
-        m_MethodName: MapScreenChangeScene
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2668,8 +2673,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uACBD\uAE30\uB3C4 \uD30C\uC8FC\uC2DC \uC640\uC11D\uC21C\uD658\uB85C 172\uBC88\uC9C0
-    16(\uB3D9\uD328\uB3D9 66\uBC88\uC9C0)"
+  m_Text: 
 --- !u!222 &904371897
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3275,10 +3279,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB300\uD55C\uC0C1\uACF5\uD68C\uC758\uC18C \uC5D0\uC11C \uC6B4\uC601\uD558\uB294
-    \uC778\uB825\uAC1C\uBC1C\uC6D0 \uC785\uB2C8\uB2E4.\n\uBB50 \uB300\uCDA9 \uC774\uB7F0
-    \uB0B4\uC6A9\uB4E4\uC774 \uC801\uD600 \uC788\uB294 \uAC70 \uC785\uB2C8\uB2E4.
-    \uD5C8\uD5C8\n\u3147\n\u3147\n\u3147\n\u3147\n\u3147\n\u3147\n\u3147\n\u3147"
+  m_Text: 
 --- !u!222 &1210918444
 CanvasRenderer:
   m_ObjectHideFlags: 0

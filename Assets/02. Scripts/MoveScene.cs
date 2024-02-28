@@ -15,6 +15,7 @@ public class MoveScene : MonoBehaviour
         if (PDListStateSaver.statesaverPOI != null)
         {
             SceneManager.LoadScene("PDListScreen");
+            DataManager.instance.paths = null;
         }
     }
 }
