@@ -547,7 +547,7 @@ GameObject:
   - component: {fileID: 254915280}
   - component: {fileID: 254915279}
   - component: {fileID: 254915278}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: resultpanelback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1165,7 +1165,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1073741879
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3458,7 +3458,7 @@ GameObject:
   - component: {fileID: 1716603717}
   - component: {fileID: 1716603716}
   - component: {fileID: 1716603715}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: VideoPanelBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3780,7 +3780,7 @@ GameObject:
   - component: {fileID: 1947681170}
   - component: {fileID: 1947681169}
   - component: {fileID: 1947681168}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: ChoosePanelback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
