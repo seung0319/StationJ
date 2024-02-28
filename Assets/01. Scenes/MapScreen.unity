@@ -567,7 +567,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &59508639
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1402,6 +1402,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 350574409}
+  - component: {fileID: 350574410}
   m_Layer: 0
   m_Name: FromChecker
   m_TagString: Untagged
@@ -1424,6 +1425,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &350574410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350574408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dcc045a671d0e84685e220862379c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  markerPanel: {fileID: 1115852141}
+  categoryPanel: {fileID: 919405508}
+  directionManager: {fileID: 2145266858}
+  infoPanel: {fileID: 2000743659}
+  displayPOI: {fileID: 1373214398}
+  destinationMarker: {fileID: 927927685962403718}
+  selectedMarker: {fileID: 0}
 --- !u!1 &363220881
 GameObject:
   m_ObjectHideFlags: 0
@@ -1831,6 +1851,9 @@ MonoBehaviour:
   hospitalSprite: {fileID: 21300000, guid: 0529498bbaa16ce4c95612364f850f30, type: 3}
   photozonSprite: {fileID: 21300000, guid: c842fa1488f19a4499cb2e7cfe1fc0b8, type: 3}
   docentSprite: {fileID: 21300000, guid: bf532d60b0b3f0845bfd98e526a56078, type: 3}
+  publicParent: {fileID: 44456707}
+  hospitalParent: {fileID: 440505634}
+  photoParent: {fileID: 1762441088}
 --- !u!4 &587929579
 Transform:
   m_ObjectHideFlags: 0
@@ -6209,6 +6232,9 @@ MonoBehaviour:
   startLatitude: 37.713675
   startLongitude: 126.743572
   option: traoptimal
+  OnCompleteRead:
+    m_PersistentCalls:
+      m_Calls: []
   debugger: {fileID: 1920381984}
 --- !u!224 &126176678722209983
 RectTransform:

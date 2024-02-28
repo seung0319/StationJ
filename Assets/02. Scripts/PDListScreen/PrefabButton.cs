@@ -26,6 +26,8 @@ public class PrefabButton : MonoBehaviour
     void ButtonSelected()
     {
         DataManager.instance.selectedPoi = poiData.poi;
+        DirectionManager.destLatitude = poiData.poi.latitude.ToString();
+        DirectionManager.destLongitude = poiData.poi.longitude.ToString();
         PDListStateSaver.statesaverPOI = poiData.poi;
         if(poiData.poi.type == "µµ½¼Æ®")
             PDListStateSaver.docentOn = true;
