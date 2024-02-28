@@ -27,22 +27,31 @@ public class DataManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
+        //POI데이터를 로드 하기 위한 코루틴 실행
         StartCoroutine(LoadData());
     }
 
     IEnumerator LoadData()
     {
+        //Resource폴더에서 "POIInfo"라는 파일의 텍스트 에셋을 로드
         var request = Resources.LoadAsync<TextAsset>("POIInfo");
+        //로드완료를 반환할때까지 대기
         yield return request;
 
         if (request.asset != null)
         {
+            //request.asset을 TextAsset으로 캐스팅 할수 있다면 jsonFile에 초기화
             TextAsset jsonFile = request.asset as TextAsset;
+            //제이슨 파일을 파싱하여 poiList에 초기화
             poiList = JsonUtility.FromJson<POIList>(jsonFile.text);
 
+            //초기화 완료까지 대기
             yield return new WaitUntil(() => poiList != null);
 
+            //완료후 혹시 모를상황에 대비 0.5초 딜레이
             yield return new WaitForSeconds(0.5f);
+
+            //로딩완료 판정으로 메인씬(HomeScreen) 이동
             SceneManager.LoadScene("HomeScreen");
         }
     }
