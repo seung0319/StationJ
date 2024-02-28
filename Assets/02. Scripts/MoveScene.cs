@@ -9,4 +9,12 @@ public class MoveScene : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void MapScreenChangeScene()
+    {
+        if (PDListStateSaver.statesaverPOI != null)
+        {
+            SceneManager.LoadScene("PDListScreen");
+        }
+    }
 }
