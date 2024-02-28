@@ -115,12 +115,14 @@ public class PathPoiCreator : MonoBehaviour
                     GameObject L = Instantiate(LO,
                         new Vector3(pathObjects[i].x, 1.6f, pathObjects[i].z), Quaternion.identity);
                     L.transform.LookAt(firstPoint);
+                    L.GetComponent<RemainingDistance>().PlayerTransformSet(playerTransform);
                 }
                 else if (cross.y < 0)
                 {
                     GameObject R = Instantiate(RO,
                         new Vector3(pathObjects[i].x, 1.6f, pathObjects[i].z), Quaternion.identity);
                     R.transform.LookAt(firstPoint);
+                    R.GetComponent<RemainingDistance>().PlayerTransformSet(playerTransform);
                 }
             }
 
