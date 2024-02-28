@@ -21,10 +21,13 @@ public class PrefabButton : MonoBehaviour
     {
         panel.SetPanel(poiData.GetData());
         ButtonSelected();
-        
+
     }
     void ButtonSelected()
     {
         DataManager.instance.selectedPoi = poiData.poi;
+        PDListStateSaver.statesaverPOI = poiData.poi;
+        if(poiData.poi.type == "µµ½¼Æ®")
+            PDListStateSaver.docentOn = true;
     }
 }
