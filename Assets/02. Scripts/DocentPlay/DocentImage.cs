@@ -43,6 +43,7 @@ public class DocentImage : MonoBehaviour
         // *오디오파트*
         timelineSlider.value = 0f;
         replayButton.onClick.AddListener(ReplayAudio);
+        audioSource.Stop();
 
         // *애니메이션 파트*
         animator = GetComponent<Animator>();
@@ -123,7 +124,7 @@ public class DocentImage : MonoBehaviour
                 obj.transform.SetParent(trackedImage.transform);
 
                 //좌표 수정
-                obj.transform.localPosition = new Vector3(-0.2f, -0.6f, -0.2f);
+                obj.transform.localPosition = new Vector3(0f, -0.2f, 0f);
                 obj.transform.localRotation = Quaternion.Euler(-90f, 180f, 0f);
                 instantiatedObjects.Add(imageName, obj);
 
