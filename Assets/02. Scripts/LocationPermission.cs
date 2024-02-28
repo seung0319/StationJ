@@ -17,6 +17,8 @@ public class LocationPermission : MonoBehaviour
     public GameObject locationUpdater;
     public GameObject playerMarker;
 
+    public GameObject locationPanel;
+
     public Text debugger;
     public Text debugger2;
 
@@ -68,7 +70,7 @@ public class LocationPermission : MonoBehaviour
         else
         {
             // OpenSettings Àü¿¡ UI ¶ç¿ì±â
-            AndroidRuntimePermissions.OpenSettings();
+            locationPanel.SetActive(true);
         }
     }
 }
