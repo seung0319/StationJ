@@ -2318,7 +2318,7 @@ GameObject:
   - component: {fileID: 1186290245}
   - component: {fileID: 1186290244}
   m_Layer: 5
-  m_Name: "\uCE74\uBA54\uB77C \uD31D\uC5C5"
+  m_Name: CameraPermissionPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5845,7 +5845,7 @@ GameObject:
   - component: {fileID: 6861964117990436846}
   - component: {fileID: 3243825043889492022}
   m_Layer: 5
-  m_Name: "\uC704\uCE58 \uD31D\uC5C5"
+  m_Name: LocationPermissionPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

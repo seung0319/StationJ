@@ -13,6 +13,7 @@ public class DataManager : MonoBehaviour
     public int duration;
 
     bool isStartCoroutine = false;
+    public bool fromPhodocent = false;
 
     void Awake()
     {

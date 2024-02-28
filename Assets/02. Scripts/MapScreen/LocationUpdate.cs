@@ -12,7 +12,7 @@ public class LocationUpdate : MonoBehaviour
     public Text deb2;
     bool isFirstLocationUpdate = true;
 
-    void Start()
+    void OnEnable()
     {
         StartCoroutine(UpdateLocation());
     }

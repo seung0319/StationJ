@@ -89,7 +89,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 20
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &3894787048472830490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 5527892645572984236}
   - component: {fileID: 1554001455745744522}
   m_Layer: 5
-  m_Name: "\uBD84\uB958 \uC544\uC774\uCF58 IMG"
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 7881195342046044501}
   - component: {fileID: 6376725718320237892}
   m_Layer: 5
-  m_Name: "\uC0C1\uAC00 / \uACF5\uACF5\uC7A5\uC18C \uC815\uBCF4\uD31D\uC5C5"
+  m_Name: PoiInfoPopUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 7997713207354536925}
   - component: {fileID: 5366072609055927661}
   m_Layer: 5
-  m_Name: "\uCFE0\uD3F0\uBC1B\uAE30 IMG"
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -544,7 +544,7 @@ GameObject:
   - component: {fileID: 1226594341403044870}
   - component: {fileID: 2585527717401552811}
   m_Layer: 5
-  m_Name: "\uCFE0\uD3F0\uBC1B\uAE30 Text"
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 3938417720871977431}
   - component: {fileID: 1278358051411508382}
   m_Layer: 5
-  m_Name: "\uCFE0\uD3F0\uBC1B\uAE30 BT"
+  m_Name: CouponBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

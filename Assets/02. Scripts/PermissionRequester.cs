@@ -62,6 +62,7 @@ public class PermissionRequester : MonoBehaviour
         AndroidRuntimePermissions.Permission result = await AndroidRuntimePermissions.RequestPermissionAsync("android.permission.ACCESS_FINE_LOCATION");
         if (result == AndroidRuntimePermissions.Permission.Granted)
         {
+            DataManager.instance.fromPhodocent = true;
             //허용시 씬 이동
             SceneManager.LoadScene(NextScene);
         }

@@ -14,6 +14,7 @@ public class LocationPermission : MonoBehaviour
     public GameObject playerMarker;
     public GameObject locationPanel;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +61,8 @@ public class LocationPermission : MonoBehaviour
         if (result == AndroidRuntimePermissions.Permission.Granted)
         {
             //허용했을때 다음 스텝으로 이동
+            locationUpdater.SetActive(true);
+            playerMarker.SetActive(true);
             markerPanel.SetActive(false);
             categoryPanel.SetActive(false);
             infoPanel.SetActive(false);
@@ -71,6 +74,16 @@ public class LocationPermission : MonoBehaviour
             //허용하지 않았을때 사용자에게 권한을 수동으로 켜야한다는 팝업(사용자가 한번 거부 누르면 다시 안물어봄)
             //팝업에 설정에서 뭘 켜야 하며 설정으로 이동버튼 존재
             locationPanel.SetActive(true);
+        }
+    }
+
+    public void BackButtonCheck()
+    {
+        if (AndroidRuntimePermissions.CheckPermission("android.permission.ACCESS_FINE_LOCATION"))
+        {
+            locationPanel.SetActive(false);
+            locationUpdater.SetActive(true);
+            playerMarker.SetActive(true);
         }
     }
 }
