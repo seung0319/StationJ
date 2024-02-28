@@ -1,11 +1,13 @@
+using Google.XR.ARCoreExtensions;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Transactions;
+using UnityEditor.iOS;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class DataManager : MonoBehaviour
@@ -32,13 +34,24 @@ public class DataManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        LoadData();
+        StartCoroutine(LoadData());
     }
 
-    void LoadData()
+    IEnumerator LoadData()
     {
-        TextAsset jsonFile = Resources.Load<TextAsset>("POIInfo");
-        poiList = JsonUtility.FromJson<POIList>(jsonFile.text);
+        var request = Resources.LoadAsync<TextAsset>("POIInfo");
+        yield return request;
+
+        if (request.asset != null)
+        {
+            TextAsset jsonFile = request.asset as TextAsset;
+            poiList = JsonUtility.FromJson<POIList>(jsonFile.text);
+
+            yield return new WaitUntil(() => poiList != null);
+
+            yield return new WaitForSeconds(0.5f);
+            SceneManager.LoadScene("HomeScreen");
+        }
     }
 
     public void ParseJson(string jsonString)
@@ -100,19 +113,18 @@ public class DataManager : MonoBehaviour
     {
         double originLatitude = 37.713675f;
         double originLongitude = 126.743572f;
-        double originX = 0;
-        double originY = 0;
 
-        double targetLatitude = 37.714073f;
-        double targetLongitude = 126.741178f;
-        double targetX = -1418;
-        double targetY = 436;
+        double targetLatitude = 37.712223f;
+        double targetLongitude = 126.744613f;
+        double targetX = 224;
+        double targetY = -1138;
 
-        double xRatio = (targetX - originX) / (targetLongitude - originLongitude);
-        double yRatio = (targetY - originY) / (targetLatitude - originLatitude);
+        double xRatio = targetX / (targetLongitude - originLongitude);
+        double yRatio = targetY / (targetLatitude - originLatitude);
 
-        double x = originX + (longitude - originLongitude) * xRatio;
-        double y = originY + (latitude - originLatitude) * yRatio;
+
+        double x = (longitude - originLongitude) * xRatio;
+        double y = (latitude - originLatitude) * yRatio;
 
         return new Vector2((float)x, (float)y);
     }
