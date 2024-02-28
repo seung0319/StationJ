@@ -8,8 +8,6 @@ public class PrefabButton : MonoBehaviour
     public POIData poiData;
     public InfoPanelManager panel;
 
-
-
     private void Start()
     {
         panel = FindObjectOfType<InfoPanelManager>();

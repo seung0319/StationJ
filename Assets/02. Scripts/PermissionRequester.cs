@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -64,6 +65,9 @@ public class PermissionRequester : MonoBehaviour
         {
             DataManager.instance.fromPhodocent = true;
             //허용시 씬 이동
+            if (Input.location.lastData.latitude == 0)
+                StartCoroutine(UpdateLocation());
+
             SceneManager.LoadScene(NextScene);
         }
         else
@@ -73,8 +77,18 @@ public class PermissionRequester : MonoBehaviour
         }
     }
 
-    //MapScreen씬에서 AR카메라 만을 사용하기 위한 권한검사 함수
-    public async void RequestPermission3(string NextScene)
+    IEnumerator UpdateLocation()
+    {
+        // 위치 서비스를 시작
+        Input.location.Start(1, 1);
+
+        yield return new WaitForSeconds(1);
+
+        yield return new WaitUntil(() => Input.location.lastData.latitude != 0);
+    }
+
+        //MapScreen씬에서 AR카메라 만을 사용하기 위한 권한검사 함수
+        public async void RequestPermission3(string NextScene)
     {
         //카메라 권한 검사
         AndroidRuntimePermissions.Permission result = await AndroidRuntimePermissions.RequestPermissionAsync("android.permission.CAMERA");
