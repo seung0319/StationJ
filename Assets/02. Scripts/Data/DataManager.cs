@@ -1,14 +1,7 @@
-using Google.XR.ARCoreExtensions;
 using Newtonsoft.Json.Linq;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using UnityEditor.iOS;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class DataManager : MonoBehaviour
 {
@@ -84,7 +77,7 @@ public class DataManager : MonoBehaviour
 
     IEnumerator LocationInfoGet()
     {
-        Input.location.Start(1,1);
+        Input.location.Start(1, 1);
 
         YieldInstruction delay = new WaitForSeconds(1);
 
