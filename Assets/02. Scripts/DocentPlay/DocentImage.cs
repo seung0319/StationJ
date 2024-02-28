@@ -1,152 +1,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Video;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
-
+/// <summary>
+/// ar카메라를 이용해 이미지를 촬영하여 도슨트 이미지를 인식하고 
+/// 타임라인 및 버튼이 있는 도슨트 플레이 패널이 켜지는 동시에
+/// 이미지의 이름에 맞는 오디오 클립을 재생하고 재생시간에 맞는 타임라인이 작동하며
+/// 이름에 맞는 3d캐릭터가 등장해 움직여 설명한다.
+/// 
+/// 오디오가 끝나면 애니메이션이 정지하고 리플레이 버튼으로 오디오를 다시 재생할 수 있으며
+/// 이때 애니메이션은 리셋되며 오디오가 플레이 중임에도 리플레이 버튼을 누르면
+/// 오디오 및 캐릭터가 처음부터 다시 시작된다.
+/// 
+/// 이미지 트래킹의 범위에 따라 패널의 온오프가 설정되고 3d오브젝트 또한 등장 및 사라진다.
+/// </summary>
 public class DocentImage : MonoBehaviour
 {
-    //베이스 코드
-    /*public GameObject videoPanel;
-    public ARTrackedImageManager trackedImageManager;
-    private Dictionary<string, GameObject> instantiatedObjects = new Dictionary<string, GameObject>();
 
-    void Awake()
-    {
-        trackedImageManager = GetComponent<ARTrackedImageManager>();
-        trackedImageManager.trackedImagesChanged += OnTrackedImagesEvent;
-    }
-
-    void Start()
-    {
-        videoPanel.SetActive(false);
-    }
-
-    void OnTrackedImagesEvent(ARTrackedImagesChangedEventArgs args)
-    {
-        foreach (ARTrackedImage trackedImage in args.added)
-        {
-            InstantiateObjectForTrackedImage(trackedImage);
-            videoPanel.SetActive(true);
-        }
-
-        foreach (ARTrackedImage trackedImage in args.updated)
-        {
-            if (trackedImage.trackingState == TrackingState.Limited)
-            {
-                RemoveObjectForTrackedImage(trackedImage);
-            }
-            else if (trackedImage.trackingState == TrackingState.Tracking)
-            {
-                InstantiateObjectForTrackedImage(trackedImage);
-            }
-        }
-    }
-
-    void InstantiateObjectForTrackedImage(ARTrackedImage trackedImage)
-    {
-        string imageName = trackedImage.referenceImage.name;
-
-        if (!instantiatedObjects.ContainsKey(imageName))
-        {
-            GameObject prefab = GetPrefabForImage(imageName);
-
-            if (prefab != null)
-            {
-                GameObject obj = Instantiate(prefab, trackedImage.transform.position, trackedImage.transform.rotation);
-                obj.transform.SetParent(trackedImage.transform);
-                obj.transform.localPosition = new Vector3(-0.2f, -0.3f, -0.2f);
-                obj.transform.localRotation = Quaternion.Euler(-90f, 180f, 0f);
-                instantiatedObjects.Add(imageName, obj);
-
-                // *오디오파트* 오디오 클립을 재생하는 코드 추가
-                AudioClip audioClip = GetAudioClipForImage(imageName);
-                if (audioClip != null)
-                {
-                    AudioSource audioSource = obj.AddComponent<AudioSource>();
-                    audioSource.clip = audioClip;
-                    audioSource.Play();
-                }
-            }
-        }
-    }
-
-    void RemoveObjectForTrackedImage(ARTrackedImage trackedImage)
-    {
-        string imageName = trackedImage.referenceImage.name;
-
-        if (instantiatedObjects.ContainsKey(imageName))
-        {
-            GameObject obj = instantiatedObjects[imageName];
-            Destroy(obj);
-            instantiatedObjects.Remove(imageName);
-        }
-    }
-
-    private GameObject GetPrefabForImage(string imageName)
-    {
-        if (imageName == "숭의목공예")
-        {
-            return Resources.Load<GameObject>("Prefab/숭의목공예");
-        }
-        else if (imageName == "영스퀘어")
-        {
-            return Resources.Load<GameObject>("Prefab/영스퀘어");
-        }
-        else
-        {
-            return null; // 이미지 이름에 해당하는 프리팹이 없는 경우 null을 반환합니다.
-        }
-    }
-    // *오디오 파트*
-    //인식한 이미지에 맞는 오디오 재생
-    private AudioClip GetAudioClipForImage(string imageName)
-    {
-        if (imageName == "숭의목공예")
-        {
-            return Resources.Load<AudioClip>("Sounds/숭의목공예");
-        }
-        else if (imageName == "영스퀘어")
-        {
-            return Resources.Load<AudioClip>("Sounds/영스퀘어");
-        }
-        else
-        {
-            return null; // 이미지 이름에 해당하는 오디오 클립이 없는 경우 null을 반환합니다.
-        }
-    }
-
-    //이벤트 종료
-    public void OnBackBtnClickedEvent()
-    {
-        trackedImageManager.trackedImagesChanged -= OnTrackedImagesEvent;
-    }*/
-    //베이스 코드[건들면 안됨]
-
-
-
+    // *이미지 인식 파트*
     public GameObject videoPanel;
     public ARTrackedImageManager trackedImageManager;
     private Dictionary<string, GameObject> instantiatedObjects = new Dictionary<string, GameObject>();
-    
+
     // *오디오파트*
     public Slider timelineSlider;
     public Button replayButton;
+    AudioSource audioSource;
+
+    // *애니메이션 파트*
+    public Animator animator;
 
     void Awake()
     {
         trackedImageManager = GetComponent<ARTrackedImageManager>();
         trackedImageManager.trackedImagesChanged += OnTrackedImagesEvent;
+        videoPanel.SetActive(false);
     }
 
     void Start()
     {
-        videoPanel.SetActive(false);
-
         // *오디오파트*
         timelineSlider.value = 0f;
         replayButton.onClick.AddListener(ReplayAudio);
+
+        // *애니메이션 파트*
+        animator = GetComponent<Animator>();
     }
 
     // *오디오파트*
@@ -154,8 +53,9 @@ public class DocentImage : MonoBehaviour
     {
         // 슬라이더 값에 따라 타임라인을 조정합니다.
         float timelineValue = timelineSlider.value;
+
         // 타임라인 조정에 필요한 작업 수행
-        if(audioSource != null)
+        if (audioSource != null)
         {
             timelineSlider.value = audioSource.time;
 
@@ -164,182 +64,22 @@ public class DocentImage : MonoBehaviour
             {
                 timelineSlider.value = timelineSlider.maxValue;
             }
-        }
-            timelineSlider.value = audioSource.time;
-    }
 
-    void OnTrackedImagesEvent(ARTrackedImagesChangedEventArgs args)
-    {
-        foreach (ARTrackedImage trackedImage in args.added)
-        {
-            InstantiateObjectForTrackedImage(trackedImage);
-            videoPanel.SetActive(true);
-        }
-
-        foreach (ARTrackedImage trackedImage in args.updated)
-        {
-            if (trackedImage.trackingState == TrackingState.Limited)
+            // *애니메이션 파트*
+            // 오디오가 시작되면 "IsTalk" 애니메이션 파라미터를 false
+            if (!audioSource.isPlaying)
             {
-                RemoveObjectForTrackedImage(trackedImage);
+                animator.SetBool("IsTalk", false);
             }
-            else if (trackedImage.trackingState == TrackingState.Tracking)
+            // 오디오가 멈추면 "IsTalk" 애니메이션 파라미터를 true
+            else
             {
-                InstantiateObjectForTrackedImage(trackedImage);
-            }
-        }
-    }
-    AudioSource audioSource;
-    void InstantiateObjectForTrackedImage(ARTrackedImage trackedImage)
-    {
-        string imageName = trackedImage.referenceImage.name;
-
-        if (!instantiatedObjects.ContainsKey(imageName))
-        {
-            GameObject prefab = GetPrefabForImage(imageName);
-
-            if (prefab != null)
-            {
-                GameObject obj = Instantiate(prefab, trackedImage.transform.position, trackedImage.transform.rotation);
-                obj.transform.SetParent(trackedImage.transform);
-                obj.transform.localPosition = new Vector3(-0.2f, -0.3f, -0.2f);
-                obj.transform.localRotation = Quaternion.Euler(-90f, 180f, 0f);
-                instantiatedObjects.Add(imageName, obj);
-
-                // *오디오파트* 오디오 클립을 재생하는 코드 추가
-                AudioClip audioClip = GetAudioClipForImage(imageName);
-                if (audioClip != null)
-                {
-                    audioSource = obj.AddComponent<AudioSource>();
-                    audioSource.clip = audioClip;
-                    audioSource.Play();
-
-                    // 타임라인 슬라이더의 최대값 설정
-                    timelineSlider.maxValue = audioClip.length;
-                }
+                animator.SetBool("IsTalk", true);
             }
         }
     }
 
-    void RemoveObjectForTrackedImage(ARTrackedImage trackedImage)
-    {
-        string imageName = trackedImage.referenceImage.name;
-
-        if (instantiatedObjects.ContainsKey(imageName))
-        {
-            GameObject obj = instantiatedObjects[imageName];
-            Destroy(obj);
-            instantiatedObjects.Remove(imageName);
-        }
-    }
-
-    private GameObject GetPrefabForImage(string imageName)
-    {
-        if (imageName == "숭의목공예")
-        {
-            return Resources.Load<GameObject>("Prefab/숭의목공예");
-        }
-        else if (imageName == "영스퀘어")
-        {
-            return Resources.Load<GameObject>("Prefab/영스퀘어");
-        }
-        else
-        {
-            return null; // 이미지 이름에 해당하는 프리팹이 없는 경우 null을 반환합니다.
-        }
-    }
-    // *오디오 파트*
-    //인식한 이미지에 맞는 오디오 재생
-    private AudioClip GetAudioClipForImage(string imageName)
-    {
-        if (imageName == "숭의목공예")
-        {
-            return Resources.Load<AudioClip>("Sounds/숭의목공예");
-        }
-        else if (imageName == "영스퀘어")
-        {
-            return Resources.Load<AudioClip>("Sounds/영스퀘어");
-        }
-        else
-        {
-            return null; // 이미지 이름에 해당하는 오디오 클립이 없는 경우 null을 반환합니다.
-        }
-    }
-    public void ReplayAudio()
-    {
-        audioSource.Stop();
-        audioSource.Play();
-        timelineSlider.value = 0f;
-    }
-
-    //이벤트 종료
-    public void OnBackBtnClickedEvent()
-    {
-        trackedImageManager.trackedImagesChanged -= OnTrackedImagesEvent;
-    }
-
-
-
-    /*public GameObject videoPanel;
-    public ARTrackedImageManager trackedImageManager;
-    private Dictionary<string, GameObject> instantiatedObjects = new Dictionary<string, GameObject>();
-
-    // [오디오 파트]
-    public AudioSource audioSource;
-    public Button replayButton;
-    private bool isPaused = true;
-    public Slider timelineSlider;
-
-    private float audioLength = 0f;
-    // [오디오 파트 끝]
-
-    void Awake()
-    {
-        trackedImageManager = GetComponent<ARTrackedImageManager>();
-        trackedImageManager.trackedImagesChanged += OnTrackedImagesEvent;
-
-        // [오디오 파트]
-        // 타임라인 슬라이더 초기값 설정
-        timelineSlider.minValue = 0f;
-        timelineSlider.maxValue = audioSource.clip.length;
-        // [오디오 파트 끝]
-    }
-
-    void Start()
-    {
-        videoPanel.SetActive(false);
-
-        // [오디오 파트]
-        replayButton.onClick.AddListener(ReplayAudio);
-        // [오디오 파트 끝]
-    }
-
-    // [오디오 파트]
-    void Update()
-    {
-        //if (Input.touchCount > 0)
-        //{
-        //    Touch touch = Input.GetTouch(0);
-        //    if (touch.phase == TouchPhase.Began)
-        //    {
-        //        isPaused = !isPaused;
-        //        if (isPaused)
-        //        {
-        //            audioSource.Pause();
-        //        }
-        //        else
-        //        {
-        //            audioSource.Play();
-        //        }
-        //    }
-        //}
-
-        if (!isPaused)
-        {
-            timelineSlider.value = audioSource.time;
-        }
-    }
-    // [오디오 파트 끝]
-
+    // *이미지 인식 파트*
     void OnTrackedImagesEvent(ARTrackedImagesChangedEventArgs args)
     {
         foreach (ARTrackedImage trackedImage in args.added)
@@ -367,36 +107,38 @@ public class DocentImage : MonoBehaviour
     {
         string imageName = trackedImage.referenceImage.name;
 
+        //이미지 이름과 비교해 각각 맞는 프리팹 생성
         if (!instantiatedObjects.ContainsKey(imageName))
         {
             GameObject prefab = GetPrefabForImage(imageName);
-
+            
             if (prefab != null)
             {
                 GameObject obj = Instantiate(prefab, trackedImage.transform.position, trackedImage.transform.rotation);
+                animator = obj.GetComponent<Animator>();
                 obj.transform.SetParent(trackedImage.transform);
-                obj.transform.localPosition = new Vector3(-0.2f, -0.3f, -0.2f);
+
+                //좌표 수정
+                obj.transform.localPosition = new Vector3(-0.2f, -0.6f, -0.2f);
                 obj.transform.localRotation = Quaternion.Euler(-90f, 180f, 0f);
                 instantiatedObjects.Add(imageName, obj);
 
-                // [오디오 파트]
+                // *오디오파트* 오디오 클립을 재생하는 코드 추가
                 AudioClip audioClip = GetAudioClipForImage(imageName);
                 if (audioClip != null)
                 {
+                    audioSource = obj.AddComponent<AudioSource>();
                     audioSource.clip = audioClip;
-
-                    timelineSlider.value = 0f;
-                    //timelineSlider.minValue = 0f;
-                    timelineSlider.maxValue = audioClip.length;
-                    audioLength = audioClip.length;
-
                     audioSource.Play();
+
+                    // 타임라인 슬라이더의 최대값 설정
+                    timelineSlider.maxValue = audioClip.length;
                 }
-                // [오디오 파트 끝]
             }
         }
     }
 
+    //track중인 이미지가 track되지 않으면 오브젝트 삭제
     void RemoveObjectForTrackedImage(ARTrackedImage trackedImage)
     {
         string imageName = trackedImage.referenceImage.name;
@@ -408,7 +150,7 @@ public class DocentImage : MonoBehaviour
             instantiatedObjects.Remove(imageName);
         }
     }
-
+    // 인식한 이미지 이름과 맞는 프리팹 연결
     private GameObject GetPrefabForImage(string imageName)
     {
         if (imageName == "숭의목공예")
@@ -421,11 +163,12 @@ public class DocentImage : MonoBehaviour
         }
         else
         {
-            return null;
+            return null; // 이미지 이름에 해당하는 프리팹이 없는 경우 null을 반환합니다.
         }
     }
 
-    // [오디오 파트]
+    // *오디오 파트*
+    //인식한 이미지에 맞는 오디오 재생
     private AudioClip GetAudioClipForImage(string imageName)
     {
         if (imageName == "숭의목공예")
@@ -438,22 +181,25 @@ public class DocentImage : MonoBehaviour
         }
         else
         {
-            return null;
+            return null; // 이미지 이름에 해당하는 오디오 클립이 없는 경우 null을 반환합니다.
         }
     }
 
+    //Replay버튼 누르면 처음부터 다시 재생
     public void ReplayAudio()
     {
         audioSource.Stop();
         audioSource.Play();
-        isPaused = false;
         timelineSlider.value = 0f;
-    }
-    // [오디오 파트 끝]
 
+        // * 애니메이션 파트*
+        animator.Rebind();
+    }
+
+    //이벤트 종료시
     public void OnBackBtnClickedEvent()
     {
         trackedImageManager.trackedImagesChanged -= OnTrackedImagesEvent;
-    }*/
+    }
 }
 
