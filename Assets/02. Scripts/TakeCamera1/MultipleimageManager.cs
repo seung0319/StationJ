@@ -25,7 +25,6 @@ public class MultipleimageManager : MonoBehaviour
         foreach (ARTrackedImage trackedImage in arg.added)
         {
             InstantiateObjectForTrackedImage(trackedImage);
-
         }
 
         foreach (ARTrackedImage trackedImage in arg.updated)
@@ -54,12 +53,24 @@ public class MultipleimageManager : MonoBehaviour
             if (prefab != null)
             {
                 GameObject obj = Instantiate(prefab, trackedImage.transform.position, trackedImage.transform.rotation);
-                obj.transform.SetParent(trackedImage.transform);
+                if (imageName != "P2")
+                {
+                    obj.transform.SetParent(trackedImage.transform);
 
-                obj.transform.localPosition = new Vector3(0f, -0.2f, 0f);
-                obj.transform.localRotation = Quaternion.Euler(270f, -180f, 0f);
-                ///인식한 이미지의 바로 앞의 위치에 생성되도록 만들어놓았다.
-                instantiatedObjects.Add(imageName, obj);
+                    obj.transform.localPosition = new Vector3(0f, -0.2f, 0f);
+                    obj.transform.localRotation = Quaternion.Euler(270f, -180f, 0f);
+                    ///인식한 이미지의 바로 앞의 위치에 생성되도록 만들어놓았다.
+                    instantiatedObjects.Add(imageName, obj);
+                }
+                else
+                {
+                    obj.transform.SetParent(trackedImage.transform);
+
+                    obj.transform.localPosition = new Vector3(0f, -0.2f, -0.1f);
+                    obj.transform.localRotation = Quaternion.Euler(0, 90, 0f);
+                    ///인식한 이미지의 바로 앞의 위치에 생성되도록 만들어놓았다.
+                    instantiatedObjects.Add(imageName, obj);
+                }
             }
         }
     }
