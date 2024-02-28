@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
@@ -21,6 +22,8 @@ public class DirectionManager : MonoBehaviour
 
     public static string json = "";
 
+    public UnityEvent OnCompleteRead;
+
     public Text debugger;
 
     private void Start()
@@ -29,19 +32,19 @@ public class DirectionManager : MonoBehaviour
     }
     private void OnEnable()
     {
+        print("HELLO");
         if (Input.location.isEnabledByUser)
         {
             startLatitude = Input.location.lastData.latitude.ToString();
             startLongitude = Input.location.lastData.longitude.ToString();
         }
         StartCoroutine(OnEnableCo());
-        // 위치 서비스가 활성화 되어 있는지 확인
     }
 
     IEnumerator OnEnableCo()
     {
         string apiRequestURL = $"{baseUrl}?start={startLongitude},{startLatitude}&goal={destLongitude},{destLatitude}&option={option}";
-
+        print(startLatitude + " " + startLongitude + " , " + destLatitude + " " + destLongitude);
         UnityWebRequest request = UnityWebRequest.Get(apiRequestURL);
         request.SetRequestHeader("X-NCP-APIGW-API-KEY-ID", clientID);
         request.SetRequestHeader("X-NCP-APIGW-API-KEY", clientSecret);
@@ -50,10 +53,13 @@ public class DirectionManager : MonoBehaviour
         switch (request.result)
         {
             case UnityWebRequest.Result.ConnectionError:
+                print("CE");
                 yield break;
             case UnityWebRequest.Result.ProtocolError:
+                print("PE");
                 yield break;
             case UnityWebRequest.Result.DataProcessingError:
+                print("DE");
                 yield break;
             case UnityWebRequest.Result.Success:
                 break;
@@ -62,7 +68,9 @@ public class DirectionManager : MonoBehaviour
         if (request.isDone)
         { 
             json = request.downloadHandler.text;
+            print(json);
             DataManager.instance.ParseJson(json);
+            print("HI");
         }
     }
 }

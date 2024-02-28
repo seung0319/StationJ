@@ -15,6 +15,10 @@ public class MarkerMaker : MonoBehaviour
     public Sprite photozonSprite;
     public Sprite docentSprite;
 
+    public GameObject publicParent;
+    public GameObject hospitalParent;
+    public GameObject photoParent;
+
     GameObject button;
 
     private void Start()
@@ -42,9 +46,7 @@ public class MarkerMaker : MonoBehaviour
         double x = (longitude - originLongitude) * xRatio;
         double y = (latitude - originLatitude) * yRatio;
 
-        GameObject publicParent = GameObject.Find("PublicMarkers");
-        GameObject hospitalParent = GameObject.Find("HospitalMarkers");
-        GameObject photoParent = GameObject.Find("PhotoMarkers");
+        
 
         Vector2 position = new Vector2((float)x, (float)y); // Vector3 »ý¼º
         button = Instantiate(buttonPrefab, position, Quaternion.identity);

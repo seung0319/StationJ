@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1953228230833461595}
   m_Layer: 5
   m_Name: MarkerPrefab
-  m_TagString: Untagged
+  m_TagString: POI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,6 +156,8 @@ MonoBehaviour:
     address: 
     description: 
     coupon: 
+  poiCouponButton: {fileID: 0}
+  poiObjectName: {fileID: 0}
 --- !u!114 &1953228230833461595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,3 +171,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poiData: {fileID: 1972577948328139481}
+  selectedMarker: {fileID: 0}
+  directionManager: {fileID: 0}
+  debugger: {fileID: 0}
