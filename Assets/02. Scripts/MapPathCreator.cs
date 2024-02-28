@@ -1,48 +1,26 @@
-using System;
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RouteManager : MonoBehaviour
+public class MapPathCreator : MonoBehaviour
 {
-    public GameObject directionManager;
-    public GameObject path;
+    public RectTransform canvasRect;
+    private GameObject path;
     public GameObject pathPrefab;
-    public GameObject parentMap;
-    public RectTransform canvasRect; // 변환 대상인 UI Canvas의 RectTransform
     public Image linePrefab;
-    private List<Image> lines = new List<Image>(); // 생성된 라인들의 리스트
-    private List<GameObject> paths = new List<GameObject>();
-    public Text debugger;
-    public GameObject selectedMarker;
-    public Text durationText;
-    public Text distanceText;
+    public GameObject parentMap;
+
     // Start is called before the first frame update
     void Start()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    private void OnEnable()
-    {
         RectTransform lastPoint = null;
-
-        selectedMarker.gameObject.SetActive(true);
-        durationText.text = Mathf.RoundToInt(DataManager.instance.duration / 60000).ToString() + " 분";
-        distanceText.text = DataManager.instance.distance.ToString() + " m";
         foreach (var points in DataManager.instance.paths)
         {
-            path = Instantiate(pathPrefab, DataManager.instance.MapRatio(points.latitude, points.longitude), Quaternion.identity);
+            path = Instantiate(pathPrefab, DataManager.instance.MapRatioAR(points.latitude, points.longitude), Quaternion.identity);
             path.transform.SetParent(parentMap.transform, false);
-            paths.Add(path);
             if (lastPoint != null)
             {
                 // 새로운 Image 오브젝트를 생성
@@ -55,25 +33,14 @@ public class RouteManager : MonoBehaviour
                 lineImage.rectTransform.position = lastPoint.position;
                 float angle = Mathf.Atan2(differenceVector.y, differenceVector.x) * Mathf.Rad2Deg;
                 lineImage.rectTransform.rotation = Quaternion.Euler(0, 0, angle);
-
-                lines.Add(lineImage);
             }
             lastPoint = path.GetComponent<RectTransform>();
         }
     }
 
-    private void OnDisable()
+    // Update is called once per frame
+    void Update()
     {
-        selectedMarker.gameObject.SetActive(false);
-        foreach (var path in paths)
-        {
-            Destroy(path.gameObject);
-        }
-        paths.Clear();
-        foreach (var line in lines)
-        {
-            Destroy(line.gameObject);
-        }
-        lines.Clear();
+        
     }
 }

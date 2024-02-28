@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class DataManager : MonoBehaviour
 {
@@ -92,5 +93,45 @@ public class DataManager : MonoBehaviour
             print("Unable to determine device location");
             yield break;
         }
+    }
+
+    public Vector2 MapRatio(double latitude, double longitude)
+    {
+        double originLatitude = 37.713675f;
+        double originLongitude = 126.743572f;
+
+        double targetLatitude = 37.712223f;
+        double targetLongitude = 126.744613f;
+        double targetX = 224;
+        double targetY = -1138;
+
+        double xRatio = targetX / (targetLongitude - originLongitude);
+        double yRatio = targetY / (targetLatitude - originLatitude);
+
+
+        double x = (longitude - originLongitude) * xRatio;
+        double y = (latitude - originLatitude) * yRatio;
+
+        return new Vector2((float)x, (float)y);
+    }
+
+    public Vector2 MapRatioAR(double latitude, double longitude)
+    {
+        double originLatitude = 37.713675f;
+        double originLongitude = 126.743572f;
+
+        double targetLatitude = 37.712223f;
+        double targetLongitude = 126.744613f;
+        double targetX = 305;
+        double targetY = -502;
+
+        double xRatio = targetX / (targetLongitude - originLongitude);
+        double yRatio = targetY / (targetLatitude - originLatitude);
+
+
+        double x = (longitude - originLongitude) * xRatio;
+        double y = (latitude - originLatitude) * yRatio;
+
+        return new Vector2((float)x, (float)y);
     }
 }

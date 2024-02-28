@@ -1,19 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Timeline;
-using UnityEngine.UI;
 
-public class LocationUpdate : MonoBehaviour
+public class LocationUpdateAR : MonoBehaviour
 {
     public GameObject playerMarker;
     public RectTransform map;
-    public Text deb1;
-    public Text deb2;
-    bool isFirstLocationUpdate = true;
+    public GameObject selectedMarker;
 
     void Start()
     {
+        double latitude = DataManager.instance.selectedPoi.latitude;
+        double longitude = DataManager.instance.selectedPoi.longitude;
+        selectedMarker.GetComponent<RectTransform>().anchoredPosition = DataManager.instance.MapRatioAR(latitude, longitude);
+
         StartCoroutine(UpdateLocation());
     }
 
@@ -31,16 +31,10 @@ public class LocationUpdate : MonoBehaviour
             // 위치 정보를 받아옴
             double latitude = Input.location.lastData.latitude;
             double longitude = Input.location.lastData.longitude;
-            
+
             // GameObject의 위치를 변경
-            playerMarker.GetComponent<RectTransform>().anchoredPosition = DataManager.instance.MapRatio(latitude, longitude); // Y 좌표는 필요에 따라 변경
-   
-            if (isFirstLocationUpdate)
-            {
-                map.anchoredPosition = -playerMarker.GetComponent<RectTransform>().localPosition;
-                deb2.text = map.anchoredPosition.ToString();
-                isFirstLocationUpdate = false;
-            }
+            playerMarker.GetComponent<RectTransform>().anchoredPosition = DataManager.instance.MapRatioAR(latitude, longitude); // Y 좌표는 필요에 따라 변경
+            map.anchoredPosition = -playerMarker.GetComponent<RectTransform>().localPosition;
 
             yield return delay;
         }
