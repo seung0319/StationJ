@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.ARCore;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
@@ -10,6 +11,7 @@ public class MultipleimageManager : MonoBehaviour
     ARTrackedImageManager imageManager;
     private Dictionary<string, GameObject> instantiatedObjects = new Dictionary<string, GameObject>();
 
+    [SerializeField] ARSession aRSession;
 
     void Awake()
     {
@@ -55,9 +57,9 @@ public class MultipleimageManager : MonoBehaviour
                 obj.transform.SetParent(trackedImage.transform);
 
                 obj.transform.localPosition = new Vector3(0f, -0.2f, 0f);
-                    obj.transform.localRotation = Quaternion.Euler(270f, -180f, 0f);
-                    ///인식한 이미지의 바로 앞의 위치에 생성되도록 만들어놓았다.
-                    instantiatedObjects.Add(imageName, obj);
+                obj.transform.localRotation = Quaternion.Euler(270f, -180f, 0f);
+                ///인식한 이미지의 바로 앞의 위치에 생성되도록 만들어놓았다.
+                instantiatedObjects.Add(imageName, obj);
             }
         }
     }
@@ -106,6 +108,7 @@ public class MultipleimageManager : MonoBehaviour
     public void OnBackBtnClickedEvent()
     {
         imageManager.trackedImagesChanged -= OnImageTrackedEvent;
+        aRSession.Reset();
     }
 
     // * 주의

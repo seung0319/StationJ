@@ -2451,6 +2451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42431972e2e04994db82e938ecf4ee8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aRSession: {fileID: 1517052578}
 --- !u!1 &1173058085
 GameObject:
   m_ObjectHideFlags: 0
@@ -3541,6 +3542,18 @@ MonoBehaviour:
           m_StringArgument: PDListScreen
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1162877246}
+        m_TargetAssemblyTypeName: MultipleimageManager, Assembly-CSharp
+        m_MethodName: OnBackBtnClickedEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1716603716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3830,6 +3843,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: PDListScreen
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1162877246}
+        m_TargetAssemblyTypeName: MultipleimageManager, Assembly-CSharp
+        m_MethodName: OnBackBtnClickedEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1947681169
