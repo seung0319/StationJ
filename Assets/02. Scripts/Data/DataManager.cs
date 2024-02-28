@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Transactions;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -99,18 +100,19 @@ public class DataManager : MonoBehaviour
     {
         double originLatitude = 37.713675f;
         double originLongitude = 126.743572f;
+        double originX = 0;
+        double originY = 0;
 
-        double targetLatitude = 37.712223f;
-        double targetLongitude = 126.744613f;
-        double targetX = 224;
-        double targetY = -1138;
+        double targetLatitude = 37.714073f;
+        double targetLongitude = 126.741178f;
+        double targetX = -1418;
+        double targetY = 436;
 
-        double xRatio = targetX / (targetLongitude - originLongitude);
-        double yRatio = targetY / (targetLatitude - originLatitude);
+        double xRatio = (targetX - originX) / (targetLongitude - originLongitude);
+        double yRatio = (targetY - originY) / (targetLatitude - originLatitude);
 
-
-        double x = (longitude - originLongitude) * xRatio;
-        double y = (latitude - originLatitude) * yRatio;
+        double x = originX + (longitude - originLongitude) * xRatio;
+        double y = originY + (latitude - originLatitude) * yRatio;
 
         return new Vector2((float)x, (float)y);
     }

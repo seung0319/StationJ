@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class MapPathCreator : MonoBehaviour
 {
     public RectTransform canvasRect;
-    private GameObject path;
+    public GameObject path;
     public GameObject pathPrefab;
     public Image linePrefab;
     public GameObject parentMap;
@@ -19,7 +19,20 @@ public class MapPathCreator : MonoBehaviour
         RectTransform lastPoint = null;
         foreach (var points in DataManager.instance.paths)
         {
-            path = Instantiate(pathPrefab, DataManager.instance.MapRatioAR(points.latitude, points.longitude), Quaternion.identity);
+            // 기준 위도, 경도
+            double originLatitude = 37.713675f;
+            double originLongitude = 126.743572f;
+            // 경기인력개발원 37.713675f; 126.743572f;
+
+            // 위도, 경도에 대한 x, y의 변화 비율
+            double xRatio = 559092.4f;
+            double yRatio = 714178.2f;
+
+            // 위도, 경도를 x, y로 변환
+            double x = (points.longitude - originLongitude) * xRatio;
+            double y = (points.latitude - originLatitude) * yRatio;
+
+            path = Instantiate(pathPrefab, new Vector3((float)x, (float)y, 0), Quaternion.identity);
             path.transform.SetParent(parentMap.transform, false);
             if (lastPoint != null)
             {

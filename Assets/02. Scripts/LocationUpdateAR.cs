@@ -12,8 +12,23 @@ public class LocationUpdateAR : MonoBehaviour
     {
         double latitude = DataManager.instance.selectedPoi.latitude;
         double longitude = DataManager.instance.selectedPoi.longitude;
-        selectedMarker.GetComponent<RectTransform>().anchoredPosition = DataManager.instance.MapRatioAR(latitude, longitude);
 
+        double originLatitude = 37.713675f;
+        double originLongitude = 126.743572f;
+
+        double targetLatitude = 37.712223f;
+        double targetLongitude = 126.744613f;
+        double targetX = 305;
+        double targetY = -502;
+
+        double xRatio = targetX / (targetLongitude - originLongitude);
+        double yRatio = targetY / (targetLatitude - originLatitude);
+
+
+        double x = (longitude - originLongitude) * xRatio;
+        double y = (latitude - originLatitude) * yRatio;
+
+        selectedMarker.transform.position = new Vector2((float)x, (float)y);
         StartCoroutine(UpdateLocation());
     }
 
@@ -32,8 +47,28 @@ public class LocationUpdateAR : MonoBehaviour
             double latitude = Input.location.lastData.latitude;
             double longitude = Input.location.lastData.longitude;
 
+            // 기준 위도, 경도
+            double originLatitude = 37.713675f;
+            double originLongitude = 126.743572f;
+            // 경기인력개발원 37.713675f; 126.743572f;
+
+            double targetLatitude = 37.712223f;
+            double targetLongitude = 126.744613f;
+            double targetX = 305;
+            double targetY = -502;
+
+            double xRatio = targetX / (targetLongitude - originLongitude);
+            double yRatio = targetY / (targetLatitude - originLatitude);
+
+            //// 위도, 경도에 대한 x, y의 변화 비율
+            //double xRatio = 559092.4f;
+            //double yRatio = 714178.2f;
+
+            double x = (longitude - originLongitude) * xRatio;
+            double y = (latitude - originLatitude) * yRatio;
+
             // GameObject의 위치를 변경
-            playerMarker.GetComponent<RectTransform>().anchoredPosition = DataManager.instance.MapRatioAR(latitude, longitude); // Y 좌표는 필요에 따라 변경
+            playerMarker.GetComponent<RectTransform>().anchoredPosition = new Vector2((float)x, (float)y); // Y 좌표는 필요에 따라 변경
             map.anchoredPosition = -playerMarker.GetComponent<RectTransform>().localPosition;
 
             yield return delay;
