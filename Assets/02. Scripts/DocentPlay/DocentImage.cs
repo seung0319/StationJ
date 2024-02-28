@@ -106,6 +106,7 @@ public class DocentImage : MonoBehaviour
         }
     }
 
+    //이미지 트래킹
     void InstantiateObjectForTrackedImage(ARTrackedImage trackedImage)
     {
         string imageName = trackedImage.referenceImage.name;
