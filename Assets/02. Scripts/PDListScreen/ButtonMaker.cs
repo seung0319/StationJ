@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// PDListScreen 씬에 DataManager에서 읽어들인 POI들 중,
+/// 포토존과 도슨트의 타입을 가진 POI들만 리스트에 버튼으로 생성하는 클래스
+/// </summary>
 public class ButtonMaker : MonoBehaviour
 {
     public GameObject photozonePrefab;
@@ -58,11 +62,5 @@ public class ButtonMaker : MonoBehaviour
             Image pimage = parent.transform.Find("Image").GetComponent<Image>();
             pimage.GetComponent<Image>().sprite = sprite;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -5,6 +5,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// ARNavigation 씬 미니맵에 현재위치에서부터 목적지까지의 길에 Line 이미지로 표시하는 클래스
+/// </summary>
 public class MapPathCreator : MonoBehaviour
 {
     public RectTransform canvasRect;

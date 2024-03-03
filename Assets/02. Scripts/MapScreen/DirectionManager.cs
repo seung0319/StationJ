@@ -7,6 +7,9 @@ using UnityEngine.Events;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
+/// <summary>
+/// Naver Driving 5 API에서 데이터를 받아오는 클래스
+/// </summary>
 public class DirectionManager : MonoBehaviour
 {
     [SerializeField] string baseUrl = "https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving";
@@ -16,6 +19,7 @@ public class DirectionManager : MonoBehaviour
     [SerializeField] string startLongitude = "126.743572";
     [SerializeField] string option = "traoptimal";
 
+    // 아래 두 항목은 POIButton.cs 에서 초기화 됨
     public static string destLatitude = "";
     public static string destLongitude = "";
 
@@ -29,9 +33,11 @@ public class DirectionManager : MonoBehaviour
     {
         
     }
+
+    // MapScreen 시작 시 Disable 되어 있는 상태, 마커를 누르면 Enable이 되고 코루틴이 실행됨.
+    // 위치권한 허용 상태일 시 유저의 위치정보를 사용, 거부 상태일 시 경기인력개발원 기준.
     private void OnEnable()
     {
-        print("HELLO");
         if (Input.location.isEnabledByUser)
         {
             startLatitude = Input.location.lastData.latitude.ToString();
@@ -40,6 +46,8 @@ public class DirectionManager : MonoBehaviour
         StartCoroutine(OnEnableCo());
     }
 
+
+    // Naver Driving 5 API에서 데이터를 받아오는 코루틴
     IEnumerator OnEnableCo()
     {
         string apiRequestURL = $"{baseUrl}?start={startLongitude},{startLatitude}&goal={destLongitude},{destLatitude}&option={option}";
@@ -52,13 +60,10 @@ public class DirectionManager : MonoBehaviour
         switch (request.result)
         {
             case UnityWebRequest.Result.ConnectionError:
-                print("CE");
                 yield break;
             case UnityWebRequest.Result.ProtocolError:
-                print("PE");
                 yield break;
             case UnityWebRequest.Result.DataProcessingError:
-                print("DE");
                 yield break;
             case UnityWebRequest.Result.Success:
                 break;
@@ -67,9 +72,7 @@ public class DirectionManager : MonoBehaviour
         if (request.isDone)
         { 
             json = request.downloadHandler.text;
-            print(json);
             DataManager.instance.ParseJson(json);
-            print("HI");
         }
     }
 }

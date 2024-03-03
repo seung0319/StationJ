@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// DataManager에서 받아온 경로에 맞게 라인을 생성하는 클래스
+/// </summary>
 public class RouteManager : MonoBehaviour
 {
     public GameObject directionManager;
@@ -18,18 +21,9 @@ public class RouteManager : MonoBehaviour
     public GameObject selectedMarker;
     public Text durationText;
     public Text distanceText;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    // RouteManger 오브젝트가 활성화 되면 실행되는 함수
+    // Map 의 자식에 라인 이미지들을 생성한다.
     private void OnEnable()
     {
         RectTransform lastPoint = null;
@@ -74,6 +68,8 @@ public class RouteManager : MonoBehaviour
         }
     }
 
+    // RouteManager 오브젝트가 비활성화되면
+    // 생성되었던 경로와 라인 이미지가 삭제된다.
     private void OnDisable()
     {
         selectedMarker.gameObject.SetActive(false);

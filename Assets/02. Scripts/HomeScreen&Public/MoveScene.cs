@@ -1,7 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
+/// <summary>
+/// 씬 이름을 확인해서 이동하는 클래스
+/// </summary>
 public class MoveScene : MonoBehaviour
 {
     //씬 이름을 확인해서 이동하는 코드

@@ -4,6 +4,10 @@ using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 유저가 HomeScreen에서 MapScreen으로 넘어왔는지,
+/// PDListScreen에서 MapScreen으로 넘어왔는지 확인하는 클래스.
+/// </summary>
 public class FromChecker : MonoBehaviour
 {
     public GameObject markerPanel;
@@ -19,17 +23,12 @@ public class FromChecker : MonoBehaviour
     public GameObject routeFindPanel;
     public Text endPointText;
 
-    // Start is called before the first frame update
+
+    // PDListScreen에서 넘어온 경우에만 실행
     void Start()
     {
         if (DataManager.instance.fromPhodocent)
         {
-            //markerPanel.SetActive(false);
-            //categoryPanel.SetActive(false);
-            //infoPanel.SetActive(true);
-            //displayPOI.SetPanel(DataManager.instance.selectedPoi);
-
-
             DestinationMarkerMove();
             directionManager.gameObject.SetActive(true);
             locationUpdater.SetActive(true);
@@ -43,6 +42,8 @@ public class FromChecker : MonoBehaviour
         }
     }
 
+    // MapScreen의 상세설명 화면에서 길찾기 버튼을 누른 것과 같은 작업을 실행.
+    // (Driving API 에서 받아온 데이터를 사용해서 길 표시)
     IEnumerator LoadPath()
     {
         yield return new WaitUntil(() => DataManager.instance.paths != null);
@@ -52,6 +53,8 @@ public class FromChecker : MonoBehaviour
         routeFindPanel.SetActive(true);
     }
 
+
+    // 도착 마커의 유니티월드에서의 좌표를 도착지로 변경하는 코드
     void DestinationMarkerMove()
     {
         double latitude = DataManager.instance.selectedPoi.latitude;

@@ -2,12 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// ARNavigation 씬의 미니맵에 유저의 위치정보를 업데이트 하기 위한 클래스
+/// </summary>
 public class LocationUpdateAR : MonoBehaviour
 {
     public GameObject playerMarker;
     public RectTransform map;
     public GameObject selectedMarker;
 
+    // ARNavigation 씬 진입 시 DataManager의 selectedPoi(목적지)의 정보를 받아 목적지를 미니맵에 출력
+    // 이후 유저 위치를 업데이트 하는 코루틴 실행
     void Start()
     {
         double latitude = DataManager.instance.selectedPoi.latitude;
@@ -30,6 +36,8 @@ public class LocationUpdateAR : MonoBehaviour
         StartCoroutine(UpdateLocation());
     }
 
+    // 유저 위치는 허용이 되어있는것으로 간주하기 때문에,
+    // 코루틴을 활용하여 1초마다 유저 위치 업데이트
     IEnumerator UpdateLocation()
     {
         // 위치 서비스를 시작

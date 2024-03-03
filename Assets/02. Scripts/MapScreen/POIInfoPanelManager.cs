@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// POIButton.cs 클래스에서 사용되는 상세설명창을 업데이트 시키는 함수가 포함된 클래스
+/// POIButton.cs 가 들어가는 오브젝트가 프리팹이기에 사용한 방법
+/// </summary>
 public class POIInfoPanelManager : MonoBehaviour
 {
     public GameObject infoPanel;
@@ -14,6 +18,7 @@ public class POIInfoPanelManager : MonoBehaviour
     public Text endPointText;
     
 
+    // 함수가 호출되면 상세설명창이 선택된 POI의 데이터로 업데이트된다.
     public void SetPanel(POI poi)
     {
         nameText.text = poi.name;

@@ -3,6 +3,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// POI 정보, 길찾기 시 경로 등 데이터를 관리 하는 클래스
+/// </summary>
 public class DataManager : MonoBehaviour
 {
     public static DataManager instance = null;
@@ -32,6 +35,7 @@ public class DataManager : MonoBehaviour
         StartCoroutine(LoadData());
     }
 
+    // POI데이터를 로드하기 위한 코루틴
     IEnumerator LoadData()
     {
         //Resource폴더에서 "POIInfo"라는 파일의 텍스트 에셋을 로드
@@ -57,6 +61,8 @@ public class DataManager : MonoBehaviour
         }
     }
 
+    // Naver Driving 5 API에서 값을 받아오기 위한 함수
+    // 경로, 길, 걸리는 시간이 각 변수에 반환됨
     public void ParseJson(string jsonString)
     {
         JObject data = JObject.Parse(jsonString);
@@ -76,6 +82,7 @@ public class DataManager : MonoBehaviour
         duration = jsonDuration;
     }
 
+    // 위치서비스가 실행중인지 확인하는 코루틴을 실행시키는 함수
     public void LocationInfoGetStart()
     {
         if (isStartCoroutine)
@@ -85,6 +92,7 @@ public class DataManager : MonoBehaviour
         StartCoroutine(LocationInfoGet());
     }
 
+    // 위치서비스가 실행중인지 확인하는 코루틴
     IEnumerator LocationInfoGet()
     {
         Input.location.Start(1, 1);
@@ -110,45 +118,5 @@ public class DataManager : MonoBehaviour
             print("Unable to determine device location");
             yield break;
         }
-    }
-
-    public Vector2 MapRatio(double latitude, double longitude)
-    {
-        double originLatitude = 37.713675f;
-        double originLongitude = 126.743572f;
-
-        double targetLatitude = 37.712223f;
-        double targetLongitude = 126.744613f;
-        double targetX = 224;
-        double targetY = -1138;
-
-        double xRatio = targetX / (targetLongitude - originLongitude);
-        double yRatio = targetY / (targetLatitude - originLatitude);
-
-
-        double x = (longitude - originLongitude) * xRatio;
-        double y = (latitude - originLatitude) * yRatio;
-
-        return new Vector2((float)x, (float)y);
-    }
-
-    public Vector2 MapRatioAR(double latitude, double longitude)
-    {
-        double originLatitude = 37.713675f;
-        double originLongitude = 126.743572f;
-
-        double targetLatitude = 37.712223f;
-        double targetLongitude = 126.744613f;
-        double targetX = 305;
-        double targetY = -502;
-
-        double xRatio = targetX / (targetLongitude - originLongitude);
-        double yRatio = targetY / (targetLatitude - originLatitude);
-
-
-        double x = (longitude - originLongitude) * xRatio;
-        double y = (latitude - originLatitude) * yRatio;
-
-        return new Vector2((float)x, (float)y);
     }
 }

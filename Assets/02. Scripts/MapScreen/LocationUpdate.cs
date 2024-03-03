@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.Timeline;
 using UnityEngine.UI;
 
+/// <summary>
+/// 유저의 위치를 1초마다 업데이트 해주는 클래스
+/// </summary>
 public class LocationUpdate : MonoBehaviour
 {
     public GameObject playerMarker;
@@ -12,11 +15,14 @@ public class LocationUpdate : MonoBehaviour
     public Text deb2;
     bool isFirstLocationUpdate = true;
 
+    // 위치 권한이 허용 상태일 때 오브젝트가 활성화 되고, 코루틴이 실행 됨
     void OnEnable()
     {
         StartCoroutine(UpdateLocation());
     }
 
+
+    // 유저의 위치를 1초마다 업데이트하고 유저마커의 위치를 1초마다 움직이게 하는 코루틴
     IEnumerator UpdateLocation()
     {
         // 위치 서비스를 시작

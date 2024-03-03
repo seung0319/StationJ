@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// MapScreen 씬의 탭 기능을 위한 클래스
+/// </summary>
 public class CategoryManager : MonoBehaviour
 {
     public List<Toggle> toggles = new List<Toggle>();
@@ -17,6 +20,8 @@ public class CategoryManager : MonoBehaviour
     private Color selectedColor = new Color32(0, 148, 255, 255); // 선택된 버튼의 색
     private Color unselectedColor = new Color32(185, 188, 190, 255); // 선택되지 않은 버튼의 색
 
+
+    // MapScreen 씬이 시작될 때 '모든 패널을 켜는 토글'은 켜져있다.
     void Start()
     {
         Dictionary<Toggle, GameObject> togglePanels = new Dictionary<Toggle, GameObject>();

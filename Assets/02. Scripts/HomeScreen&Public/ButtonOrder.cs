@@ -4,29 +4,20 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// HomeScreen의 버튼에 터치중이거나, 마우스를 올렸을 때
+/// 해당 버튼이 제일 마지막 자식으로 변경되는 클래스 
+/// </summary>
 public class ButtonOrder : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    private Animator animator;
     private bool pressed = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
-
     // Update is called once per frame
     void Update()
     {
-        //if (animator.GetCurrentAnimatorStateInfo(0).IsName("Pressed"))
         if(pressed)
         {
             gameObject.transform.SetAsLastSibling();
         }
-    }
-
-    public void IPointerDownHandler()
-    {
-
     }
 
     public void OnPointerDown(PointerEventData eventData)

@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
+/// <summary>
+/// Naver StaticMap API 에서 데이터를 받아오는 클래스
+/// </summary>
 public class StaticMapManager : MonoBehaviour
 {
     [SerializeField] string baseUrl = "https://naveropenapi.apigw.ntruss.com/map-static/v2/raster";
@@ -18,13 +21,14 @@ public class StaticMapManager : MonoBehaviour
     public int mapWidth = 720;
     public int mapHeight = 1600;
 
-    public Text debug;
-
+    // MapScreen 씬이 실행되면 코루틴을 시작한다.
     public void Start()
     {
         StartCoroutine(MapLoader());
     }
 
+    // Naver StaticMap API에서 데이터를 이미지 텍스쳐로 받아오는 코루틴
+    // UI Image 의 Raw Image 컴포넌트에 삽입 됨.
     IEnumerator MapLoader()
     {
         string apiRequestURL = $"{baseUrl}?w={mapWidth}&h={mapHeight}&center={longitude},{latitude}&level={level}";

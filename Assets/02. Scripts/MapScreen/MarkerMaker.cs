@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// MapScreen이 시작되었을 때 DataManager에 읽어놓은 POI데이터를 기반으로 마커를 맵에 생성하는 클래스
+/// </summary>
 public class MarkerMaker : MonoBehaviour
 {
     public GameObject buttonPrefab; // Button Prefab을 Inspector에서 할당해주세요.
@@ -21,6 +24,8 @@ public class MarkerMaker : MonoBehaviour
 
     GameObject button;
 
+
+    // DataManger에 저장되어있는 POI의 갯수만큼 마커를 생성, 각 POI에 그에 맞는 데이터를 저장
     private void Start()
     {
         foreach (var poi in DataManager.instance.poiList.pois)
@@ -30,6 +35,9 @@ public class MarkerMaker : MonoBehaviour
             poiData.SetData(poi);
         }
     }
+
+    // POI의 위도 경도를 유니티 월드의 좌표로 치환하는 코드
+    // 또한 마커 프리팹의 이미지를 type에 맞게 변환해서 생성
     public void CreateButtonAtLocation(double latitude, double longitude, string type)
     {
         // 기준 위도, 경도

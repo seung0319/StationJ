@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// PDListScreen 씬의 POI 버튼들을 누르면 상세설명창을 업데이트 하는 클래스 
+/// </summary>
 public class InfoPanelManager : MonoBehaviour
 {
     public GameObject photozoneInfoPanel;
@@ -18,6 +21,9 @@ public class InfoPanelManager : MonoBehaviour
     public GameObject docentImage;
     public GameObject docentName;
     public GameObject docentDes;
+
+    // 포토존일때 포토존의 상세설명창을,
+    // 도슨트일때 도슨트의 상세설명창을 업데이트 하는 함수
     public void SetPanel(POI poi)
     {
         if(poi.type == "포토존")

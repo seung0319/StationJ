@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// PDListScreen 씬의 위쪽에 포토존과 도슨트 탭을 구현하기 위한 클래스
+/// </summary>
 public class ToggleManager : MonoBehaviour
 {
     private Toggle toggle;
@@ -15,10 +18,11 @@ public class ToggleManager : MonoBehaviour
         toggle.onValueChanged.AddListener(delegate {
             ToggleValueChanged(toggle);
         });
-        if (toggle.gameObject.name == "ShowAllBtn")
-            toggle.isOn = true;
+        //if (toggle.gameObject.name == "ShowAllBtn")
+        //    toggle.isOn = true;
     }
 
+    // 토글의 상태에 따라 sprite 변경
     void ToggleValueChanged(Toggle toggle)
     {
         if (toggle.isOn)

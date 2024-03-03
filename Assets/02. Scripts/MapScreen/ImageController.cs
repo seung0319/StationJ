@@ -1,6 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 지도 이미지를 한손가락으로 움직이거나,
+/// 두손가락으로 줌인/줌아웃을 하게 해주는 클래스
+/// </summary>
 public class ImageController : MonoBehaviour
 {
     public float panSpeed = 0.1f;
