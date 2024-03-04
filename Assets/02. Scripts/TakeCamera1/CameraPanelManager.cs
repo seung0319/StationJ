@@ -13,55 +13,50 @@ using NativeGalleryNamespace;
 
 public class CameraPanelManager : MonoBehaviour
 {
-    public GameObject ChoosePanel;
-    public GameObject ResultPanel;
-    public GameObject VideoPanel;
-    public GameObject SaveCompletePnael;
+    // 필드 정의
+    public GameObject ChoosePanel; // 사진, 비디오 촬영 선택 패널
+    public GameObject ResultPanel; // 촬영 결과 확인 패널
+    public GameObject VideoPanel; // 비디오 촬영 패널
+    public GameObject SaveCompletePnael; // 저장 완료 패널
 
-    //ChoosePanel Buttons
-    public GameObject PhotoButton;
-    public GameObject PhotoPickButton;
-    public GameObject VideoButton;
-    public GameObject GalleryButton;
-    public GameObject choosepanelBackButton;
+    // ChoosePanel 버튼들
+    public GameObject PhotoButton; // 사진 촬영 버튼
+    public GameObject PhotoPickButton; // 갤러리에서 사진 선택 버튼
+    public GameObject VideoButton; // 비디오 촬영 버튼
+    public GameObject GalleryButton; // 갤러리 버튼
+    public GameObject choosepanelBackButton; // ChoosePanel 뒤로가기 버튼
 
-    //VideoPanel Buttons
-    public GameObject VideoCaptureButton;
-    public GameObject VideoStopButton;
-    public GameObject VideoGalleryutton;
-    public GameObject VideopanelBackButton;
+    // VideoPanel 버튼들
+    public GameObject VideoCaptureButton; // 비디오 촬영 시작 버튼
+    public GameObject VideoStopButton; // 비디오 촬영 중지 버튼
+    public GameObject VideoGalleryutton; // 비디오 갤러리 버튼
+    public GameObject VideopanelBackButton; // VideoPanel 뒤로가기 버튼
 
-    //ReultPanel Buttons
-    public GameObject SaveButton;
-    public GameObject ShareButton;
-    public GameObject resultpanelBackButton;
+    // ResultPanel 버튼들
+    public GameObject SaveButton; // 저장 버튼
+    public GameObject ShareButton; // 공유 버튼
+    public GameObject resultpanelBackButton; // ResultPanel 뒤로가기 버튼
 
-    public int CaptureWidth = 1080; //캡쳐할 이미지 가로 크기
-    public int CaptureHeight = 1600; //캡쳐할 이미지 세로 크기
-    
+    // 캡처할 이미지의 가로 및 세로 크기
+    public int CaptureWidth = 1080;
+    public int CaptureHeight = 1600;
+
+    // 찍은 이미지를 저장할 Texture2D 객체 및 결과를 보여줄 Image 객체
     private Texture2D capturedTexture;
     public Image ResultImage;
     public GameObject SizePanel;
-    
 
     void Start()
     {
-       
-
-
-        //초기 상태 설정. ChoosePanel과 그 안의 버튼들만 활성화
+        // 초기화 설정. ChoosePanel 및 해당 버튼들만 활성화
         SetChooseMode();
         SaveCompletePnael.SetActive(false);
 
-
-
+        // VideoPanel 뒤로가기 버튼 클릭 시 ChooseMode로 설정
         VideopanelBackButton.GetComponent<Button>().onClick.AddListener(SetChooseMode);
-
-
-
-
     }
 
+    // ChoosePanel 활성화
     public void SetChooseMode()
     {
         ChoosePanel.SetActive(true);
@@ -69,6 +64,7 @@ public class CameraPanelManager : MonoBehaviour
         VideoPanel.SetActive(false);
     }
 
+    // VideoPanel 활성화
     public void SetVideoMode()
     {
         ChoosePanel.SetActive(false);
@@ -78,41 +74,38 @@ public class CameraPanelManager : MonoBehaviour
         VideoStopButton.SetActive(false);
     }
 
+    // ResultPanel 활성화
     public void SetResultMode()
     {
         ChoosePanel.SetActive(false);
         ResultPanel.SetActive(true);
         VideoPanel.SetActive(false);
     }
+
+    // 스크린샷 찍기
     public void TakeScreenshot()
     {
-      
         StartCoroutine(CaptureScreenshot());
         SetResultMode();
     }
 
+    // 스크린샷 캡처 코루틴
     private IEnumerator CaptureScreenshot()
     {
-        //실제로 스크린샷을 찍는 코루틴. 원하는 영역의 픽셀을 읽어와 Texture2D로 저장하고, 이를 ResultImage에 표시
-
-
+        // 캡처 시 Result Image가 함께 찍히는 문제를 해결하기 위해 투명도 조정
         ResultImage.color = new Color(0, 0, 0, 0);
-        //스크린샷을 찍을 때 결과물이 Result Image 가 같이 찍혀나와서
-        // 이부분을 수정하고자 사진찍히는 순간에는 이 Result Image의 투명도를
-        // 0 으로 해놨다가 다 찍히고 난 순간부터 1 로 바꿔주는 식으로 코드를
-        //작성했다. 정석은 아닌 것 같지만 우선 그렇게 해결하였다.
 
         // 프레임 대기
         yield return new WaitForEndOfFrame();
 
-        choosepanelBackButton.SetActive(false);
-
-
+        // SizePanel 크기 가져오기
         RectTransform SizePanelRectTransform = SizePanel.GetComponent<RectTransform>();
         Vector2 panelSize = SizePanelRectTransform.sizeDelta;
 
+        // 캡처 영역 설정
         Rect captureRect = new Rect(0, 553, panelSize.x, panelSize.y);
 
+        // Texture2D로 캡처
         capturedTexture = new Texture2D(Mathf.RoundToInt(captureRect.width), Mathf.RoundToInt(captureRect.height), TextureFormat.RGB24, false);
         capturedTexture.ReadPixels(captureRect, 0, 0);
         capturedTexture.Apply();
@@ -121,91 +114,75 @@ public class CameraPanelManager : MonoBehaviour
         ResultImage.sprite = Sprite.Create(capturedTexture, new Rect(0, 0, capturedTexture.width, capturedTexture.height), Vector2.zero);
         ResultPanel.SetActive(true);
         SizePanel.SetActive(false);
-        choosepanelBackButton.SetActive(true);
         ResultImage.color = new Color(1, 1, 1, 1);
-
-        
-
     }
 
-
-
-
-
-
-    public void OnVideoButtonClicked()
-    {
-        //동영상 촬영 모드로 전환
-        SetVideoMode();
-    }
-
-   
+    // 스크린샷 저장
     public void SaveScreenshot()
     {
         if (capturedTexture != null)
         {
-            // 현재 텍스처를 이미지 파일로 저장
+            // 이미지를 PNG 파일로 저장
             byte[] bytes = capturedTexture.EncodeToPNG();
             string fileName = "screenshot.png";
             string folderPath = Path.Combine(Application.persistentDataPath, "DCIM/Sta");
             string filePath = Path.Combine(folderPath, fileName);
 
-            // 폴더가 없으면 생성
+            // 폴더 생성
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
             }
 
-            // Save the screenshot to Gallery/Photos
+            // 갤러리/사진에 스크린샷 저장
             string name = string.Format("{0}_Capture{1}_{2}.png", Application.productName, "{0}", System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
             NativeGallery.Permission permission = NativeGallery.SaveImageToGallery(bytes, Application.productName + " Captures", name);
             Debug.Log("Permission result: " + permission);
             Debug.Log("Screenshot saved at: " + filePath);
         }
 
+        // 저장 완료 패널 활성화 후 3초 뒤에 숨김
         SaveCompletePnael.SetActive(true);
         Invoke("HideSaveCompletePanel", 3f);
     }
-    
+
+    // 저장 완료 패널 숨기기
     public void HideSaveCompletePanel()
     {
         SaveCompletePnael.SetActive(false);
     }
 
+    // 뒤로가기 버튼 클릭 시 ChooseMode로 전환
     public void OnBackButtonClicked()
     {
-        //뒤로가기 버튼을 누르면 ChooseMode로 전환.
         SetChooseMode();
     }
 
+    // 특정 씬으로 이동하는 뒤로가기 버튼 처리
     public void OnBackToSceneButtonClicked()
     {
-        //뒤로가기 버튼을 누르면 특정 씬으로 이동
         SceneManager.LoadScene("YourSceneName");
     }
 
+    // 갤러리에서 이미지 선택
     public void PickImageFromGallery()
     {
-
-        //갤러리 버튼을 누르면 갤러리로 이동 
-
 #if UNITY_ANDROID && !UNITY_EDITOR
-    using (AndroidJavaClass unity = new AndroidJavaClass("com.unity3d.player.UnityPlayer")) 
-    {
-        using (AndroidJavaObject currentActivity = unity.GetStatic<AndroidJavaObject>("currentActivity")) 
+        // Android에서 갤러리 앱 열기
+        using (AndroidJavaClass unity = new AndroidJavaClass("com.unity3d.player.UnityPlayer")) 
         {
-            using (AndroidJavaObject intent = new AndroidJavaObject("android.content.Intent")) 
+            using (AndroidJavaObject currentActivity = unity.GetStatic<AndroidJavaObject>("currentActivity")) 
             {
-                intent.Call<AndroidJavaObject>("setAction", intent.GetStatic<string>("ACTION_VIEW"));
-                intent.Call<AndroidJavaObject>("setType", "image/*"); // "image/*"은 모든 이미지를 표시합니다. 
+                using (AndroidJavaObject intent = new AndroidJavaObject("android.content.Intent")) 
+                {
+                    intent.Call<AndroidJavaObject>("setAction", intent.GetStatic<string>("ACTION_VIEW"));
+                    intent.Call<AndroidJavaObject>("setType", "image/*"); // 모든 이미지 표시
 
-                currentActivity.Call("startActivity", intent);
-            }
-        }
-    }
+                    currentActivity.Call("startActivity", intent);
+                }
+
+                }
 #endif
-
-
     }
-
 }
+
