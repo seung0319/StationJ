@@ -38,7 +38,7 @@ public class MultipleimageManager : MonoBehaviour
             }
         }
 
-        Debug.Log("ㅇㅇ");
+        Debug.Log("인식됨");
     }
 
         void InstantiateObjectForTrackedImage(ARTrackedImage trackedImage)
@@ -75,6 +75,10 @@ public class MultipleimageManager : MonoBehaviour
 
         private  GameObject GetPrefabForImage(string imageName)
         {
+
+        //Resources 라는 파일 속에 P2 라는 폴더가 또 있는데, 그 안의 프리팹의 이름과 
+        // 인식해야할 이미지의 이름이 같은 것끼리 매치되어 인식합니다.
+
             if (imageName == "P1 1")
             {
                 return Resources.Load<GameObject>("Prefab2/P1 1");

@@ -46,7 +46,7 @@ public class CameraPanelManager : MonoBehaviour
 
     void Start()
     {
-        //권한요청 코드 넣어주세요.
+       
 
 
         //초기 상태 설정. ChoosePanel과 그 안의 버튼들만 활성화
@@ -86,12 +86,16 @@ public class CameraPanelManager : MonoBehaviour
     }
     public void TakeScreenshot()
     {
+      
         StartCoroutine(CaptureScreenshot());
         SetResultMode();
     }
 
     private IEnumerator CaptureScreenshot()
     {
+        //실제로 스크린샷을 찍는 코루틴. 원하는 영역의 픽셀을 읽어와 Texture2D로 저장하고, 이를 ResultImage에 표시
+
+
         ResultImage.color = new Color(0, 0, 0, 0);
         //스크린샷을 찍을 때 결과물이 Result Image 가 같이 찍혀나와서
         // 이부분을 수정하고자 사진찍히는 순간에는 이 Result Image의 투명도를
@@ -101,6 +105,7 @@ public class CameraPanelManager : MonoBehaviour
         // 프레임 대기
         yield return new WaitForEndOfFrame();
 
+        choosepanelBackButton.SetActive(false);
 
 
         RectTransform SizePanelRectTransform = SizePanel.GetComponent<RectTransform>();
@@ -116,10 +121,10 @@ public class CameraPanelManager : MonoBehaviour
         ResultImage.sprite = Sprite.Create(capturedTexture, new Rect(0, 0, capturedTexture.width, capturedTexture.height), Vector2.zero);
         ResultPanel.SetActive(true);
         SizePanel.SetActive(false);
-
+        choosepanelBackButton.SetActive(true);
         ResultImage.color = new Color(1, 1, 1, 1);
 
-
+        
 
     }
 
@@ -134,22 +139,7 @@ public class CameraPanelManager : MonoBehaviour
         SetVideoMode();
     }
 
-    public void OnVideoCaptureButtonClicked()
-        
-    {
-        //동영상 촬영 시작 코드 ...
-        // 촬영 시작 시 촬영 버튼 비활성화, 중지 버튼 활성화
-
-    }
-
-    public void OnVideoStopButtonClicked()
-    {
-        //동영상 촬영 중지 코드
-        //촬영 중지 시 촬영 버튼 활성화, 중지 버튼 비활성화
-
-        // 촬영이 끝난 후 결과 모드로 전환
-        SetVideoMode();
-    }
+   
     public void SaveScreenshot()
     {
         if (capturedTexture != null)
@@ -196,6 +186,9 @@ public class CameraPanelManager : MonoBehaviour
 
     public void PickImageFromGallery()
     {
+
+        //갤러리 버튼을 누르면 갤러리로 이동 
+
 #if UNITY_ANDROID && !UNITY_EDITOR
     using (AndroidJavaClass unity = new AndroidJavaClass("com.unity3d.player.UnityPlayer")) 
     {
