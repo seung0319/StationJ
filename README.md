@@ -105,9 +105,9 @@ ARCore 및 Google Maps Platform에서 제공하는 [Geospatial Creator](https://
 <br>
 
 ## 해당 프로젝트를 사용하여 개발
-### ROI 변경 방법
+### ROI 데이터 구조
 <details>
-<summary>코드</summary>
+
 ```
 {
 	"pois": [
@@ -141,8 +141,7 @@ ARCore 및 Google Maps Platform에서 제공하는 [Geospatial Creator](https://
 
 ### Directions5 Json 구조
 <details>
-<summary>코드</summary>
-	```
+```
 {
 	"code":0,
 	"message":"길찾기를 성공하였습니다.",
